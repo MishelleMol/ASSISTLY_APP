@@ -1,0 +1,37 @@
+<section class="solution">
+
+  <p class="etiqueta">LA SOLUCIÓN</p>
+  <h2 class="titulo">Compra asistida, en tiempo real.</h2>
+  <p class="subtitulo">
+    Assistly no es otro e-commerce. Es una plataforma de personal shopping
+    digital bajo demanda que pone un experto a tu lado cuando lo necesitas.
+  </p>
+
+  <!-- bloque oscuro -->
+  <div class="bloque">
+
+    <div class="bloque__izq">
+      <h3 class="bloque__titulo">Tu asistente personal de compras, siempre disponible.</h3>
+      <p class="bloque__desc">
+        Delegas la búsqueda, la comparación y hasta la decisión final.
+        El shopper hace el trabajo; tú disfrutas el resultado.
+      </p>
+
+      <!-- pills -->
+      <div class="pills">
+        <span class="pill--activo">{{ pills[0] }}</span>
+        <span class="pill" *ngFor="let p of pills.slice(1)">{{ p }}</span>
+      </div>
+    </div>
+
+    <!-- estadísticas -->
+    <div class="bloque__stats">
+      <div class="stat" *ngFor="let s of stats">
+        <p class="stat__valor">{{ s.valor }}</p>
+        <p class="stat__desc">{{ s.desc }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>

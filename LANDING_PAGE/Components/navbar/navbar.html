@@ -1,0 +1,21 @@
+<nav class="navbar">
+
+  <div class="logo">assist<span>ly</span></div>
+
+  <ul class="links" [class.activo]="menuAbierto">
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#funcionalidades">Funcionalidades</a></li>
+    <li><a href="#modelo">Modelo</a></li>
+    <li><a href="#por-que">Por qué Assistly</a></li>
+  </ul>
+
+  <button class="cta">Crear solicitud</button>
+
+  <!-- botón hamburguesa para móvil -->
+  <button class="hamburger" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+</nav>

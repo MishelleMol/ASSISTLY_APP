@@ -1,1 +1,140 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importa las fuentes de Google */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@400;500;600&display=swap');
+
+/* ── VARIABLES GLOBALES ─────────────────────────── */
+/* Estos colores se usan en todos los componentes */
+:root {
+  --green:       #3bbc7c;  /* verde principal */
+  --green-dark:  #2da066;  /* verde más oscuro para hovers */
+  --green-light: #eef9f4;  /* verde muy claro para fondos de selección */
+  --navy:        #0f172a;  /* azul oscuro para fondos y botones */
+  --bg:          #f9f8f4;  /* fondo beige suave */
+  --surface:     #ffffff;  /* tarjetas y elementos elevados */
+  --text:        #0f172a;  /* texto principal */
+  --muted:       #64748b;  /* texto secundario gris */
+  --border:      #e5e7eb;  /* color de los bordes */
+}
+
+/* Variables para el modo oscuro */
+[data-theme="dark"] {
+  --bg:          #0f172a;
+  --surface:     #1a2236;
+  --text:        #f1f5f9;
+  --muted:       #94a3b8;
+  --border:      #2d3748;
+  --green-light: #0a2318;
+}
+
+/* ── RESET BÁSICO ───────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .3s, color .3s; /* animación suave al cambiar tema */
+  min-height: 100vh;
+}
+
+/* Los links no tienen subrayado por defecto */
+a { text-decoration: none; color: inherit; }
+
+/* ── TIPOGRAFÍA ─────────────────────────────────── */
+h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 900; letter-spacing: -.5px; }
+
+/* ── UTILIDADES COMPARTIDAS ─────────────────────── */
+/* Etiqueta pequeña verde en mayúsculas encima de los títulos */
+.section-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: .4rem; display: block; }
+
+/* Título grande de sección */
+.section-title { font-family: 'Fraunces', serif; font-size: clamp(1.9rem,4vw,2.8rem); font-weight: 900; color: var(--text); margin-bottom: .7rem; line-height: 1.1; }
+
+/* Texto descriptivo debajo del título */
+.section-desc { color: var(--muted); font-size: .95rem; line-height: 1.7; }
+
+/* Estrellas en amarillo */
+.stars { color: #f59e0b; }
+
+/* ── BOTONES REUTILIZABLES ──────────────────────── */
+/* Botón verde principal */
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .85rem 2rem;
+  font-size: .95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+  font-family: 'DM Sans', sans-serif;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-primary:hover { background: var(--green-dark); color: #fff; }
+
+/* Botón con solo borde */
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: .65rem 1.8rem;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+/* ── TARJETA BASE ───────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.07); }
+
+/* ── SPINNER DE CARGA ───────────────────────────── */
+/* Circulito que gira mientras espera los datos */
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--green); /* solo la parte de arriba es verde */
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 2rem auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FORMULARIOS ────────────────────────────────── */
+.form-group { margin-bottom: 1rem; }
+.form-label { font-size: .88rem; font-weight: 600; color: var(--text); display: block; margin-bottom: .4rem; }
+.form-input {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  width: 100%;
+  font-size: .9rem;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border .2s;
+  resize: vertical;
+}
+.form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(59,188,124,.1); }
+/* Borde rojo cuando el campo tiene error y fue tocado */
+.form-input.ng-invalid.ng-touched { border-color: #ef4444; }
+.form-error { font-size: .75rem; color: #ef4444; margin-top: 3px; display: block; }
+
+/* En modo oscuro los inputs tienen fondo más oscuro */
+[data-theme="dark"] .form-input { background: #0f172a; }
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 768px) { .section-title { font-size: 1.8rem; } }

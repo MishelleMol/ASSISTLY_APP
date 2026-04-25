@@ -1,0 +1,123 @@
+<section class="bm">
+
+  <p class="etiqueta">MODELO DE NEGOCIO</p>
+  <h2 class="titulo">Transparente, justo <span class="acento">y por operación.</span></h2>
+  <p class="subtitulo">
+    Sin membresías. Sin sorpresas. Cada compra tiene un precio claro:
+    tarifa de servicio + precio del producto + comisión Assistly.
+  </p>
+
+  <!-- bloque oscuro: fórmula del precio -->
+  <div class="formula">
+
+    <div class="formula__header">
+      <h3>¿Cómo se cobra cada compra?</h3>
+      <p>El precio total siempre es visible antes de confirmar.</p>
+    </div>
+
+    <div class="formula__row">
+      <ng-container *ngFor="let s of revenueStreams; let last = last">
+        <div class="fcard">
+          <span class="fcard__step">{{ s.step }}</span>
+          <span class="fcard__icono">{{ s.icono }}</span>
+          <span class="fcard__tag">{{ s.tag }}</span>
+          <h4 class="fcard__titulo">{{ s.titulo }}</h4>
+          <p class="fcard__desc">{{ s.desc }}</p>
+          <div class="fcard__ejemplo">{{ s.ejemplo }}</div>
+        </div>
+        <div class="formula__plus" *ngIf="!last">+</div>
+      </ng-container>
+      <div class="formula__igual">=</div>
+      <div class="formula__total">
+        <span>Total usuario</span>
+        <small>100% visible antes de pagar</small>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ejemplo de transacción real -->
+  <div class="tx-section">
+
+    <div class="tx__izq">
+      <p class="etiqueta">EJEMPLO REAL</p>
+      <h3 class="tx__titulo">Una compra de <span class="acento">Q400</span>, desglosada.</h3>
+      <p class="tx__desc">
+        Así fluye el dinero en cada operación. El shopper cobra
+        por resultado, no por estar disponible.
+      </p>
+    </div>
+
+    <div class="tx__card">
+      <div class="tx__fila">
+        <span>Precio del producto</span>
+        <span>Q{{ transaccion.producto }}.00</span>
+      </div>
+      <div class="tx__fila">
+        <span>Tarifa de servicio</span>
+        <span>+ Q{{ transaccion.tarifa }}.00</span>
+      </div>
+      <div class="tx__fila">
+        <span>Comisión Assistly (10%)</span>
+        <span class="verde">+ Q{{ transaccion.comision }}.00</span>
+      </div>
+      <hr class="tx__linea">
+      <div class="tx__fila tx__fila--total">
+        <span>Total que paga el usuario</span>
+        <span>Q{{ transaccion.total }}.00</span>
+      </div>
+      <div class="tx__split">¿Cómo se reparte?</div>
+      <div class="tx__fila">
+        <div>
+          <p class="tx__label">Shopper recibe</p>
+          <small>8% del producto</small>
+        </div>
+        <span>Q{{ transaccion.shopper }}.00</span>
+      </div>
+      <div class="tx__fila">
+        <div>
+          <p class="tx__label">Assistly retiene (neto)</p>
+          <small>tarifa + comisión − shopper</small>
+        </div>
+        <span class="verde">Q{{ transaccion.neto }}.00</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- modelo del shopper -->
+  <div class="shopper">
+    <div class="shopper__icono">🛍️</div>
+    <div class="shopper__texto">
+      <p class="etiqueta">PARA LOS SHOPPERS</p>
+      <h3>Ganan por resultado, no por estar disponibles.</h3>
+      <p>El shopper recibe el <strong>{{ shopperModel.earns }}%</strong> del precio del producto. Assistly retiene el <strong>{{ shopperModel.retains }}%</strong>. Sin cuotas fijas.</p>
+    </div>
+    <div class="shopper__rates">
+      <div class="rate">
+        <span class="rate__val">{{ shopperModel.earns }}%</span>
+        <span class="rate__label">shopper recibe</span>
+      </div>
+      <div class="rate__div"></div>
+      <div class="rate">
+        <span class="rate__val">{{ shopperModel.retains }}%</span>
+        <span class="rate__label">Assistly retiene</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- métricas clave -->
+  <div class="metricas">
+    <div class="metrica" *ngFor="let m of metricas">
+      <p class="metrica__val">{{ m.valor }}</p>
+      <p class="metrica__label">{{ m.label }}</p>
+    </div>
+  </div>
+
+  <!-- nota de transparencia -->
+  <div class="nota">
+    <span>ℹ️</span>
+    <p>El desglose completo siempre es visible antes de confirmar. Sin cargos ocultos.</p>
+  </div>
+
+</section>

@@ -1,0 +1,30 @@
+<section class="founders">
+
+  <p class="etiqueta">QUIÉNES SOMOS</p>
+  <h2 class="titulo">Las personas detrás <span class="acento">de Assistly.</span></h2>
+  <p class="subtitulo">
+    Dos programadores profesionales con una visión clara:
+    hacer que comprar sea simple, humano e inteligente.
+  </p>
+
+  <div class="grid">
+    <div class="card" *ngFor="let f of fundadores">
+
+      <!-- avatar con iniciales -->
+      <div class="avatar">{{ f.iniciales }}</div>
+
+      <h3 class="card__nombre">{{ f.nombre }}</h3>
+      <p class="card__rol">{{ f.rol }}</p>
+      <p class="card__desc">{{ f.desc }}</p>
+
+      <!-- tags -->
+      <div class="tags">
+        <span class="tag">Programador</span>
+        <span class="tag">Visionario</span>
+        <span class="tag tag--teal">CEO</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>

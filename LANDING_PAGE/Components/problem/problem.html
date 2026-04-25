@@ -1,0 +1,18 @@
+<section class="problem">
+
+  <p class="etiqueta">EL PROBLEMA</p>
+  <h2 class="titulo">Comprar se volvió abrumador.</h2>
+  <p class="subtitulo">
+    Demasiadas opciones, poco tiempo y decisiones difíciles hacen que
+    la experiencia de compra genere estrés en lugar de satisfacción.
+  </p>
+
+  <div class="grid">
+    <div class="card" *ngFor="let p of problemas">
+      <span class="card__icono">{{ p.icono }}</span>
+      <h3 class="card__titulo">{{ p.titulo }}</h3>
+      <p class="card__desc">{{ p.desc }}</p>
+    </div>
+  </div>
+
+</section>

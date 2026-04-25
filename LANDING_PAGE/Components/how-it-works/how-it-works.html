@@ -1,0 +1,23 @@
+<section class="how">
+
+  <p class="etiqueta">CÓMO FUNCIONA</p>
+  <h2 class="titulo">Simple, rápido y humano.</h2>
+
+  <div class="pasos">
+    <div class="paso" *ngFor="let p of pasos; let last = last">
+
+      <div class="paso__izq">
+        <div class="paso__num">{{ p.num }}</div>
+        <!-- línea vertical entre pasos, excepto el último -->
+        <div class="paso__linea" *ngIf="!last"></div>
+      </div>
+
+      <div class="paso__contenido">
+        <h3 class="paso__titulo">{{ p.titulo }}</h3>
+        <p class="paso__desc">{{ p.desc }}</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>

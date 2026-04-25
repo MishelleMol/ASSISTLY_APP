@@ -1,0 +1,115 @@
+.founders {
+  padding: 80px 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.etiqueta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.titulo {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.acento { color: var(--teal); }
+
+.subtitulo {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+}
+
+// círculo con iniciales
+.avatar {
+  width: 72px;
+  height: 72px;
+  background: #E1F5EE;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0F6E56;
+  margin: 0 auto 20px auto;
+}
+
+.card__nombre {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.card__rol {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.card__desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: var(--bg);
+}
+
+// tag verde para CEO
+.tag--teal {
+  background: #E1F5EE;
+  color: #0F6E56;
+  border-color: #9FE1CB;
+}
+
+@media (max-width: 768px) {
+  .founders { padding: 64px 24px; }
+  .grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,22 @@
+<section class="vp">
+
+  <p class="etiqueta">POR QUÉ ASSISTLY</p>
+  <h2 class="titulo">Diferente desde la raíz.</h2>
+
+  <div class="grid">
+    <div class="item" *ngFor="let i of items">
+
+      <!-- check verde -->
+      <div class="check">
+        <div class="check__inner"></div>
+      </div>
+
+      <div>
+        <h3 class="item__titulo">{{ i.titulo }}</h3>
+        <p class="item__desc">{{ i.desc }}</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,60 @@
+<section class="hero">
+
+  <!-- lado izquierdo: texto -->
+  <div class="hero__texto">
+
+    <div class="hero__badge">
+      <span class="punto"></span> Personal shopping, redefinido
+    </div>
+
+    <h1 class="hero__titulo">
+      Comprar ya no debería ser
+      <span class="acento">complicado.</span>
+    </h1>
+
+    <p class="hero__desc">
+      Assistly conecta a usuarios con personal shoppers en tiempo real
+      para encontrar exactamente lo que necesitan, sin esfuerzo.
+    </p>
+
+    <div class="hero__botones">
+      <button class="btn--primario">Crear mi solicitud</button>
+      <button class="btn--ghost">Ver cómo funciona</button>
+    </div>
+
+  </div>
+
+  <!-- lado derecho: mockup del chat -->
+  <div class="hero__chat">
+
+    <div class="chat__header">
+      <div class="avatar">AS</div>
+      <div>
+        <p class="chat__nombre">Ana — tu shopper</p>
+        <p class="chat__estado">● En línea ahora</p>
+      </div>
+    </div>
+
+    <!-- mensaje del usuario -->
+    <div class="burbuja--usuario">
+      Busco un regalo para mi mamá, le gusta la jardinería. Budget: Q400.
+    </div>
+
+    <!-- respuesta del shopper -->
+    <div class="burbuja--shopper">
+      ¡Perfecto! Encontré estas opciones que le van a encantar 🌱
+    </div>
+
+    <!-- productos recomendados -->
+    <div class="producto" *ngFor="let p of productos">
+      <div class="producto__icono">{{ p.icono }}</div>
+      <div>
+        <p class="producto__nombre">{{ p.nombre }}</p>
+        <p class="producto__precio">{{ p.precio }}</p>
+        <p class="producto__estrellas">{{ p.estrellas }} ({{ p.resenas }})</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>

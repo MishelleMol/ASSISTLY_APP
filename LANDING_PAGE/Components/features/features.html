@@ -1,0 +1,14 @@
+<section class="features">
+
+  <p class="etiqueta">FUNCIONALIDADES</p>
+  <h2 class="titulo">Todo lo que necesitas, integrado.</h2>
+
+  <div class="grid">
+    <div class="card" *ngFor="let f of funcionalidades">
+      <span class="card__icono">{{ f.icono }}</span>
+      <h3 class="card__titulo">{{ f.titulo }}</h3>
+      <p class="card__desc">{{ f.desc }}</p>
+    </div>
+  </div>
+
+</section>

@@ -19,7 +19,7 @@ export class FoundersComponent {
     },
     {
       iniciales: 'DC',
-      nombre: 'Danilo Cerno',
+      nombre: 'Danilo Cerna',
       rol: 'CEO & Co-fundador',
       desc: 'Programador profesional y visionario de la tecnología. Enfocado en construir plataformas escalables que conectan personas con experiencias de compra inteligentes.',
     },

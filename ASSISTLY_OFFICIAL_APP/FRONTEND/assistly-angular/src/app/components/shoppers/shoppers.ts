@@ -9,8 +9,8 @@ import { EstrellasPipe, CategoriaLabelPipe } from '../../pipes/assistly.pipes';
   selector: 'app-shoppers',
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule, EstrellasPipe, CategoriaLabelPipe],
-  templateUrl: './shoppers.component.html',
-  styleUrls:   ['./shoppers.component.css']
+  templateUrl: './shoppers.html',
+  styleUrls:   ['./shoppers.css']
 })
 export class ShoppersComponent implements OnInit {
 

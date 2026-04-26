@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';                  // para *ngIf y
   selector: 'app-navbar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive, CommonModule],
-  templateUrl: './navbar.component.html',
-  styleUrls:   ['./navbar.component.css']
+  templateUrl: './navbar.html',
+  styleUrls:   ['./navbar.css']
 })
 export class NavbarComponent {
   isDark = false; // guarda si el modo oscuro está activo

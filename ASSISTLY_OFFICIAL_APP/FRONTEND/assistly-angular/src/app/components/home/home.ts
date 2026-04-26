@@ -8,8 +8,8 @@ import { EstrellasPipe, CategoriaLabelPipe } from '../../pipes/assistly.pipes';
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, RouterLink, EstrellasPipe, CategoriaLabelPipe],
-  templateUrl: './home.component.html',
-  styleUrls:   ['./home.component.css']
+  templateUrl: './home.html',
+  styleUrls:   ['./home.css']
 })
 export class HomeComponent implements OnInit {
 

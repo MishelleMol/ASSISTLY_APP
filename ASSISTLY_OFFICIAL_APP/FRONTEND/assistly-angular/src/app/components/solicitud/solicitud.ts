@@ -7,8 +7,8 @@ import { AssistlyService, Shopper } from '../../services/assistly.service';
   selector: 'app-solicitud',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './solicitud.component.html',
-  styleUrls:   ['./solicitud.component.css']
+  templateUrl: './solicitud.html',
+  styleUrls:   ['./solicitud.css']
 })
 export class SolicitudComponent {
 

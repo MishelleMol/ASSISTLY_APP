@@ -8,8 +8,8 @@ import { EstadoClassPipe, CategoriaLabelPipe } from '../../pipes/assistly.pipes'
   selector: 'app-admin',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, EstadoClassPipe, CategoriaLabelPipe],
-  templateUrl: './admin.component.html',
-  styleUrls:   ['./admin.component.css']
+  templateUrl: './admin.html',
+  styleUrls:   ['./admin.css']
 })
 export class AdminComponent implements OnInit {
 

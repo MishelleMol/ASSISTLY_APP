@@ -75,7 +75,7 @@
             <span><span class="s-tag">{{ sol.categoria | categoriaLabel }}</span></span>
             <span class="cell-price">Q{{ sol.presupuesto | number }}</span>
             <span class="cell-date">{{ sol.createdAt | date:'dd/MM/yy' }}</span>
-            <span><span [class]="sol.estado | estadoClass">{{ sol.estado }}</span></span>
+            <span [class]="(sol.estado || 'pendiente') | estadoClass">{{ sol.estado }}</span>
             <span class="cell-actions">
               <select class="state-select" [value]="sol.estado"
                 (change)="cambiarEstado(sol._id!, $any($event.target).value)">

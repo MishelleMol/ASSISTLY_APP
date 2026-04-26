@@ -1,0 +1,192 @@
+<div class="page-wrapper">
+  <div class="flow-container">
+
+    <!-- Barra de progreso -->
+    <div class="progress-bar" *ngIf="paso < 5">
+      <div class="progress-fill" [style.width.%]="progreso"></div>
+    </div>
+
+    <!-- PASO 1: CATEGORÍA -->
+    <div class="flow-step" *ngIf="paso === 1">
+      <p class="step-label">Paso 1 de 4</p>
+      <h2 class="step-title">¿Para qué ocasión?</h2>
+      <p class="step-desc">Selecciona la categoría y el tipo específico.</p>
+
+      <div class="cat-grid">
+        <button *ngFor="let c of categorias"
+          class="cat-opt"
+          [class.sel]="form.get('categoria')?.value === c.key"
+          (click)="seleccionarCategoria(c.key)">
+          {{ c.label }}
+        </button>
+      </div>
+
+      <div *ngIf="subcats.length > 0">
+        <p class="subcats-label">Especifica el tipo:</p>
+        <div class="subcats-row">
+          <button *ngFor="let sub of subcats"
+            class="subcat-pill"
+            [class.sel]="subcatSeleccionada === sub"
+            (click)="seleccionarSubcat(sub)">
+            {{ sub }}
+          </button>
+        </div>
+      </div>
+
+      <p class="field-err" *ngIf="!form.get('categoria')?.value">Selecciona una categoría.</p>
+      <p class="field-err" *ngIf="form.get('categoria')?.value && !subcatSeleccionada">Selecciona una opción específica.</p>
+
+      <div class="step-actions">
+        <span></span>
+        <button class="btn-next" (click)="siguientePaso()"
+          [disabled]="!form.get('categoria')?.value || !subcatSeleccionada">
+          Continuar
+        </button>
+      </div>
+    </div>
+
+    <!-- PASO 2: DESCRIPCIÓN -->
+    <div class="flow-step" *ngIf="paso === 2">
+      <p class="step-label">Paso 2 de 4</p>
+      <h2 class="step-title">Describe tu necesidad</h2>
+      <p class="step-desc">Entre más detalles, mejor resultado.</p>
+
+      <div class="form-group">
+        <label class="form-label">¿Qué necesitas exactamente? *</label>
+        <textarea class="form-input" rows="4"
+          placeholder="Ej: Busco un vestido para boda de noche, talla M, presupuesto Q800..."
+          [formControl]="$any(form.get('descripcion'))">
+        </textarea>
+        <span class="form-error" *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched">
+          Mínimo 15 caracteres.
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Presupuesto máximo (Q) *</label>
+        <div class="budget-presets">
+          <button *ngFor="let p of budgetPresets"
+            class="budget-pill"
+            [class.active]="form.get('presupuesto')?.value === p"
+            (click)="setBudget(p)">
+            Q{{ p | number }}
+          </button>
+        </div>
+        <input type="number" class="form-input"
+          placeholder="O escribe tu presupuesto..."
+          [formControl]="$any(form.get('presupuesto'))"/>
+        <span class="form-error" *ngIf="form.get('presupuesto')?.invalid && form.get('presupuesto')?.touched">
+          Ingresa un presupuesto válido.
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Tu correo (opcional)</label>
+        <input type="email" class="form-input" placeholder="para notificarte del avance"
+          [formControl]="$any(form.get('clienteEmail'))"/>
+      </div>
+
+      <div class="step-actions">
+        <button class="btn-back" (click)="pasoAnterior()">← Atrás</button>
+        <button class="btn-next" (click)="siguientePaso()">Continuar</button>
+      </div>
+    </div>
+
+    <!-- PASO 3: TAMAÑO -->
+    <div class="flow-step" *ngIf="paso === 3">
+      <p class="step-label">Paso 3 de 4</p>
+      <h2 class="step-title">¿Qué tan grande es tu solicitud?</h2>
+      <p class="step-desc">Esto nos ayuda a asignar el shopper correcto.</p>
+
+      <div class="size-options">
+        <div *ngFor="let t of tamanos"
+          class="size-opt"
+          [class.sel]="form.get('tamano')?.value === t.key"
+          (click)="seleccionarTamano(t.key)">
+          <div class="size-radio">
+            <div class="size-dot" *ngIf="form.get('tamano')?.value === t.key"></div>
+          </div>
+          <div>
+            <div class="size-lbl">{{ t.label }}</div>
+            <div class="size-desc">{{ t.desc }}</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="field-err" *ngIf="!form.get('tamano')?.value">Selecciona el tamaño.</p>
+
+      <div class="step-actions">
+        <button class="btn-back" (click)="pasoAnterior()">← Atrás</button>
+        <button class="btn-next" (click)="siguientePaso()"
+          [disabled]="!form.get('tamano')?.value">
+          Ver shoppers disponibles
+        </button>
+      </div>
+    </div>
+
+    <!-- PASO 4: SHOPPERS -->
+    <div class="flow-step" *ngIf="paso === 4">
+      <p class="step-label">Paso 4 de 4</p>
+      <h2 class="step-title">Shoppers disponibles</h2>
+      <p class="step-desc">Elige al experto para tu solicitud.</p>
+
+      <div class="shopper-results">
+        <div *ngFor="let s of shoppers"
+          class="sr-card"
+          [class.chosen]="shopperElegido?.nombre === s.nombre"
+          (click)="elegirShopper(s)">
+          <div class="sr-av" [style.background]="s.color">
+            {{ s.iniciales }}
+            <div class="sr-online"></div>
+          </div>
+          <div class="sr-info">
+            <div class="sr-name">{{ s.nombre }}</div>
+            <div class="sr-esp">{{ s.especialidad }}</div>
+            <div class="sr-rating">
+              <span class="stars">★★★★★</span>
+              {{ s.calificacion }} · {{ s.resenas }} reseñas
+            </div>
+            <span class="sr-badge" *ngIf="s.calificacion >= 4.9">Top shopper</span>
+          </div>
+          <div class="sr-price">
+            <strong>Q{{ s.tarifa }}</strong>
+            <span>/hora</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="field-err" *ngIf="!shopperElegido">Selecciona un shopper.</p>
+      <div class="error-msg" *ngIf="errorApi">{{ errorApi }}</div>
+
+      <div class="step-actions">
+        <button class="btn-back" (click)="pasoAnterior()">← Atrás</button>
+        <button class="btn-next" (click)="confirmar()"
+          [disabled]="!shopperElegido || loading">
+          {{ loading ? 'Enviando...' : 'Confirmar y enviar' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- ÉXITO -->
+    <div class="success-step" *ngIf="paso === 5">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2 class="step-title">¡Solicitud enviada!</h2>
+      <p class="success-msg">
+        Tu shopper <strong>{{ shopperElegido?.nombre }}</strong>
+        te contactará en menos de 5 minutos.
+      </p>
+      <div class="success-summary">
+        <div class="sum-row"><span class="sum-key">Categoría</span><span class="sum-val">{{ form.get('subcategoria')?.value }}</span></div>
+        <div class="sum-row"><span class="sum-key">Presupuesto</span><span class="sum-val">Q{{ form.get('presupuesto')?.value | number }}</span></div>
+        <div class="sum-row"><span class="sum-key">Tamaño</span><span class="sum-val">{{ form.get('tamano')?.value }}</span></div>
+        <div class="sum-row"><span class="sum-key">Shopper</span><span class="sum-val">{{ shopperElegido?.nombre }}</span></div>
+      </div>
+      <button class="btn-next w-100" (click)="resetear()">Crear otra solicitud</button>
+    </div>
+
+  </div>
+</div>

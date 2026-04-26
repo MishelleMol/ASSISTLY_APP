@@ -1,0 +1,93 @@
+/* Fondo blanco fijo arriba al hacer scroll */
+.navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: .85rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  transition: background .3s;
+}
+
+/* Centra y limita el ancho del contenido */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Estilo del logo */
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 1.45rem;
+  color: var(--text);
+  letter-spacing: -.5px;
+  margin-right: 1.5rem;
+  text-decoration: none;
+}
+.brand span { color: var(--green); }
+
+/* Links del centro */
+.nav-links { display: flex; gap: 4px; flex: 1; }
+
+.nav-link {
+  color: var(--muted);
+  font-size: .9rem;
+  padding: .4rem .85rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all .2s;
+}
+.nav-link:hover, .nav-link.active { color: var(--text); background: var(--bg); }
+
+/* Botones de la derecha */
+.nav-actions { display: flex; align-items: center; gap: 1rem; }
+
+/* Toggle de modo oscuro: cápsula pequeña */
+.toggle-dark {
+  background: var(--border);
+  border: none;
+  border-radius: 999px;
+  width: 42px;
+  height: 22px;
+  position: relative;
+  cursor: pointer;
+  transition: background .3s;
+}
+/* El circulito blanco adentro */
+.toggle-dark::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  transition: transform .3s;
+}
+/* Cuando está en modo oscuro: fondo verde y circulito a la derecha */
+.toggle-dark.dark { background: var(--green); }
+.toggle-dark.dark::after { transform: translateX(20px); }
+
+/* Botón verde de la derecha */
+.btn-nav-cta {
+  background: var(--green);
+  color: #fff;
+  border-radius: 8px;
+  padding: .5rem 1.4rem;
+  font-size: .87rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.btn-nav-cta:hover { background: var(--green-dark); color: #fff; }
+
+/* En pantallas pequeñas se ocultan los links y el botón */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .btn-nav-cta { display: none; }
+}

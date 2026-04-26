@@ -1,0 +1,99 @@
+<div class="page-wrapper">
+  <div class="container">
+
+    <!-- LOGIN -->
+    <div class="login-wrapper" *ngIf="!loggedIn">
+      <div class="login-card">
+        <div class="login-header">
+          <h2 class="login-title">Panel de administración</h2>
+          <p class="login-sub">Acceso restringido a administradores.</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+          <div class="form-group">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" class="form-input" formControlName="email" placeholder="admin@assistly.com"/>
+            <span class="form-error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              Ingresa un email válido.
+            </span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-input" formControlName="password" placeholder="••••••••"/>
+            <span class="form-error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              La contraseña es requerida.
+            </span>
+          </div>
+          <div class="error-msg" *ngIf="loginError">{{ loginError }}</div>
+          <button type="submit" class="btn-submit" [disabled]="loginLoading">
+            {{ loginLoading ? 'Verificando...' : 'Ingresar al panel' }}
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div *ngIf="loggedIn">
+
+      <div class="dash-header">
+        <div>
+          <p class="section-label">Panel Admin</p>
+          <h1 class="section-title">Gestión de solicitudes</h1>
+        </div>
+        <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+      </div>
+
+      <!-- Métricas -->
+      <div class="metrics-grid">
+        <div class="metric-card" *ngFor="let m of metricas">
+          <div class="metric-num">{{ m.valor }}</div>
+          <div class="metric-lbl">{{ m.label }}</div>
+        </div>
+      </div>
+
+      <!-- Tabla -->
+      <div class="table-card">
+        <div class="table-toolbar">
+          <h3 class="table-title">Solicitudes recientes</h3>
+          <button class="btn-refresh" (click)="cargarSolicitudes()">Actualizar</button>
+        </div>
+
+        <div *ngIf="loadingData" class="spinner"></div>
+
+        <div class="table-wrapper" *ngIf="!loadingData">
+          <div class="table-head">
+            <span>Descripción</span>
+            <span>Categoría</span>
+            <span>Presupuesto</span>
+            <span>Fecha</span>
+            <span>Estado</span>
+            <span>Acciones</span>
+          </div>
+
+          <div class="table-row" *ngFor="let sol of solicitudes">
+            <span class="cell-desc">{{ sol.descripcion | slice:0:55 }}{{ sol.descripcion.length > 55 ? '...' : '' }}</span>
+            <span><span class="s-tag">{{ sol.categoria | categoriaLabel }}</span></span>
+            <span class="cell-price">Q{{ sol.presupuesto | number }}</span>
+            <span class="cell-date">{{ sol.createdAt | date:'dd/MM/yy' }}</span>
+            <span><span [class]="sol.estado | estadoClass">{{ sol.estado }}</span></span>
+            <span class="cell-actions">
+              <select class="state-select" [value]="sol.estado"
+                (change)="cambiarEstado(sol._id!, $any($event.target).value)">
+                <option value="pendiente">Pendiente</option>
+                <option value="en-proceso">En proceso</option>
+                <option value="completada">Completada</option>
+                <option value="cancelada">Cancelada</option>
+              </select>
+              <button class="btn-delete" (click)="eliminar(sol._id!)">Eliminar</button>
+            </span>
+          </div>
+
+          <div class="empty-table" *ngIf="solicitudes.length === 0">
+            No hay solicitudes aún.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

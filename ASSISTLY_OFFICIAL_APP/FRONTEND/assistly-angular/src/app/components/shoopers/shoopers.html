@@ -1,0 +1,71 @@
+<div class="page-wrapper">
+  <div class="container">
+
+    <div class="page-header">
+      <div>
+        <p class="section-label">Directorio</p>
+        <h1 class="section-title">Todos nuestros shoppers</h1>
+        <p class="section-desc">Verificados, calificados y listos para ayudarte.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filters">
+        <select class="filter-select" [(ngModel)]="categoriaFiltro" (change)="aplicarFiltros()">
+          <option *ngFor="let c of categorias" [value]="c.key">{{ c.label }}</option>
+        </select>
+        <select class="filter-select" [(ngModel)]="ordenFiltro" (change)="aplicarFiltros()">
+          <option value="rating">Mejor calificados</option>
+          <option value="precio_asc">Menor precio</option>
+          <option value="precio_desc">Mayor precio</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Spinner -->
+    <div *ngIf="loading" class="spinner"></div>
+
+    <!-- Vacío -->
+    <div *ngIf="!loading && shoppersFiltrados.length === 0" class="empty-state">
+      <p>No hay shoppers para esta categoría.</p>
+      <button class="btn-primary" (click)="categoriaFiltro = ''; aplicarFiltros()">Ver todos</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="shoppers-grid" *ngIf="!loading && shoppersFiltrados.length > 0">
+      <div class="shopper-card" *ngFor="let s of shoppersFiltrados">
+
+        <div class="card-top">
+          <div class="avatar" [style.background]="s.color">
+            {{ s.iniciales }}
+            <div class="online-dot" *ngIf="s.disponible"></div>
+          </div>
+          <span class="v-badge" *ngIf="s.verificado">Verificado</span>
+        </div>
+
+        <div class="s-name">{{ s.nombre }}</div>
+        <div class="s-esp">{{ s.especialidad }}</div>
+
+        <div class="s-rating">
+          <span class="stars">{{ s.calificacion | estrellas }}</span>
+          {{ s.calificacion }} · {{ s.resenas }} reseñas
+        </div>
+
+        <div class="s-tags">
+          <span class="s-tag" *ngFor="let cat of s.categorias">{{ cat | categoriaLabel }}</span>
+        </div>
+
+        <div class="card-footer">
+          <div><span class="price-big">Q{{ s.tarifa }}</span><span class="price-unit">/hora</span></div>
+          <a routerLink="/solicitud" class="btn-hire">Contratar</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contador -->
+    <p class="results-count" *ngIf="!loading">
+      {{ shoppersFiltrados.length }} shopper{{ shoppersFiltrados.length !== 1 ? 's' : '' }} disponibles
+    </p>
+
+  </div>
+</div>

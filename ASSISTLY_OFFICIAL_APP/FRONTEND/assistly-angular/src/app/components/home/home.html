@@ -1,0 +1,119 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div>
+        <div class="badge-pill">
+          <span class="dot"></span>+500 shoppers verificados activos ahora
+        </div>
+        <h1 class="hero-title">
+          Compra para tus momentos más <em>especiales.</em>
+        </h1>
+        <p class="hero-desc">
+          Conectamos contigo personal shoppers expertos en tiempo real.
+          Describe lo que necesitas y recibe recomendaciones curadas.
+        </p>
+        <a routerLink="/solicitud" class="btn-primary">Encontrar mi shopper</a>
+        <div class="hero-rating">
+          <span class="stars">★★★★★</span>
+          <span>4.9 · +2,400 reseñas</span>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card" *ngFor="let s of stats">
+          <div class="stat-num">{{ s.num }}</div>
+          <div class="stat-lbl">{{ s.label }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SHOPPERS DESTACADOS -->
+<section class="shoppers-section">
+  <div class="container">
+
+    <div class="section-header">
+      <div>
+        <p class="section-label">Shoppers destacados</p>
+        <h2 class="section-title">Conoce a tus expertos.</h2>
+      </div>
+      <a routerLink="/shoppers" class="btn-outline">Ver todos</a>
+    </div>
+
+    <!-- Spinner mientras carga -->
+    <div *ngIf="loading" class="spinner"></div>
+
+    <!-- Grid de shoppers -->
+    <div class="shoppers-grid" *ngIf="!loading">
+      <div class="card shopper-card" *ngFor="let s of shoppers">
+
+        <div class="card-top">
+          <div class="avatar" [style.background]="s.color">
+            {{ s.iniciales }}
+            <div class="online-dot" *ngIf="s.disponible"></div>
+          </div>
+          <span class="v-badge" *ngIf="s.verificado">Verificado</span>
+        </div>
+
+        <div class="s-name">{{ s.nombre }}</div>
+        <div class="s-esp">{{ s.especialidad }}</div>
+
+        <div class="s-rating">
+          <span class="stars">{{ s.calificacion | estrellas }}</span>
+          {{ s.calificacion }} ({{ s.resenas }} reseñas)
+        </div>
+
+        <div class="s-tags">
+          <span class="s-tag" *ngFor="let cat of s.categorias | slice:0:3">
+            {{ cat | categoriaLabel }}
+          </span>
+        </div>
+
+        <div class="card-footer">
+          <div>
+            <span class="price-big">Q{{ s.tarifa }}</span>
+            <span class="price-unit">/hora</span>
+          </div>
+          <a routerLink="/solicitud" class="btn-hire">Contratar</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="steps-section">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">Tan simple como enviar un mensaje.</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Elige tu categoría</div>
+        <p class="step-desc">Selecciona para qué ocasión necesitas ayuda.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num inactive">2</div>
+        <div class="step-title">Describe tu necesidad</div>
+        <p class="step-desc">Presupuesto, talla, estilo — todo lo que ayude a tu shopper.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num inactive">3</div>
+        <div class="step-title">Elige tu shopper</div>
+        <p class="step-desc">Revisa calificaciones y tarifas. Elige al que más te convenza.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num inactive">4</div>
+        <div class="step-title">Recibe recomendaciones</div>
+        <p class="step-desc">Tu shopper trabaja en tiempo real con garantía incluida.</p>
+      </div>
+    </div>
+  </div>
+</section>

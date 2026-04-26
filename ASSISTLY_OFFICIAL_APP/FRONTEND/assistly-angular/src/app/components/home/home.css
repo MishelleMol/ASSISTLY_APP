@@ -1,0 +1,78 @@
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.text-center { text-align: center; margin-bottom: 3rem; }
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero { padding: 5rem 0 3rem; background: var(--bg); }
+
+/* Dos columnas: texto izquierda, stats derecha */
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+/* Pastillita verde con el contador de shoppers */
+.badge-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 999px; padding: .35rem 1rem;
+  font-size: .8rem; color: var(--muted); margin-bottom: 1.5rem;
+}
+/* El puntito verde animado */
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* Título grande */
+.hero-title { font-family: 'Fraunces', serif; font-size: clamp(2.4rem,5vw,3.8rem); font-weight: 900; line-height: 1.05; color: var(--text); margin-bottom: 1.2rem; letter-spacing: -1px; }
+.hero-title em { color: var(--green); font-style: italic; }
+
+.hero-desc { color: var(--muted); font-size: 1rem; line-height: 1.65; max-width: 420px; margin-bottom: 2rem; }
+
+/* Estrellas de reseñas debajo del botón */
+.hero-rating { display: flex; align-items: center; gap: 8px; margin-top: 1.25rem; font-size: .82rem; color: var(--muted); }
+
+/* Grid de 2x2 para las 4 estadísticas */
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.stat-card { background: var(--navy); border-radius: 16px; padding: 1.25rem; text-align: center; }
+.stat-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900; color: #3bbc7c; }
+.stat-lbl { font-size: .73rem; color: rgba(255,255,255,.5); margin-top: 3px; }
+
+/* ── SHOPPERS ─────────────────────────────────────── */
+.shoppers-section { padding: 5rem 0; }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.shoppers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+
+/* Tarjeta de shopper */
+.shopper-card { display: flex; flex-direction: column; gap: .5rem; }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .5rem; }
+
+/* Avatar circular */
+.avatar { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: #fff; position: relative; }
+.online-dot { position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid var(--surface); }
+
+.v-badge { background: #eef9f4; color: #1a6b4a; font-size: .7rem; padding: .2rem .65rem; border-radius: 999px; font-weight: 600; }
+.s-name { font-weight: 700; font-size: 1rem; color: var(--text); }
+.s-esp { font-size: .8rem; color: var(--muted); }
+.s-rating { font-size: .8rem; color: var(--muted); }
+.stars { color: #f59e0b; }
+.s-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: .25rem 0; }
+.s-tag { background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: .18rem .65rem; font-size: .7rem; color: var(--muted); }
+
+/* Pie de la tarjeta: precio y botón */
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: .75rem; }
+.price-big { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 900; color: var(--text); }
+.price-unit { font-size: .78rem; color: var(--muted); }
+
+.btn-hire { background: var(--navy); color: #fff; border-radius: 8px; padding: .45rem 1.3rem; font-size: .82rem; font-weight: 600; text-decoration: none; transition: background .2s; display: inline-block; }
+.btn-hire:hover { background: var(--green); color: #fff; }
+
+/* ── PASOS ────────────────────────────────────────── */
+.steps-section { padding: 5rem 0; background: var(--bg); }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+.step-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.5rem; }
+.step-num { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .9rem; margin-bottom: 1rem; }
+.step-num.inactive { background: var(--border); color: var(--muted); }
+.step-title { font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: .4rem; }
+.step-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+/* En pantallas pequeñas todo va en una columna */
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}

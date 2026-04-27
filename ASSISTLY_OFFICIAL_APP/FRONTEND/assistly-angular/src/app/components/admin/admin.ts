@@ -1,59 +1,64 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule }      from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AssistlyService, Solicitud } from '../../services/assistly.service';
 import { EstadoClassPipe, CategoriaLabelPipe } from '../../pipes/assistly.pipes';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, EstadoClassPipe, CategoriaLabelPipe],
+  imports: [CommonModule, FormsModule, EstadoClassPipe, CategoriaLabelPipe],
   templateUrl: './admin.html',
-  styleUrls:   ['./admin.css']
+  styleUrls: ['./admin.css'],
 })
 export class AdminComponent implements OnInit {
 
-  loggedIn     = false;   // muestra login o dashboard según esto
-  loginError   = '';
+  // muestra login o dashboard según esto
+  loggedIn = false;
+  // mientras espera la respuesta del login
   loginLoading = false;
+  // mensaje de error del login
+  loginError = '';
+  // datos del formulario de login
+  loginEmail    = '';
+  loginPassword = '';
+
+  // lista de solicitudes del backend
   solicitudes: Solicitud[] = [];
-  loadingData  = false;
+  // mientras carga las solicitudes
+  loadingData = false;
 
-  loginForm: FormGroup; // formulario de login
-
-  // Las 4 tarjetas de métricas del dashboard
+  // las 4 métricas del dashboard
   metricas = [
-    { label: 'Total solicitudes', valor: 0 },
-    { label: 'Pendientes',         valor: 0 },
-    { label: 'En proceso',          valor: 0 },
-    { label: 'Completadas',         valor: 0 },
+    { label: 'Total',      valor: 0 },
+    { label: 'Pendientes', valor: 0 },
+    { label: 'En proceso', valor: 0 },
+    { label: 'Completadas',valor: 0 },
   ];
 
-  constructor(private svc: AssistlyService, private fb: FormBuilder) {
-    this.loginForm = this.fb.group({
-      email:    ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
+  constructor(private svc: AssistlyService) {}
 
-  ngOnInit(): void {
-    // Si ya hay token guardado, entra directo al dashboard
+  // si ya hay token, entra directo al dashboard
+  ngOnInit() {
     if (this.svc.isLoggedIn()) {
       this.loggedIn = true;
       this.cargarSolicitudes();
     }
   }
 
-  // Hace login real contra MongoDB a través del backend
-  doLogin(): void {
-    if (this.loginForm.invalid) { this.loginForm.markAllAsTouched(); return; }
+  // hace login contra MongoDB
+  doLogin() {
+    if (!this.loginEmail || !this.loginPassword) return;
     this.loginLoading = true;
     this.loginError   = '';
-    const { email, password } = this.loginForm.value;
-    this.svc.login(email, password).subscribe({
+
+    this.svc.login(this.loginEmail, this.loginPassword).subscribe({
       next: res => {
         this.loginLoading = false;
-        if (res.ok) { this.loggedIn = true; this.cargarSolicitudes(); }
+        if (res.ok) {
+          this.loggedIn = true;
+          this.cargarSolicitudes();
+        }
       },
       error: () => {
         this.loginLoading = false;
@@ -62,15 +67,15 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  // Cierra sesión
-  logout(): void {
+  // cierra sesión
+  logout() {
     this.svc.logout();
     this.loggedIn    = false;
     this.solicitudes = [];
   }
 
-  // Trae todas las solicitudes del backend (requiere token)
-  cargarSolicitudes(): void {
+  // trae todas las solicitudes del backend
+  cargarSolicitudes() {
     this.loadingData = true;
     this.svc.getSolicitudes().subscribe({
       next: res => {
@@ -82,22 +87,26 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  // Cuenta las solicitudes por estado para las tarjetas
-  calcularMetricas(): void {
+  // cuenta las solicitudes por estado
+  calcularMetricas() {
     this.metricas[0].valor = this.solicitudes.length;
     this.metricas[1].valor = this.solicitudes.filter(s => s.estado === 'pendiente').length;
     this.metricas[2].valor = this.solicitudes.filter(s => s.estado === 'en-proceso').length;
     this.metricas[3].valor = this.solicitudes.filter(s => s.estado === 'completada').length;
   }
 
-  // Cambia el estado de una solicitud (PATCH al backend)
-  cambiarEstado(id: string, estado: string): void {
-    this.svc.actualizarEstado(id, estado).subscribe({ next: () => this.cargarSolicitudes() });
+  // cambia el estado de una solicitud
+  cambiarEstado(id: string, estado: string) {
+    this.svc.actualizarEstado(id, estado).subscribe({
+      next: () => this.cargarSolicitudes()
+    });
   }
 
-  // Elimina una solicitud (DELETE al backend)
-  eliminar(id: string): void {
-    if (!confirm('¿Eliminar esta solicitud? No se puede deshacer.')) return;
-    this.svc.eliminarSolicitud(id).subscribe({ next: () => this.cargarSolicitudes() });
+  // elimina una solicitud
+  eliminar(id: string) {
+    if (!confirm('¿Eliminar esta solicitud?')) return;
+    this.svc.eliminarSolicitud(id).subscribe({
+      next: () => this.cargarSolicitudes()
+    });
   }
 }

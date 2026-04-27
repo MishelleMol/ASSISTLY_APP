@@ -1,77 +1,283 @@
+/* limita el ancho y centra */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-.text-center { text-align: center; margin-bottom: 3rem; }
+.text-center { text-align: center; }
 
-/* ── HERO ─────────────────────────────────────────── */
-.hero { padding: 5rem 0 3rem; background: var(--bg); }
+/* ── HERO ─────────────────────────── */
+.hero { padding: 5rem 0 3rem; background: #f9f8f4; }
 
-/* Dos columnas: texto izquierda, stats derecha */
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-
-/* Pastillita verde con el contador de shoppers */
-.badge-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 999px; padding: .35rem 1rem;
-  font-size: .8rem; color: var(--muted); margin-bottom: 1.5rem;
+/* dos columnas en pantallas grandes */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
 }
-/* El puntito verde animado */
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-/* Título grande */
-.hero-title { font-family: 'Fraunces', serif; font-size: clamp(2.4rem,5vw,3.8rem); font-weight: 900; line-height: 1.05; color: var(--text); margin-bottom: 1.2rem; letter-spacing: -1px; }
-.hero-title em { color: var(--green); font-style: italic; }
+/* pastillita de shoppers disponibles */
+.badge-pill {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
 
-.hero-desc { color: var(--muted); font-size: 1rem; line-height: 1.65; max-width: 420px; margin-bottom: 2rem; }
+/* título grande */
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+.hero-title em { color: #3bbc7c; font-style: italic; }
 
-/* Estrellas de reseñas debajo del botón */
-.hero-rating { display: flex; align-items: center; gap: 8px; margin-top: 1.25rem; font-size: .82rem; color: var(--muted); }
+.hero-desc {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
 
-/* Grid de 2x2 para las 4 estadísticas */
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.stat-card { background: var(--navy); border-radius: 16px; padding: 1.25rem; text-align: center; }
-.stat-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900; color: #3bbc7c; }
-.stat-lbl { font-size: .73rem; color: rgba(255,255,255,.5); margin-top: 3px; }
+/* botón principal verde */
+.btn-primary {
+  display: inline-block;
+  background: #3bbc7c;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #2da066; }
 
-/* ── SHOPPERS ─────────────────────────────────────── */
+.hero-rating {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 1rem;
+}
+
+/* grid de estadísticas 2x2 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* cada tarjeta de estadística */
+.stat-card {
+  background: #0f172a;
+  border-radius: 16px;
+  padding: 1.25rem;
+  text-align: center;
+}
+.stat-num {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #3bbc7c;
+}
+.stat-lbl {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+/* ── SHOPPERS ─────────────────────── */
 .shoppers-section { padding: 5rem 0; }
-.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
-.shoppers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
 
-/* Tarjeta de shopper */
-.shopper-card { display: flex; flex-direction: column; gap: .5rem; }
-.card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .5rem; }
+/* encabezado con título y link a la derecha */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-/* Avatar circular */
-.avatar { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: #fff; position: relative; }
-.online-dot { position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid var(--surface); }
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3bbc7c;
+  margin-bottom: 4px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
 
-.v-badge { background: #eef9f4; color: #1a6b4a; font-size: .7rem; padding: .2rem .65rem; border-radius: 999px; font-weight: 600; }
-.s-name { font-weight: 700; font-size: 1rem; color: var(--text); }
-.s-esp { font-size: .8rem; color: var(--muted); }
-.s-rating { font-size: .8rem; color: var(--muted); }
-.stars { color: #f59e0b; }
-.s-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: .25rem 0; }
-.s-tag { background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: .18rem .65rem; font-size: .7rem; color: var(--muted); }
+/* botón con solo borde */
+.btn-outline {
+  border: 1.5px solid #e5e7eb;
+  color: #0f172a;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: #3bbc7c; color: #3bbc7c; }
 
-/* Pie de la tarjeta: precio y botón */
-.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: .75rem; }
-.price-big { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 900; color: var(--text); }
-.price-unit { font-size: .78rem; color: var(--muted); }
+/* spinner de carga */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #3bbc7c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 2rem auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-.btn-hire { background: var(--navy); color: #fff; border-radius: 8px; padding: .45rem 1.3rem; font-size: .82rem; font-weight: 600; text-decoration: none; transition: background .2s; display: inline-block; }
-.btn-hire:hover { background: var(--green); color: #fff; }
+/* grid de tarjetas */
+.shoppers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
 
-/* ── PASOS ────────────────────────────────────────── */
-.steps-section { padding: 5rem 0; background: var(--bg); }
-.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
-.step-card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.5rem; }
-.step-num { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .9rem; margin-bottom: 1rem; }
-.step-num.inactive { background: var(--border); color: var(--muted); }
-.step-title { font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: .4rem; }
-.step-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+/* tarjeta de shopper */
+.shopper-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+.shopper-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
 
-/* En pantallas pequeñas todo va en una columna */
+/* fila superior: avatar y badge */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+/* avatar circular con iniciales */
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 1rem;
+  position: relative;
+}
+
+/* puntito verde de disponible */
+.online-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3bbc7c;
+  border: 2px solid #fff;
+}
+
+/* badge de verificado */
+.v-badge {
+  background: #eef9f4;
+  color: #1a6b4a;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.s-name { font-weight: 700; font-size: 15px; color: #0f172a; margin: 0; }
+.s-esp  { font-size: 13px; color: #64748b; margin: 0; }
+.s-rating { font-size: 13px; color: #64748b; margin: 0; }
+
+/* fila de tags */
+.s-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag {
+  background: #f9f8f4;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* pie de la tarjeta */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.precio { font-size: 1.1rem; font-weight: 900; color: #0f172a; }
+.precio small { font-size: 12px; color: #64748b; font-weight: 400; }
+
+.btn-contratar {
+  background: #0f172a;
+  color: #fff;
+  padding: 7px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-contratar:hover { background: #3bbc7c; }
+
+/* ── PASOS ────────────────────────── */
+.pasos-section { padding: 5rem 0; background: #f9f8f4; }
+
+.pasos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.paso-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.paso-card h3 { font-size: 15px; font-weight: 700; margin: 0.75rem 0 0.4rem; color: #0f172a; }
+.paso-card p  { font-size: 13px; color: #64748b; line-height: 1.55; margin: 0; }
+
+/* número del paso */
+.paso-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #3bbc7c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+}
+.paso-num.gris { background: #e5e7eb; color: #64748b; }
+
+/* en pantallas pequeñas el hero va en una sola columna */
 @media (max-width: 768px) {
   .hero-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }

@@ -1,22 +1,32 @@
 <nav class="navbar">
-  <div class="container">
+  <div class="navbar-container">
 
-    <!-- Logo que lleva al inicio -->
+    <!-- Logo -->
     <a routerLink="/" class="brand">assist<span>ly</span></a>
 
-    <!-- Links del centro -->
-    <div class="nav-links">
-      <a routerLink="/shoppers"  routerLinkActive="active" class="nav-link">Shoppers</a>
-      <a routerLink="/solicitud" routerLinkActive="active" class="nav-link">Solicitudes</a>
-      <a routerLink="/admin"     routerLinkActive="active" class="nav-link">Admin</a>
-    </div>
+    <!-- Botón hamburguesa para móvil -->
+    <button class="hamburger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-    <!-- Botones de la derecha -->
-    <div class="nav-actions">
-      <!-- Toggle modo oscuro -->
-      <button class="toggle-dark" (click)="toggleTheme()" [class.dark]="isDark" title="Cambiar tema"></button>
-      <!-- Botón ir a solicitud -->
-      <a routerLink="/solicitud" class="btn-nav-cta">Encontrar shopper</a>
+    <!-- Links de navegación -->
+    <div class="nav-links" [class.abierto]="menuAbierto">
+      <a routerLink="/shoppers"  routerLinkActive="active" class="nav-link" (click)="menuAbierto=false">Shoppers</a>
+      <a routerLink="/solicitud" routerLinkActive="active" class="nav-link" (click)="menuAbierto=false">Solicitudes</a>
+      <a routerLink="/admin"     routerLinkActive="active" class="nav-link" (click)="menuAbierto=false">Admin</a>
+
+      <!-- Botones de la derecha -->
+      <div class="nav-actions">
+        <!-- cambia entre modo claro y oscuro -->
+        <button class="tbtn" (click)="toggleTheme()">
+          {{ isDark ? 'Modo claro' : 'Modo oscuro' }}
+        </button>
+        <a routerLink="/solicitud" class="btn-cta" (click)="menuAbierto=false">
+          Encontrar shopper
+        </a>
+      </div>
     </div>
 
   </div>

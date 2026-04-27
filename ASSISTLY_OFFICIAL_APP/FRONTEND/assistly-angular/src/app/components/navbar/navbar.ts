@@ -1,29 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router'; // para links de navegación
-import { CommonModule } from '@angular/common';                  // para *ngIf y *ngFor
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
-  styleUrls:   ['./navbar.css']
+  styleUrls: ['./navbar.css'],
 })
 export class NavbarComponent {
-  isDark = false; // guarda si el modo oscuro está activo
+  // guarda si el modo oscuro está activo
+  isDark = false;
+  // guarda si el menú móvil está abierto
+  menuAbierto = false;
 
-  constructor() {
-    // Al cargar, revisa si el usuario ya tenía guardado el tema oscuro
-    if (localStorage.getItem('theme') === 'dark') {
-      this.isDark = true;
-      document.documentElement.dataset['theme'] = 'dark';
-    }
+  // cambia entre modo claro y oscuro
+  toggleTheme() {
+    this.isDark = !this.isDark;
+    document.body.classList.toggle('oscuro', this.isDark);
+    document.body.classList.toggle('claro', !this.isDark);
   }
 
-  // Cambia entre modo claro y oscuro
-  toggleTheme(): void {
-    this.isDark = !this.isDark;
-    document.documentElement.dataset['theme'] = this.isDark ? 'dark' : 'light';
-    localStorage.setItem('theme', this.isDark ? 'dark' : 'light'); // lo recuerda
+  // abre y cierra el menú en móvil
+  toggleMenu() {
+    this.menuAbierto = !this.menuAbierto;
   }
 }

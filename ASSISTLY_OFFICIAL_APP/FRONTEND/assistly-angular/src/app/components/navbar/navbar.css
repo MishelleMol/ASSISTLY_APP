@@ -1,93 +1,197 @@
-/* Fondo blanco fijo arriba al hacer scroll */
-.navbar {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: .85rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  transition: background .3s;
-}
-
-/* Centra y limita el ancho del contenido */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+/* ── BANNER SUPERIOR ─────────────────────────────── */
+.top-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 101;
+  height: 32px;
+  background: var(--green);
+  color: #fff;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
 }
 
-/* Estilo del logo */
+.banner-dot {
+  width: 7px; height: 7px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ── NAVBAR ──────────────────────────────────────── */
+.navbar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: 32px;
+  left: 0; right: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ── LOGO ────────────────────────────────────────── */
 .brand {
-  font-family: 'Fraunces', serif;
-  font-weight: 900;
-  font-size: 1.45rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--text);
-  letter-spacing: -.5px;
-  margin-right: 1.5rem;
   text-decoration: none;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
 }
 .brand span { color: var(--green); }
 
-/* Links del centro */
-.nav-links { display: flex; gap: 4px; flex: 1; }
+/* ── LINKS DEL CENTRO ────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
 
 .nav-link {
+  padding: 6px 14px;
+  border-radius: 8px;
   color: var(--muted);
-  font-size: .9rem;
-  padding: .4rem .85rem;
-  border-radius: 8px;
   text-decoration: none;
-  transition: all .2s;
-}
-.nav-link:hover, .nav-link.active { color: var(--text); background: var(--bg); }
-
-/* Botones de la derecha */
-.nav-actions { display: flex; align-items: center; gap: 1rem; }
-
-/* Toggle de modo oscuro: cápsula pequeña */
-.toggle-dark {
-  background: var(--border);
-  border: none;
-  border-radius: 999px;
-  width: 42px;
-  height: 22px;
-  position: relative;
-  cursor: pointer;
-  transition: background .3s;
-}
-/* El circulito blanco adentro */
-.toggle-dark::after {
-  content: '';
-  position: absolute;
-  top: 3px; left: 3px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--surface);
-  transition: transform .3s;
-}
-/* Cuando está en modo oscuro: fondo verde y circulito a la derecha */
-.toggle-dark.dark { background: var(--green); }
-.toggle-dark.dark::after { transform: translateX(20px); }
-
-/* Botón verde de la derecha */
-.btn-nav-cta {
-  background: var(--green);
-  color: #fff;
-  border-radius: 8px;
-  padding: .5rem 1.4rem;
-  font-size: .87rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background .2s;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s;
   white-space: nowrap;
 }
-.btn-nav-cta:hover { background: var(--green-dark); color: #fff; }
+.nav-link:hover, .nav-link.active {
+  color: var(--text);
+  background: var(--surface);
+}
 
-/* En pantallas pequeñas se ocultan los links y el botón */
-@media (max-width: 640px) {
-  .nav-links { display: none; }
-  .btn-nav-cta { display: none; }
+/* ── ACCIONES DE LA DERECHA ──────────────────────── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* Iniciar sesión — botón sin estilos por defecto */
+.nav-ghost {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  transition: color 0.2s;
+  padding: 0;
+}
+.nav-ghost:hover { color: var(--green); }
+
+/* Ser shopper — botón con borde verde */
+.btn-cta--outline {
+  border: 1.5px solid var(--green);
+  color: var(--green);
+  background: transparent;
+  padding: 7px 18px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-cta--outline:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── SWITCH DE TEMA ──────────────────────────────── */
+.theme-switch {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.theme-switch input { display: none; }
+
+.switch-track {
+  display: block;
+  width: 42px; height: 22px;
+  background: var(--green);
+  border-radius: 999px;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.switch-track::before {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  top: 3px; left: 3px;
+  transition: transform 0.2s;
+}
+
+.theme-switch input:checked + .switch-track::before {
+  transform: translateX(20px);
+}
+
+.theme-switch input:not(:checked) + .switch-track {
+  background: var(--green);
+}
+
+/* ── HAMBURGUESA (móvil) ─────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+  }
+  .nav-links.abierto { display: flex; }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0;
+    width: 100%;
+  }
 }

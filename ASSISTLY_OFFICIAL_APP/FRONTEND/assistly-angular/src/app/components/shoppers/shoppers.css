@@ -1,45 +1,203 @@
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 .page-wrapper { padding: 3rem 0 5rem; }
 
-/* Encabezado con título a la izq y filtros a la der */
-.page-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+/* ── ENCABEZADO ──────────────────────────────────── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
 
-/* Los dos selects de filtro */
-.filters { display: flex; gap: .75rem; flex-wrap: wrap; }
-.filter-select { background: var(--surface); border: 1.5px solid var(--border); color: var(--text); border-radius: 10px; padding: .5rem 1rem; font-size: .85rem; font-family: 'DM Sans', sans-serif; cursor: pointer; outline: none; }
-.filter-select:focus { border-color: var(--green); }
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 4px;
+  display: block;
+}
 
-/* Grid de tarjetas de shoppers */
-.shoppers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  color: var(--text);
+  margin: 0;
+}
 
-/* Tarjeta */
-.shopper-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; gap: .5rem; transition: transform .2s; }
-.shopper-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+/* ── FILTROS ─────────────────────────────────────── */
+.filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
-.card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .5rem; }
-.avatar { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: #fff; position: relative; }
-.online-dot { position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid var(--surface); }
-.v-badge { background: #eef9f4; color: #1a6b4a; font-size: .7rem; padding: .2rem .65rem; border-radius: 999px; font-weight: 600; }
-.s-name { font-weight: 700; font-size: 1rem; color: var(--text); }
-.s-esp { font-size: .8rem; color: var(--muted); }
-.s-rating { font-size: .8rem; color: var(--muted); }
-.stars { color: #f59e0b; }
+.select {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  transition: border 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.select:focus { border-color: var(--green); }
+
+/* ── SPINNER ─────────────────────────────────────── */
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 3rem auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── ESTADO VACÍO ────────────────────────────────── */
+.vacio {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--muted);
+}
+.vacio button {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.vacio button:hover { background: var(--green-dark); }
+
+/* ── GRID DE TARJETAS ────────────────────────────── */
+.shoppers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── TARJETA ─────────────────────────────────────── */
+.shopper-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.shopper-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+/* Fila superior: avatar + badge */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+/* Avatar circular */
+.avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 1rem;
+  position: relative;
+}
+
+/* Punto verde de disponible */
+.online-dot {
+  position: absolute;
+  bottom: 2px; right: 2px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--surface);
+}
+
+/* Badge verificado */
+.v-badge {
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.s-name   { font-weight: 700; font-size: 15px; color: var(--text); margin: 0; }
+.s-esp    { font-size: 13px; color: var(--muted); margin: 0; }
+.s-rating { font-size: 13px; color: var(--muted); margin: 0; }
+
+/* Tags */
 .s-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-.s-tag { background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: .18rem .65rem; font-size: .7rem; color: var(--muted); }
-.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: .75rem; border-top: 1px solid var(--border); }
-.price-big { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 900; color: var(--text); }
-.price-unit { font-size: .78rem; color: var(--muted); }
-.btn-hire { background: var(--navy); color: #fff; border-radius: 8px; padding: .48rem 1.4rem; font-size: .82rem; font-weight: 600; text-decoration: none; transition: background .2s; display: inline-block; }
-.btn-hire:hover { background: var(--green); color: #fff; }
+.tag {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--muted);
+}
 
-/* Estado vacío */
-.empty-state { text-align: center; padding: 4rem 1rem; color: var(--muted); }
-.empty-state p { margin-bottom: 1.5rem; }
+/* Pie de tarjeta */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
 
-/* Contador de resultados al pie */
-.results-count { text-align: center; font-size: .82rem; color: var(--muted); margin-top: 2rem; }
+.precio { font-size: 1.1rem; font-weight: 900; color: var(--text); }
+.precio small { font-size: 12px; color: var(--muted); font-weight: 400; }
 
-@media (max-width: 640px) {
+.btn-contratar {
+  background: var(--green);
+  color: #fff;
+  padding: 7px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-contratar:hover { background: var(--green-dark); }
+
+/* Contador de resultados */
+.contador {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2rem;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 768px) {
   .page-header { flex-direction: column; align-items: flex-start; }
-  .filter-select { flex: 1; }
+  .shoppers-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .shoppers-grid { grid-template-columns: 1fr; }
 }

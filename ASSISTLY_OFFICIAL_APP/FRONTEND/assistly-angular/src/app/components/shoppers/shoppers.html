@@ -1,19 +1,20 @@
 <div class="page-wrapper">
   <div class="container">
 
+    <!-- encabezado con filtros -->
     <div class="page-header">
       <div>
         <p class="section-label">Directorio</p>
         <h1 class="section-title">Todos nuestros shoppers</h1>
-        <p class="section-desc">Verificados, calificados y listos para ayudarte.</p>
       </div>
 
-      <!-- Filtros -->
-      <div class="filters">
-        <select class="filter-select" [(ngModel)]="categoriaFiltro" (change)="aplicarFiltros()">
+      <!-- filtros de categoría y orden -->
+      <div class="filtros">
+        <!-- [(ngModel)] enlaza el select con la variable -->
+        <select class="select" [(ngModel)]="categoriaFiltro" (change)="aplicarFiltros()">
           <option *ngFor="let c of categorias" [value]="c.key">{{ c.label }}</option>
         </select>
-        <select class="filter-select" [(ngModel)]="ordenFiltro" (change)="aplicarFiltros()">
+        <select class="select" [(ngModel)]="ordenFiltro" (change)="aplicarFiltros()">
           <option value="rating">Mejor calificados</option>
           <option value="precio_asc">Menor precio</option>
           <option value="precio_desc">Mayor precio</option>
@@ -21,16 +22,16 @@
       </div>
     </div>
 
-    <!-- Spinner -->
+    <!-- spinner mientras carga -->
     <div *ngIf="loading" class="spinner"></div>
 
-    <!-- Vacío -->
-    <div *ngIf="!loading && shoppersFiltrados.length === 0" class="empty-state">
+    <!-- cuando no hay resultados -->
+    <div *ngIf="!loading && shoppersFiltrados.length === 0" class="vacio">
       <p>No hay shoppers para esta categoría.</p>
-      <button class="btn-primary" (click)="categoriaFiltro = ''; aplicarFiltros()">Ver todos</button>
+      <button (click)="categoriaFiltro=''; aplicarFiltros()">Ver todos</button>
     </div>
 
-    <!-- Grid -->
+    <!-- grid de shoppers -->
     <div class="shoppers-grid" *ngIf="!loading && shoppersFiltrados.length > 0">
       <div class="shopper-card" *ngFor="let s of shoppersFiltrados">
 
@@ -42,28 +43,24 @@
           <span class="v-badge" *ngIf="s.verificado">Verificado</span>
         </div>
 
-        <div class="s-name">{{ s.nombre }}</div>
-        <div class="s-esp">{{ s.especialidad }}</div>
-
-        <div class="s-rating">
-          <span class="stars">{{ s.calificacion | estrellas }}</span>
-          {{ s.calificacion }} · {{ s.resenas }} reseñas
-        </div>
+        <p class="s-name">{{ s.nombre }}</p>
+        <p class="s-esp">{{ s.especialidad }}</p>
+        <p class="s-rating">{{ s.calificacion | estrellas }} {{ s.calificacion }} · {{ s.resenas }} reseñas</p>
 
         <div class="s-tags">
-          <span class="s-tag" *ngFor="let cat of s.categorias">{{ cat | categoriaLabel }}</span>
+          <span class="tag" *ngFor="let cat of s.categorias">{{ cat | categoriaLabel }}</span>
         </div>
 
         <div class="card-footer">
-          <div><span class="price-big">Q{{ s.tarifa }}</span><span class="price-unit">/hora</span></div>
-          <a routerLink="/solicitud" class="btn-hire">Contratar</a>
+          <span class="precio">Q{{ s.tarifa }}<small>/hora</small></span>
+          <a routerLink="/solicitud" class="btn-contratar">Contratar</a>
         </div>
 
       </div>
     </div>
 
-    <!-- Contador -->
-    <p class="results-count" *ngIf="!loading">
+    <!-- contador de resultados -->
+    <p class="contador" *ngIf="!loading">
       {{ shoppersFiltrados.length }} shopper{{ shoppersFiltrados.length !== 1 ? 's' : '' }} disponibles
     </p>
 

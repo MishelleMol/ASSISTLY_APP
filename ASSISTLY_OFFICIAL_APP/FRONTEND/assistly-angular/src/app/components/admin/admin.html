@@ -1,40 +1,32 @@
 <div class="page-wrapper">
   <div class="container">
 
-    <!-- LOGIN -->
-    <div class="login-wrapper" *ngIf="!loggedIn">
-      <div class="login-card">
-        <div class="login-header">
-          <h2 class="login-title">Panel de administración</h2>
-          <p class="login-sub">Acceso restringido a administradores.</p>
-        </div>
+    <!-- ══ LOGIN ══ -->
+    <div class="login-box" *ngIf="!loggedIn">
+      <h2 class="login-title">Panel de administración</h2>
+      <p class="login-sub">Acceso restringido a administradores.</p>
 
-        <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
-          <div class="form-group">
-            <label class="form-label">Correo electrónico</label>
-            <input type="email" class="form-input" formControlName="email" placeholder="admin@assistly.com"/>
-            <span class="form-error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-              Ingresa un email válido.
-            </span>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Contraseña</label>
-            <input type="password" class="form-input" formControlName="password" placeholder="••••••••"/>
-            <span class="form-error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-              La contraseña es requerida.
-            </span>
-          </div>
-          <div class="error-msg" *ngIf="loginError">{{ loginError }}</div>
-          <button type="submit" class="btn-submit" [disabled]="loginLoading">
-            {{ loginLoading ? 'Verificando...' : 'Ingresar al panel' }}
-          </button>
-        </form>
-      </div>
+      <!-- campo de email -->
+      <label class="f-label">Correo electrónico</label>
+      <input class="f-input" type="email" placeholder="admin@assistly.com" [(ngModel)]="loginEmail"/>
+
+      <!-- campo de contraseña -->
+      <label class="f-label">Contraseña</label>
+      <input class="f-input" type="password" placeholder="••••••••" [(ngModel)]="loginPassword"/>
+
+      <!-- mensaje de error -->
+      <p class="campo-error" *ngIf="loginError">{{ loginError }}</p>
+
+      <!-- botón de login -->
+      <button class="btn-submit" (click)="doLogin()" [disabled]="loginLoading">
+        {{ loginLoading ? 'Verificando...' : 'Ingresar al panel' }}
+      </button>
     </div>
 
-    <!-- DASHBOARD -->
+    <!-- ══ DASHBOARD ══ -->
     <div *ngIf="loggedIn">
 
+      <!-- título y botón cerrar sesión -->
       <div class="dash-header">
         <div>
           <p class="section-label">Panel Admin</p>
@@ -43,54 +35,64 @@
         <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
       </div>
 
-      <!-- Métricas -->
-      <div class="metrics-grid">
-        <div class="metric-card" *ngFor="let m of metricas">
-          <div class="metric-num">{{ m.valor }}</div>
-          <div class="metric-lbl">{{ m.label }}</div>
+      <!-- métricas -->
+      <div class="metricas-grid">
+        <div class="metrica-card" *ngFor="let m of metricas">
+          <div class="metrica-num">{{ m.valor }}</div>
+          <div class="metrica-lbl">{{ m.label }}</div>
         </div>
       </div>
 
-      <!-- Tabla -->
-      <div class="table-card">
-        <div class="table-toolbar">
-          <h3 class="table-title">Solicitudes recientes</h3>
+      <!-- tabla de solicitudes -->
+      <div class="tabla-card">
+        <div class="tabla-header">
+          <h3>Solicitudes recientes</h3>
           <button class="btn-refresh" (click)="cargarSolicitudes()">Actualizar</button>
         </div>
 
+        <!-- spinner -->
         <div *ngIf="loadingData" class="spinner"></div>
 
-        <div class="table-wrapper" *ngIf="!loadingData">
-          <div class="table-head">
-            <span>Descripción</span>
-            <span>Categoría</span>
-            <span>Presupuesto</span>
-            <span>Fecha</span>
-            <span>Estado</span>
-            <span>Acciones</span>
-          </div>
-
-          <div class="table-row" *ngFor="let sol of solicitudes">
-            <span class="cell-desc">{{ sol.descripcion | slice:0:55 }}{{ sol.descripcion.length > 55 ? '...' : '' }}</span>
-            <span><span class="s-tag">{{ sol.categoria | categoriaLabel }}</span></span>
-            <span class="cell-price">Q{{ sol.presupuesto | number }}</span>
-            <span class="cell-date">{{ sol.createdAt | date:'dd/MM/yy' }}</span>
-            <span [class]="(sol.estado || 'pendiente') | estadoClass">{{ sol.estado }}</span>
-            <span class="cell-actions">
-              <select class="state-select" [value]="sol.estado"
-                (change)="cambiarEstado(sol._id!, $any($event.target).value)">
-                <option value="pendiente">Pendiente</option>
-                <option value="en-proceso">En proceso</option>
-                <option value="completada">Completada</option>
-                <option value="cancelada">Cancelada</option>
-              </select>
-              <button class="btn-delete" (click)="eliminar(sol._id!)">Eliminar</button>
-            </span>
-          </div>
-
-          <div class="empty-table" *ngIf="solicitudes.length === 0">
-            No hay solicitudes aún.
-          </div>
+        <!-- tabla -->
+        <div class="tabla-scroll" *ngIf="!loadingData">
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Presupuesto</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sol of solicitudes">
+                <!-- descripción cortada -->
+                <td class="td-desc">{{ sol.descripcion | slice:0:50 }}{{ sol.descripcion.length > 50 ? '...' : '' }}</td>
+                <!-- categoría con pipe -->
+                <td><span class="tag">{{ sol.categoria | categoriaLabel }}</span></td>
+                <!-- presupuesto con pipe number -->
+                <td>Q{{ sol.presupuesto | number }}</td>
+                <!-- fecha con pipe date -->
+                <td>{{ sol.createdAt | date:'dd/MM/yy' }}</td>
+                <!-- badge de estado con pipe estadoClass -->
+                <td><span [class]="(sol.estado || 'pendiente') | estadoClass">{{ sol.estado }}</span></td>
+                <!-- acciones -->
+                <td class="td-acciones">
+                  <select class="sel-estado" [value]="sol.estado"
+                    (change)="cambiarEstado(sol._id!, $any($event.target).value)">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="en-proceso">En proceso</option>
+                    <option value="completada">Completada</option>
+                    <option value="cancelada">Cancelada</option>
+                  </select>
+                  <button class="btn-eliminar" (click)="eliminar(sol._id!)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="vacio-msg" *ngIf="solicitudes.length === 0">No hay solicitudes aún.</p>
         </div>
       </div>
 

@@ -1,93 +1,128 @@
-/* Fondo blanco fijo arriba al hacer scroll */
+/* contenedor principal del navbar */
 .navbar {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: .85rem 0;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
   position: sticky;
   top: 0;
-  z-index: 200;
-  transition: background .3s;
+  z-index: 100;
+  width: 100%;
 }
 
-/* Centra y limita el ancho del contenido */
-.container {
+/* limita el ancho y centra el contenido */
+.navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0.9rem 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
-/* Estilo del logo */
+/* estilo del logo */
 .brand {
-  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
   font-weight: 900;
-  font-size: 1.45rem;
-  color: var(--text);
-  letter-spacing: -.5px;
-  margin-right: 1.5rem;
+  color: #0f172a;
   text-decoration: none;
 }
-.brand span { color: var(--green); }
+.brand span { color: #3bbc7c; }
 
-/* Links del centro */
-.nav-links { display: flex; gap: 4px; flex: 1; }
+/* fila de links del centro */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
 
+/* cada link de navegación */
 .nav-link {
-  color: var(--muted);
-  font-size: .9rem;
-  padding: .4rem .85rem;
+  padding: 6px 14px;
   border-radius: 8px;
+  color: #64748b;
   text-decoration: none;
-  transition: all .2s;
+  font-size: 14px;
+  transition: all 0.2s;
 }
-.nav-link:hover, .nav-link.active { color: var(--text); background: var(--bg); }
+.nav-link:hover, .nav-link.active {
+  background: #f9f8f4;
+  color: #0f172a;
+}
 
-/* Botones de la derecha */
-.nav-actions { display: flex; align-items: center; gap: 1rem; }
+/* agrupa los botones de la derecha */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
 
-/* Toggle de modo oscuro: cápsula pequeña */
-.toggle-dark {
-  background: var(--border);
-  border: none;
+/* botón de modo oscuro */
+.tbtn {
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  color: #0f172a;
+  padding: 8px 14px;
   border-radius: 999px;
-  width: 42px;
-  height: 22px;
-  position: relative;
   cursor: pointer;
-  transition: background .3s;
+  font-size: 13px;
+  transition: all 0.2s;
 }
-/* El circulito blanco adentro */
-.toggle-dark::after {
-  content: '';
-  position: absolute;
-  top: 3px; left: 3px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--surface);
-  transition: transform .3s;
-}
-/* Cuando está en modo oscuro: fondo verde y circulito a la derecha */
-.toggle-dark.dark { background: var(--green); }
-.toggle-dark.dark::after { transform: translateX(20px); }
+.tbtn:hover { background: #f9f8f4; }
 
-/* Botón verde de la derecha */
-.btn-nav-cta {
-  background: var(--green);
+/* botón verde de encontrar shopper */
+.btn-cta {
+  background: #3bbc7c;
   color: #fff;
+  padding: 8px 18px;
   border-radius: 8px;
-  padding: .5rem 1.4rem;
-  font-size: .87rem;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  transition: background .2s;
-  white-space: nowrap;
+  transition: background 0.2s;
 }
-.btn-nav-cta:hover { background: var(--green-dark); color: #fff; }
+.btn-cta:hover { background: #2da066; }
 
-/* En pantallas pequeñas se ocultan los links y el botón */
-@media (max-width: 640px) {
-  .nav-links { display: none; }
-  .btn-nav-cta { display: none; }
+/* botón hamburguesa — oculto en pantallas grandes */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #0f172a;
+  border-radius: 2px;
+}
+
+/* en pantallas pequeñas */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  /* los links se ponen en columna y se ocultan */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+  }
+
+  /* cuando el menú está abierto se muestran */
+  .nav-links.abierto { display: flex; }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0;
+    width: 100%;
+  }
 }

@@ -1,33 +1,49 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AuthModalComponent } from '../auth-modal/auth-modal';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, CommonModule, AuthModalComponent],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css']
 })
 export class NavbarComponent {
 
-  // true = modo oscuro activo
+  // tema oscuro/claro
   isDark = false;
 
-  // true = menú móvil abierto
+  // menú móvil
   menuAbierto = false;
 
-  // Cambia entre modo claro y oscuro
+  // modal
+  modalAbierto = false;
+  tipoModal: 'login' | 'shopper' = 'login';
+
+  // cambia entre modo claro y oscuro
   toggleTheme() {
     this.isDark = !this.isDark;
-    // Aplica data-theme al <html> para que las variables CSS cambien
     document.documentElement.setAttribute(
       'data-theme',
       this.isDark ? 'dark' : 'light'
     );
   }
 
-  // Abre y cierra el menú en móvil
+  // abre y cierra el menú móvil
   toggleMenu() {
     this.menuAbierto = !this.menuAbierto;
+  }
+
+  // abre el modal con el tipo correcto
+  abrirModal(tipo: 'login' | 'shopper') {
+    this.tipoModal    = tipo;
+    this.modalAbierto = true;
+  }
+
+  // cierra el modal
+  cerrarModal() {
+    this.modalAbierto = false;
   }
 }

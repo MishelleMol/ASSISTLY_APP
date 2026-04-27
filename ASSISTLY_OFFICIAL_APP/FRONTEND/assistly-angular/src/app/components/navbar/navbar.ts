@@ -6,22 +6,27 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
-  styleUrls: ['./navbar.css'],
+  styleUrls: ['./navbar.css']
 })
 export class NavbarComponent {
-  // guarda si el modo oscuro está activo
+
+  // true = modo oscuro activo
   isDark = false;
-  // guarda si el menú móvil está abierto
+
+  // true = menú móvil abierto
   menuAbierto = false;
 
-  // cambia entre modo claro y oscuro
+  // Cambia entre modo claro y oscuro
   toggleTheme() {
     this.isDark = !this.isDark;
-    document.body.classList.toggle('oscuro', this.isDark);
-    document.body.classList.toggle('claro', !this.isDark);
+    // Aplica data-theme al <html> para que las variables CSS cambien
+    document.documentElement.setAttribute(
+      'data-theme',
+      this.isDark ? 'dark' : 'light'
+    );
   }
 
-  // abre y cierra el menú en móvil
+  // Abre y cierra el menú en móvil
   toggleMenu() {
     this.menuAbierto = !this.menuAbierto;
   }

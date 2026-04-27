@@ -18,6 +18,7 @@ export interface Shopper {
   disponible:   boolean;
   verificado:   boolean;
   color:        string;
+  tipo?:        string;
 }
 
 export interface Solicitud {

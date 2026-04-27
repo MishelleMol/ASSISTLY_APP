@@ -1,57 +1,86 @@
-/* contenedor principal del navbar */
+/* ── BANNER SUPERIOR ─────────────────────────────── */
+.top-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 101;
+  height: 32px;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.banner-dot {
+  width: 7px; height: 7px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ── NAVBAR ──────────────────────────────────────── */
 .navbar {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  position: sticky;
-  top: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: 32px;
+  left: 0; right: 0;
   z-index: 100;
   width: 100%;
 }
 
-/* limita el ancho y centra el contenido */
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.9rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
 }
 
-/* estilo del logo */
+/* ── LOGO ────────────────────────────────────────── */
 .brand {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #0f172a;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
   text-decoration: none;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
 }
-.brand span { color: #3bbc7c; }
+.brand span { color: var(--green); }
 
-/* fila de links del centro */
+/* ── LINKS DEL CENTRO ────────────────────────────── */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   flex: 1;
 }
 
-/* cada link de navegación */
 .nav-link {
   padding: 6px 14px;
   border-radius: 8px;
-  color: #64748b;
+  color: var(--muted);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.88rem;
+  font-weight: 500;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 .nav-link:hover, .nav-link.active {
-  background: #f9f8f4;
-  color: #0f172a;
+  color: var(--text);
+  background: var(--surface);
 }
 
-/* agrupa los botones de la derecha */
+/* ── ACCIONES DE LA DERECHA ──────────────────────── */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -59,33 +88,74 @@
   margin-left: auto;
 }
 
-/* botón de modo oscuro */
-.tbtn {
-  border: 1px solid #e5e7eb;
-  background: transparent;
-  color: #0f172a;
-  padding: 8px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: all 0.2s;
+.nav-ghost {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
 }
-.tbtn:hover { background: #f9f8f4; }
+.nav-ghost:hover { color: var(--green); }
 
-/* botón verde de encontrar shopper */
-.btn-cta {
-  background: #3bbc7c;
-  color: #fff;
-  padding: 8px 18px;
+.btn-cta--outline {
+  border: 1.5px solid var(--green);
+  color: var(--green);
+  background: transparent;
+  padding: 7px 18px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-cta--outline:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── SWITCH DE TEMA ──────────────────────────────── */
+.theme-switch {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.theme-switch input { display: none; }
+
+/* Riel del switch — siempre verde */
+.switch-track {
+  display: block;
+  width: 42px; height: 22px;
+  background: var(--green);
+  border-radius: 999px;
+  position: relative;
   transition: background 0.2s;
 }
-.btn-cta:hover { background: #2da066; }
 
-/* botón hamburguesa — oculto en pantallas grandes */
+/* Bolita blanca */
+.switch-track::before {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  top: 3px; left: 3px;
+  transition: transform 0.2s;
+}
+
+/* Modo oscuro (checked) → bolita a la derecha */
+.theme-switch input:checked + .switch-track::before {
+  transform: translateX(20px);
+}
+
+/* Modo claro (not checked) → bolita a la izquierda, riel verde igual */
+.theme-switch input:not(:checked) + .switch-track {
+  background: var(--green);  /* ← verde en ambos estados */
+}
+
+/* ── HAMBURGUESA (móvil) ─────────────────────────── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -97,17 +167,15 @@
 }
 .hamburger span {
   display: block;
-  width: 24px;
-  height: 2px;
-  background: #0f172a;
+  width: 24px; height: 2px;
+  background: var(--text);
   border-radius: 2px;
 }
 
-/* en pantallas pequeñas */
+/* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 768px) {
   .hamburger { display: flex; }
 
-  /* los links se ponen en columna y se ocultan */
   .nav-links {
     display: none;
     flex-direction: column;
@@ -115,8 +183,6 @@
     align-items: flex-start;
     padding-bottom: 1rem;
   }
-
-  /* cuando el menú está abierto se muestran */
   .nav-links.abierto { display: flex; }
 
   .nav-actions {

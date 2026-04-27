@@ -1,4 +1,4 @@
-<!-- Navbar en todas las páginas -->
+<!-- Navbar fijo en todas las páginas -->
 <app-navbar></app-navbar>
 
 <!-- Aquí carga la página según la URL -->
@@ -6,10 +6,71 @@
   <router-outlet></router-outlet>
 </main>
 
-<!-- Footer -->
+<!-- Footer en todas las páginas -->
 <footer class="footer">
-  <div class="footer-inner">
-    <span class="footer-brand">assist<span>ly</span></span>
-    <span class="footer-copy">© 2026 Assistly · Hecho en Guatemala</span>
+  <div class="footer-inner container">
+
+    <div class="footer-brand">
+      <span class="brand-text">assist<span class="brand-accent">ly</span></span>
+      <p>Personal shopping digital bajo demanda. Conectamos usuarios con shoppers expertos para cada momento especial.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">📷</a>
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>SOLICITUDES</h4>
+      <ul>
+        <li><a href="#">Bodas</a></li>
+        <li><a href="#">Graduaciones</a></li>
+        <li><a href="#">Cumpleaños</a></li>
+        <li><a href="#">Outfits & Moda</a></li>
+        <li><a href="#">Regalos</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>PARA SHOPPERS</h4>
+      <ul>
+        <li><a href="#">Cómo funciona</a></li>
+        <li><a href="#">Registrarse</a></li>
+        <li><a href="#">Verificación</a></li>
+        <li><a href="#">Ganancias</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>EMPRESA</h4>
+      <ul>
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Prensa</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>LEGAL</h4>
+      <ul>
+        <li><a href="#">Términos de uso</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Cookies</a></li>
+        <li><a href="#">Seguridad</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© 2026 Assistly · Hecho en Guatemala</span>
+      <div class="footer-bottom-badges">
+        <span class="footer-badge">Hecho en Guatemala</span>
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+      </div>
+    </div>
   </div>
 </footer>

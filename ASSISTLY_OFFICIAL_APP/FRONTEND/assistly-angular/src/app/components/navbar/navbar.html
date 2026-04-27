@@ -17,24 +17,44 @@
 
     <!-- Links de navegación -->
     <div class="nav-links" [class.abierto]="menuAbierto">
-      <a routerLink="/shoppers"  routerLinkActive="active" class="nav-link" (click)="menuAbierto=false">Solicitudes</a>
-      <a routerLink="/solicitud" routerLinkActive="active" class="nav-link" (click)="menuAbierto=false">Shoppers</a>
-      <a routerLink="/admin"     routerLinkActive="active" class="nav-link" (click)="menuAbierto=false">Por qué Assistly</a>
-      <a routerLink="/"          routerLinkActive="active" class="nav-link" (click)="menuAbierto=false" [routerLinkActiveOptions]="{exact:true}">Cómo funciona</a>
+      <a routerLink="/shoppers"  routerLinkActive="active"
+        class="nav-link" (click)="menuAbierto=false">Solicitudes</a>
+      <a routerLink="/solicitud" routerLinkActive="active"
+        class="nav-link" (click)="menuAbierto=false">Shoppers</a>
+      <a routerLink="/admin"     routerLinkActive="active"
+        class="nav-link" (click)="menuAbierto=false">Por qué Assistly</a>
+      <a routerLink="/"          routerLinkActive="active"
+        class="nav-link" (click)="menuAbierto=false"
+        [routerLinkActiveOptions]="{exact:true}">Cómo funciona</a>
     </div>
 
     <!-- Botones de la derecha -->
     <div class="nav-actions">
 
-      <!-- Switch visual de modo oscuro/claro -->
+      <!-- Switch de tema -->
       <label class="theme-switch" title="Cambiar tema">
         <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" />
         <span class="switch-track"></span>
       </label>
 
-      <a routerLink="/" class="nav-ghost" (click)="menuAbierto=false">Iniciar sesión</a>
-      <a routerLink="/solicitud" class="btn-cta btn-cta--outline" (click)="menuAbierto=false">Ser shopper</a>
-    </div>
+      <!-- Iniciar sesión → abre modal simple -->
+      <button class="nav-ghost" (click)="abrirModal('login')">
+        Iniciar sesión
+      </button>
 
+      <!-- Ser shopper → abre modal dos paneles -->
+      <button class="btn-cta--outline" (click)="abrirModal('shopper')">
+        Ser shopper
+      </button>
+
+    </div>
   </div>
 </nav>
+
+<!-- Modal de autenticación -->
+<app-auth-modal
+  [abierto]="modalAbierto"
+  [tipo]="tipoModal"
+  (cerrar)="cerrarModal()"
+  (abrirShopperE)="abrirModal('shopper')">
+</app-auth-modal>

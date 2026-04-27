@@ -1,27 +1,103 @@
-<!-- sección hero -->
+<!-- ── HERO ─────────────────────────────────────── -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
 
-      <!-- texto de la izquierda -->
+      <!-- Columna izquierda: texto -->
       <div class="hero-left">
-        <p class="badge-pill">+500 shoppers verificados activos ahora</p>
+
+        <!-- Badge de disponibilidad -->
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          +500 shoppers verificados activos ahora
+        </div>
+
         <h1 class="hero-title">
-          Compra para tus momentos más <em>especiales.</em>
+          Compra para tus<br>
+          momentos más<br>
+          <em>especiales.</em>
         </h1>
+
         <p class="hero-desc">
-          Conectamos contigo personal shoppers expertos en tiempo real.
+          Conectamos contigo personal shoppers expertos en
+          tiempo real. Describe lo que necesitas y recibe
+          recomendaciones curadas — sin perder horas buscando.
         </p>
-        <a routerLink="/solicitud" class="btn-primary">Encontrar mi shopper</a>
-        <p class="hero-rating">★★★★★ 4.9 · +2,400 reseñas</p>
+
+        <a routerLink="/solicitud" class="btn-primary">
+          Encontrar mi shopper
+        </a>
+
+        <!-- Avatares + estrellas + reseñas -->
+        <div class="hero-proof">
+          <div class="proof-avatars">
+            <span class="av av--green">AM</span>
+            <span class="av av--orange">KL</span>
+            <span class="av av--purple">LR</span>
+            <span class="av av--pink">SC</span>
+          </div>
+          <span class="proof-stars">★★★★★</span>
+          <span class="proof-text">4.9 · 2,400+ reseñas</span>
+        </div>
+
       </div>
 
-      <!-- estadísticas de la derecha -->
-      <div class="stats-grid">
-        <!-- crea una tarjeta por cada estadística -->
-        <div class="stat-card" *ngFor="let s of stats">
-          <div class="stat-num">{{ s.num }}</div>
-          <div class="stat-lbl">{{ s.label }}</div>
+      <!-- Columna derecha: widget de chat -->
+      <div class="hero-right">
+        <div class="chat-widget">
+
+          <!-- Cabecera del widget -->
+          <div class="cw-header">
+            <span class="cw-logo">assist<span>ly</span></span>
+            <span class="cw-badge">3</span>
+          </div>
+
+          <!-- Buscador -->
+          <div class="cw-search">
+            <span>🔍</span>
+            <input type="text" placeholder="¿Qué necesitas hoy?" readonly />
+          </div>
+
+          <!-- Label -->
+          <p class="cw-label">SHOPPERS DISPONIBLES</p>
+
+          <!-- Lista de shoppers en el widget -->
+          <ul class="cw-list">
+            <li class="cw-item">
+              <span class="av av--green av--sm">AM</span>
+              <div class="cw-info">
+                <strong>Ana Martínez</strong>
+                <span class="cw-rating">★ 4.9</span>
+                <small>Bodas · Outfits · Regalos</small>
+              </div>
+              <span class="cw-price">Q96/hr</span>
+            </li>
+            <li class="cw-item">
+              <span class="av av--orange av--sm">KL</span>
+              <div class="cw-info">
+                <strong>Karen López</strong>
+                <span class="cw-rating">★ 4.8</span>
+                <small>Moda · Lujo · Eventos</small>
+              </div>
+              <span class="cw-price">Q120/hr</span>
+            </li>
+            <li class="cw-item">
+              <span class="av av--purple av--sm">LR</span>
+              <div class="cw-info">
+                <strong>Luis Ramírez</strong>
+                <span class="cw-online">
+                  <span class="online-pulse"></span>
+                  En línea ahora
+                </span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Mensaje de ejemplo -->
+          <div class="cw-msg">
+            Necesito un vestido para boda de noche, presupuesto Q800
+          </div>
+
         </div>
       </div>
 
@@ -29,31 +105,196 @@
   </div>
 </section>
 
-<!-- sección shoppers destacados -->
+<!-- ── STATS BAR ──────────────────────────────────── -->
+<section class="stats-bar">
+  <div class="container stats-bar-inner">
+    <div class="stat-item">
+      <span class="stat-num">2.4K+</span>
+      <span class="stat-lbl">solicitudes completadas</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num">500+</span>
+      <span class="stat-lbl">shoppers verificados</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num">4.9★</span>
+      <span class="stat-lbl">calificación promedio</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num">92%</span>
+      <span class="stat-lbl">satisfacción primera compra</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item">
+      <span class="stat-num">&lt;5min</span>
+      <span class="stat-lbl">tiempo de respuesta</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALIDACIÓN ─────────────────────────────────── -->
+<section class="validation-section">
+  <div class="container">
+
+    <p class="section-label">VALIDADO POR 33 PERSONAS REALES EN GUATEMALA</p>
+    <h2 class="section-title">Los números hablan por sí solos.</h2>
+    <p class="section-desc">Antes de lanzar, preguntamos. Esto es lo que encontramos.</p>
+
+    <!-- 4 tarjetas de porcentaje -->
+    <div class="val-grid">
+
+      <div class="val-card">
+        <span class="val-pct">79%</span>
+        <strong>ya usaría Assistly</strong>
+        <p>26 de 33 personas dijeron que sí usarían una app de personal shopping en tiempo real.</p>
+        <div class="prog-bar"><div class="prog-fill" style="width:79%"></div></div>
+      </div>
+
+      <div class="val-card">
+        <span class="val-pct">82%</span>
+        <strong>compra en línea cada semana</strong>
+        <p>El 39% compra varias veces por semana y el 39% al menos una vez a la semana.</p>
+        <div class="prog-bar"><div class="prog-fill" style="width:82%"></div></div>
+      </div>
+
+      <div class="val-card">
+        <span class="val-pct">85%</span>
+        <strong>calificó la idea con 5 de 5</strong>
+        <p>27 de 33 personas le dieron la máxima calificación de atractivo a la idea de Assistly.</p>
+        <div class="prog-bar"><div class="prog-fill" style="width:85%"></div></div>
+      </div>
+
+      <div class="val-card">
+        <span class="val-pct">91%</span>
+        <strong>considera ahorrar tiempo una prioridad</strong>
+        <p>28 de 33 calificaron el ahorro de tiempo como importancia máxima (5/5) al comprar.</p>
+        <div class="prog-bar"><div class="prog-fill" style="width:91%"></div></div>
+      </div>
+
+    </div>
+
+    <!-- Ocasiones más pedidas -->
+    <div class="occasions">
+      <div class="occ-left">
+        <p class="section-label">¿PARA QUÉ USARÍAN ASSISTLY?</p>
+        <h2 class="section-title">Las ocasiones más pedidas.</h2>
+        <p class="section-desc">Basado en las respuestas de nuestra encuesta de validación.</p>
+      </div>
+      <div class="occ-bars">
+        <div class="bar-row">
+          <span class="bar-lbl">Ropa y outfits</span>
+          <div class="bar-track"><div class="bar-fill" style="width:43%"></div></div>
+          <span class="bar-val">43%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">Buscar regalos</span>
+          <div class="bar-track"><div class="bar-fill" style="width:36%"></div></div>
+          <span class="bar-val">36%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">Compras rápidas</span>
+          <div class="bar-track"><div class="bar-fill" style="width:28%"></div></div>
+          <span class="bar-val">28%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">Recomendaciones personalizadas</span>
+          <div class="bar-track"><div class="bar-fill" style="width:24%"></div></div>
+          <span class="bar-val">24%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-lbl">Tecnología</span>
+          <div class="bar-track"><div class="bar-fill" style="width:12%"></div></div>
+          <span class="bar-val">12%</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CATEGORÍAS ─────────────────────────────────── -->
+<section class="cat-section">
+  <div class="container">
+
+    <p class="section-label">CATEGORÍAS</p>
+    <h2 class="section-title">¿Para qué ocasión?</h2>
+    <p class="section-desc">Selecciona y dinos exactamente lo que necesitas.</p>
+
+    <!-- Tabs -->
+    <div class="cat-tabs">
+      <button
+        *ngFor="let cat of categorias"
+        class="cat-tab"
+        [class.active]="catActiva === cat.id"
+        (click)="catActiva = cat.id">
+        <span class="cat-icon">{{ cat.icon }}</span>
+        {{ cat.label }}
+      </button>
+    </div>
+    <div class="tabs-line"></div>
+
+    <!-- Sub-tags de la categoría activa -->
+    <div class="subtags">
+      <span
+        *ngFor="let sub of getSubtags()"
+        class="subtag"
+        [class.active]="subActivo === sub"
+        (click)="subActivo = sub">
+        {{ sub }}
+      </span>
+    </div>
+
+    <div class="cat-cta">
+      <a routerLink="/solicitud" class="btn-primary">
+        Buscar mi shopper para esta ocasión
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DIRECTORIO DE SHOPPERS ─────────────────────── -->
 <section class="shoppers-section">
   <div class="container">
 
     <div class="section-header">
       <div>
-        <p class="section-label">Shoppers destacados</p>
+        <p class="section-label">DIRECTORIO</p>
         <h2 class="section-title">Conoce a tus expertos.</h2>
+        <p class="section-desc">Verificados, calificados y especializados.</p>
       </div>
-      <a routerLink="/shoppers" class="btn-outline">Ver todos</a>
+
+      <!-- Filtros -->
+      <div class="dir-filters">
+        <button
+          *ngFor="let f of filtros"
+          class="filter-btn"
+          [class.active]="filtroActivo === f.id"
+          (click)="filtroActivo = f.id">
+          {{ f.label }}
+        </button>
+      </div>
     </div>
 
-    <!-- spinner mientras carga -->
+    <!-- Spinner mientras carga -->
     <div *ngIf="loading" class="spinner"></div>
 
-    <!-- grid de shoppers -->
+    <!-- Grid de shoppers -->
     <div class="shoppers-grid" *ngIf="!loading">
-      <div class="shopper-card" *ngFor="let s of shoppers">
+      <div
+        class="shopper-card"
+        *ngFor="let s of getShoppersFiltrados()"
+        [class.hidden]="filtroActivo !== 'todos' && s.tipo !== filtroActivo">
 
-        <!-- avatar y badge -->
         <div class="card-top">
-          <div class="avatar" [style.background]="s.color">
-            {{ s.iniciales }}
-            <!-- puntito verde si está disponible -->
-            <div class="online-dot" *ngIf="s.disponible"></div>
+          <div class="av-wrap">
+            <span class="av av--lg" [style.background]="s.color">
+              {{ s.iniciales }}
+            </span>
+            <span class="online-dot" *ngIf="s.disponible"></span>
           </div>
           <span class="v-badge" *ngIf="s.verificado">Verificado</span>
         </div>
@@ -61,19 +302,17 @@
         <p class="s-name">{{ s.nombre }}</p>
         <p class="s-esp">{{ s.especialidad }}</p>
 
-        <!-- calificación con el pipe estrellas -->
         <p class="s-rating">
-          {{ s.calificacion | estrellas }} {{ s.calificacion }} ({{ s.resenas }} reseñas)
+          {{ s.calificacion | estrellas }}
+          {{ s.calificacion }} · {{ s.resenas }} reseñas
         </p>
 
-        <!-- tags de categorías -->
         <div class="s-tags">
           <span class="tag" *ngFor="let cat of s.categorias | slice:0:3">
             {{ cat | categoriaLabel }}
           </span>
         </div>
 
-        <!-- precio y botón -->
         <div class="card-footer">
           <span class="precio">Q{{ s.tarifa }}<small>/hora</small></span>
           <a routerLink="/solicitud" class="btn-contratar">Contratar</a>
@@ -81,34 +320,185 @@
 
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- sección cómo funciona -->
+<!-- ── PROCESO ────────────────────────────────────── -->
 <section class="pasos-section">
   <div class="container">
+    <p class="section-label text-center">PROCESO</p>
     <h2 class="section-title text-center">Tan simple como enviar un mensaje.</h2>
+
     <div class="pasos-grid">
       <div class="paso-card">
         <div class="paso-num">1</div>
         <h3>Elige tu categoría</h3>
-        <p>Selecciona para qué ocasión necesitas ayuda.</p>
+        <p>Selecciona para qué ocasión o tipo de compra necesitas ayuda.</p>
       </div>
       <div class="paso-card">
         <div class="paso-num gris">2</div>
         <h3>Describe tu necesidad</h3>
-        <p>Presupuesto, talla, estilo — todo lo que ayude a tu shopper.</p>
+        <p>Presupuesto, talla, estilo o cualquier detalle que ayude a tu shopper.</p>
       </div>
       <div class="paso-card">
         <div class="paso-num gris">3</div>
         <h3>Elige tu shopper</h3>
-        <p>Revisa calificaciones y elige al que más te convenza.</p>
+        <p>Revisa calificaciones y tarifas. Elige al experto que más te convenza.</p>
       </div>
       <div class="paso-card">
         <div class="paso-num gris">4</div>
         <h3>Recibe recomendaciones</h3>
-        <p>Tu shopper trabaja en tiempo real con garantía incluida.</p>
+        <p>Tu shopper trabaja en tiempo real. Pago seguro y garantía incluida.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIOS ────────────────────────────────── -->
+<section class="testimonials-section">
+  <div class="container">
+    <p class="section-label text-center">LO QUE DICEN LOS ENCUESTADOS</p>
+    <h2 class="section-title text-center">En sus propias palabras.</h2>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <span class="test-quote">"</span>
+        <p>Me ayudaría a tomar decisiones más rápidas y seguras sin perder tiempo buscando entre tantas opciones.</p>
+        <small>ENCUESTADO · 25–34 AÑOS</small>
+      </div>
+      <div class="test-card">
+        <span class="test-quote">"</span>
+        <p>Ahorra tiempo y elimina la frustración de tener demasiadas opciones. Como si alguien con buen criterio me ayudara a elegir.</p>
+        <small>ENCUESTADO · 35–44 AÑOS</small>
+      </div>
+      <div class="test-card">
+        <span class="test-quote">"</span>
+        <p>Facilitaría mi gestión y optimizaría mi tiempo. La usaría porque me facilita la vida.</p>
+        <small>ENCUESTADO · TRABAJANDO TIEMPO COMPLETO</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARA SHOPPERS ──────────────────────────────── -->
+<section class="for-shoppers-section">
+  <div class="container for-shoppers-inner">
+
+    <div class="fs-left">
+      <p class="section-label">PARA SHOPPERS</p>
+      <h2 class="section-title">Convierte tu pasión por las compras en ingresos.</h2>
+      <p class="section-desc">
+        Únete a nuestra red de personal shoppers verificados y
+        genera ingresos flexibles ayudando a personas a encontrar
+        exactamente lo que necesitan.
+      </p>
+
+      <ul class="benefits-list">
+        <li class="benefit-item">
+          <span class="benefit-icon">🕐</span>
+          <div>
+            <strong>Horario completamente flexible</strong>
+            <p>Trabaja cuando quieras, acepta las solicitudes que se adapten a tu agenda.</p>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <span class="benefit-icon">$</span>
+          <div>
+            <strong>Tú pones tu precio en quetzales</strong>
+            <p>Define tu tarifa por hora y recibe pagos seguros directamente en tu cuenta.</p>
+          </div>
+        </li>
+        <li class="benefit-item">
+          <span class="benefit-icon">📈</span>
+          <div>
+            <strong>Crece tu reputación</strong>
+            <p>Acumula calificaciones y conviértete en shopper destacado con más solicitudes.</p>
+          </div>
+        </li>
+      </ul>
+
+      <a routerLink="/solicitud" class="btn-outline">Registrarme como shopper</a>
+    </div>
+
+    <!-- Panel de earnings -->
+    <div class="earnings-panel">
+      <p class="ep-title">Shoppers activos este mes</p>
+
+      <div class="ep-stats">
+        <div class="ep-stat">
+          <span class="ep-num">Q6,720</span>
+          <span class="ep-lbl">Promedio mensual</span>
+        </div>
+        <div class="ep-stat">
+          <span class="ep-num">Q11.2K</span>
+          <span class="ep-lbl">Top shoppers</span>
+        </div>
+      </div>
+
+      <ul class="leaderboard">
+        <li class="lb-item">
+          <span class="av av--green av--sm">AM</span>
+          <span class="lb-name">Ana Martínez · 28 solicitudes</span>
+          <span class="lb-amt">Q9,920</span>
+        </li>
+        <li class="lb-item">
+          <span class="av av--orange av--sm">KL</span>
+          <span class="lb-name">Karen López · 22 solicitudes</span>
+          <span class="lb-amt">Q7,840</span>
+        </li>
+        <li class="lb-item">
+          <span class="av av--purple av--sm">LR</span>
+          <span class="lb-name">Luis Ramírez · 19 solicitudes</span>
+          <span class="lb-amt">Q6,080</span>
+        </li>
+        <li class="lb-item">
+          <span class="av av--pink av--sm">SC</span>
+          <span class="lb-name">Sofía Cruz · 17 solicitudes</span>
+          <span class="lb-amt">Q5,440</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── POR QUÉ ASSISTLY ───────────────────────────── -->
+<section class="trust-section">
+  <div class="container">
+    <p class="section-label text-center">POR QUÉ ASSISTLY</p>
+    <h2 class="section-title text-center">Tu tranquilidad es nuestra prioridad.</h2>
+
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">🔒</div>
+        <h3>Pagos 100% seguros</h3>
+        <p>Tu dinero está protegido hasta que confirmes que estás satisfecho con el resultado.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🛡️</div>
+        <h3>Shoppers verificados</h3>
+        <p>Cada shopper pasa por verificación de identidad y evaluación de experiencia antes de activarse.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">↩️</div>
+        <h3>Garantía de satisfacción</h3>
+        <p>Si no quedas satisfecho con el servicio, te devolvemos tu dinero sin preguntas.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">💬</div>
+        <h3>Soporte 24/7</h3>
+        <p>Nuestro equipo está disponible en todo momento para resolver cualquier duda o problema.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ──────────────────────────────────── -->
+<section class="final-cta">
+  <div class="container final-cta-inner">
+    <h2>¿Listo para tu próximo momento especial?</h2>
+    <p>El 79% de las personas que conocieron Assistly dijeron que sí lo usarían. ¿Y tú?</p>
+    <a routerLink="/solicitud" class="btn-white">Encontrar mi shopper ahora</a>
   </div>
 </section>

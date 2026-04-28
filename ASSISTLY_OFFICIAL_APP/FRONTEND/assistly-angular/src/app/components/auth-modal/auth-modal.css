@@ -1,352 +1,354 @@
 /* ── OVERLAY ─────────────────────────────────────── */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  backdrop-filter: blur(4px);
+  position: fixed;/* Fija el overlay en toda la pantalla */
+  inset: 0;/* Ocupa toda la pantalla desde todos los lados */
+  background: rgba(0,0,0,0.6);/* Fondo negro transparente */
+  z-index: 200;/* Lo coloca por encima de otros elementos */
+  display: flex;/* Usa flexbox para centrar el modal */
+  align-items: center;/* Centra verticalmente */
+  justify-content: center;/* Centra horizontalmente */
+  padding: 1rem;/* Espacio interno para que no toque bordes */
+  backdrop-filter: blur(4px);/* Desenfoca el fondo */
 }
 
 /* ── CAJA BASE ───────────────────────────────────── */
 .modal-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  position: relative;
-  animation: modalIn 0.25s ease;
-  overflow: hidden;
+  background: var(--surface);/* Color de fondo del modal */
+  border: 1px solid var(--border);/* Borde del modal */
+  border-radius: 20px;/* Bordes redondeados */
+  position: relative;/* Permite posicionar elementos internos absolutos */
+  animation: modalIn 0.25s ease;/* Aplica animación de entrada */
+  overflow: hidden;/* Oculta contenido que se salga del borde */
 }
 
 @keyframes modalIn {
-  from { opacity: 0; transform: translateY(16px) scale(0.97); }
-  to   { opacity: 1; transform: none; }
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }/* Inicio: invisible, abajo y pequeño */
+  to   { opacity: 1; transform: none; } /* Final: visible y en posición normal */
 }
 
 /* ── MODAL SIMPLE (login) ────────────────────────── */
 .modal-box--simple {
-  width: 100%;
-  max-width: 420px;
-  padding: 2rem;
+  width: 100%;/* Ocupa todo el ancho disponible */
+  max-width: 420px;/* Limita el ancho máximo */
+  padding: 2rem;/* Espacio interno */
 }
 
 /* ── MODAL WIDE (shopper) ────────────────────────── */
 .modal-box--wide {
-  width: 100%;
-  max-width: 820px;
-  max-height: 90vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0;
+  width: 100%;/* Ocupa todo el ancho disponible */
+  max-width: 820px;/* Limita el ancho máximo */
+  max-height: 90vh;/* Limita la altura al 90% de la pantalla */
+  display: grid;/* Usa grid layout */
+  grid-template-columns: 1fr 1fr;/* Divide el modal en dos columnas iguales */
+  padding: 0;/* Quita padding */
 }
 
 /* ── BOTÓN CERRAR ────────────────────────────────── */
 .modal-close {
-  position: absolute;
-  top: 1rem; right: 1rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  width: 32px; height: 32px;
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  z-index: 10;
+  position: absolute; /* Permite colocarlo dentro del modal */
+  top: 1rem; right: 1rem;/* Lo ubica arriba a la derecha */
+  background: var(--bg);/* Fondo del botón */
+  border: 1px solid var(--border);/* Borde */
+  border-radius: 50%;/* Lo hace circular *//* Lo hace circular */
+  width: 32px; height: 32px;/* Tamaño del botón */
+  cursor: pointer;/* Cursor de clic */
+  font-size: 14px;/* Tamaño del símbolo */
+  color: var(--muted);/* Color del texto */
+  display: flex;/* Flexbox para centrar la X */
+  align-items: center;/* Centra verticalmente */
+  justify-content: center;/* Centra horizontalmente */
+  transition: all 0.2s;/* Animación suave */
+  z-index: 10;/* Lo pone por encima del contenido */
 }
 .modal-close:hover {
-  color: var(--text);
-  border-color: var(--text);
+  color: var(--text); /* Cambia color al pasar el mouse */
+  border-color: var(--text);/* Cambia borde al pasar el mouse */
+
 }
 
 .modal-close--dark {
-  background: rgba(255,255,255,0.15);
-  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.15);/* Fondo blanco transparente */
+  border-color: rgba(255,255,255,0.2);/* Borde blanco transparente */
   color: #fff;
 }
 .modal-close--dark:hover {
-  background: rgba(255,255,255,0.25);
-  border-color: #fff;
-  color: #fff;
+  background: rgba(255,255,255,0.25);/* Fondo más visible al pasar el mouse */
+  border-color: #fff;/* Borde blanco */
+  color: #fff;/* Texto blanco */
 }
 
 /* ── PANEL IZQUIERDO VERDE ───────────────────────── */
 .modal-left {
-  background: #1a3d2b;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 500px;
+  background: #1a3d2b;/* Fondo verde oscuro */
+  padding: 2rem;/* Espacio interno */
+  display: flex;/* Usa flexbox */
+  flex-direction: column;/* Ordena elementos en columna */
+  justify-content: space-between;/* Separa contenido arriba y abajo */
+  min-height: 500px;/* Altura mínima */
 }
 
-.modal-left-top { margin-bottom: 2rem; }
+.modal-left-top { margin-bottom: 2rem; } /* Espacio inferior */
 
 .modal-quote {
-  font-family: 'Fraunces', serif;
-  font-size: 1.15rem;
-  font-style: italic;
-  color: #fff;
-  line-height: 1.6;
-  margin-bottom: 0.75rem;
+  font-family: 'Fraunces', serif;/* Fuente decorativa */
+  font-size: 1.15rem;/* Tamaño de texto */
+  font-style: italic; /* Texto en cursiva */
+  color: #fff;/* Texto blanco */
+  line-height: 1.6;/* Altura entre líneas */
+  margin-bottom: 0.75rem;/* Espacio inferior */
 }
 
 .modal-quote-author {
-  font-size: 13px;
-  color: rgba(255,255,255,0.55);
-  margin: 0;
+  font-size: 13px;/* Tamaño del autor */
+  color: rgba(255,255,255,0.55);/* Blanco transparente */
+  margin: 0;/* Quita margen */
 }
 
 /* Calculador */
 .modal-calculator h4 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 4px;
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  font-size: 15px;/* Tamaño */
+  font-weight: 700;/* Negrita */
+  color: #fff;/* Texto blanco */
+  margin-bottom: 4px;/* Espacio inferior */
 }
 .modal-calculator > p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 1rem;
+  font-size: 13px; /* Tamaño del párrafo */
+  color: rgba(255,255,255,0.6);/* Blanco suave */
+  margin-bottom: 1rem;/* Espacio inferior */
 }
 
 .calc-label {
-  display: block;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  margin-top: 0.75rem;
+  display: block; /* Ocupa toda la línea */
+  font-size: 10px;/* Tamaño pequeño */
+  font-weight: 700;/* Negrita */
+  letter-spacing: 0.1em;/* Espaciado entre letras */
+  color: rgba(255,255,255,0.5);/* Blanco transparente */
+  text-transform: uppercase;/* Convierte a mayúsculas */
+  margin-bottom: 6px;/* Espacio debajo */
+  margin-top: 0.75rem;/* Espacio arriba */
 }
 
 .calc-select {
-  width: 100%;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-  border-radius: 8px;
-  padding: 9px 12px;
-  font-size: 13px;
-  outline: none;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
+  width: 100%;/* Ocupa todo el ancho */
+  background: rgba(255,255,255,0.1);/* Fondo blanco transparente */
+  border: 1px solid rgba(255,255,255,0.2);/* Borde blanco transparente */
+  color: #fff;/* Texto blanco */
+  border-radius: 8px;/* Bordes redondeados */
+  padding: 9px 12px;/* Espacio interno */
+  font-size: 13px;/* Tamaño del texto */
+  outline: none;/* Quita borde por defecto */
+  cursor: pointer; /* Cursor de clic */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
 
 .calc-result {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: 1.25rem;
+  display: flex;/* Usa flexbox */
+  align-items: baseline;/* Alinea los textos por su base */
+  gap: 8px;/* Espacio entre número y texto */
+  margin-top: 1.25rem;/* Espacio superior */
 }
 
 .calc-num {
-  font-family: 'Fraunces', serif;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: var(--green);
-  line-height: 1;
+  font-family: 'Fraunces', serif;/* Fuente decorativa */
+  font-size: 2.5rem;/* Número grande */
+  font-weight: 900;/* Muy grueso */
+  color: var(--green);/* Color verde */
+  line-height: 1;/* Ajusta altura de línea */
 }
 
 .calc-lbl {
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
+  font-size: 13px;/* Tamaño del texto */
+  color: rgba(255,255,255,0.6);/* Blanco suave */
 }
 
 .calc-note {
-  font-size: 11px;
-  color: rgba(255,255,255,0.4);
-  margin-top: 4px;
+  font-size: 11px;/* Texto pequeño */
+  color: rgba(255,255,255,0.4);/* Blanco más transparente */
+  margin-top: 4px;/* Espacio arriba */
 }
 
 /* ── PANEL DERECHO ───────────────────────────────── */
 .modal-right {
-  padding: 2rem;
-  overflow-y: auto;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
+  padding: 2rem;/* Espacio interno */
+  overflow-y: auto;/* Permite scroll vertical */
+  max-height: 90vh;/* Altura máxima */
+  display: flex;/* Usa flexbox */
+  flex-direction: column;/* Ordena elementos en columna */
 }
 
 /* ── TABS ────────────────────────────────────────── */
 .modal-tabs {
-  display: flex;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1.5rem;
+  display: flex;/* Coloca tabs en fila */
+  border-bottom: 1px solid var(--border);/* Línea inferior */
+  margin-bottom: 1.5rem; /* Espacio debajo */
 }
 
 .modal-tab {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
-  cursor: pointer;
-  margin-bottom: -1px;
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
+  background: none;/* Sin fondo */
+  border: none;/* Sin borde */
+  border-bottom: 2px solid transparent;/* Borde inferior invisible */
+  padding: 10px 16px;/* Espacio interno */
+  font-size: 14px;/* Tamaño texto */
+  font-weight: 600;/* Grosor */
+  color: var(--muted);/* Color suave */
+  cursor: pointer; /* Cursor de clic */
+  margin-bottom: -1px;/* Ajusta posición sobre la línea */
+  transition: all 0.2s;/* Animación suave */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
 .modal-tab.active {
-  color: var(--green);
-  border-bottom-color: var(--green);
+  color: var(--green);/* Tab activo en verde */
+  border-bottom-color: var(--green);/* Línea inferior verde */
 }
 
 /* ── TÍTULOS ─────────────────────────────────────── */
 .modal-title {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: var(--text);
-  margin-bottom: 4px;
+  font-size: 1.4rem;/* Tamaño del título */
+  font-weight: 900;/* Muy grueso */
+  color: var(--text);/* Color del texto */
+  margin-bottom: 4px;/* Espacio inferior */
 }
 .modal-sub {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
+  font-size: 13px;/* Tamaño del subtítulo */
+  color: var(--muted);/* Color suave */
+  margin-bottom: 1.25rem;/* Espacio inferior */
+  line-height: 1.5;/* Altura de línea */
 }
 
 /* ── INPUTS ──────────────────────────────────────── */
 .m-input {
-  display: block;
-  width: 100%;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 11px 14px;
-  font-size: 14px;
-  outline: none;
-  transition: border 0.2s;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  font-family: 'DM Sans', sans-serif;
+  display: block;/* Ocupa toda la línea */
+  width: 100%;/* Ocupa todo el ancho */
+  background: var(--bg);/* Fondo del input */
+  border: 1.5px solid var(--border);/* Borde */
+  color: var(--text);/* Color del texto */
+  border-radius: 10px;/* Bordes redondeados */
+  padding: 11px 14px;/* Espacio interno */
+  font-size: 14px;/* Tamaño del texto */
+  outline: none;/* Quita borde por defecto */
+  transition: border 0.2s;/* Animación del borde */
+  margin-bottom: 10px;/* Espacio inferior */
+  box-sizing: border-box;/* Incluye borde y padding dentro del ancho */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
 .m-input:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(59,188,124,0.1);
+  border-color: var(--green);/* Borde verde al seleccionar */
+  box-shadow: 0 0 0 3px rgba(59,188,124,0.1);/* Sombra verde suave */
 }
 
 /* Fila de dos inputs */
 .m-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 10px;
+  display: grid;/* Usa grid layout */
+  grid-template-columns: 1fr 1fr;/* Dos columnas iguales */
+  gap: 10px;/* Espacio entre inputs */
+  margin-bottom: 10px;/* Espacio inferior */
 }
-.m-row .m-input { margin-bottom: 0; }
+.m-row .m-input { margin-bottom: 0; }/* Quita margen inferior dentro de la fila */
 
 /* Teléfono */
 .m-phone {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-  align-items: center;
+  display: flex;/* Coloca código y teléfono en fila */
+  gap: 8px;/* Espacio entre elementos */
+  margin-bottom: 10px;/* Espacio inferior */
+  align-items: center;/* Centra verticalmente */
 }
 .m-phone-code {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 11px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-  flex-shrink: 0;
+  background: var(--bg);/* Fondo */
+  border: 1.5px solid var(--border);/* Borde */
+  border-radius: 10px;/* Bordes redondeados */
+  padding: 11px 12px;/* Espacio interno */
+  font-size: 13px;/* Tamaño texto */
+  font-weight: 600;/* Grosor */
+  color: var(--text);/* Color texto */
+  white-space: nowrap;/* Evita salto de línea */
+  flex-shrink: 0;/* Evita que se haga más pequeño */
 }
 .m-input--phone {
-  flex: 1;
-  margin-bottom: 0;
+  flex: 1;/* El input ocupa el espacio restante */
+  margin-bottom: 0;/* Quita margen inferior */
 }
 
 /* ── CHECKBOXES ──────────────────────────────────── */
 .m-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
+  display: flex;/* Coloca checkbox y texto en fila */
+  align-items: flex-start;/* Alinea arriba */
+  gap: 10px;/* Espacio entre checkbox y texto */
+  margin-bottom: 10px;/* Espacio inferior */
+  cursor: pointer;/* Cursor de clic */
 }
 .m-check input[type="checkbox"] {
-  width: 16px; height: 16px;
-  margin-top: 2px;
-  accent-color: var(--green);
-  flex-shrink: 0;
-  cursor: pointer;
+  width: 16px; height: 16px; /* Tamaño del checkbox */
+  margin-top: 2px;/* Ajusta posición */
+  accent-color: var(--green);/* Color del check */
+  flex-shrink: 0;/* Evita que se deforme */
+  cursor: pointer;/* Cursor de clic */
 }
 .m-check span {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
+  font-size: 13px;/* Tamaño del texto */
+  color: var(--muted);/* Color suave */
+  line-height: 1.5;/* Altura de línea */
 }
 
 /* ── LINKS ───────────────────────────────────────── */
 .m-link {
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 600;
+  color: var(--green);/* Color verde */
+  text-decoration: none;/* Quita subrayado */
+  font-weight: 600;/* Grosor */
 }
-.m-link:hover { text-decoration: underline; }
+.m-link:hover { text-decoration: underline; }/* Subraya al pasar el mouse */
 
 /* ── ERROR ───────────────────────────────────────── */
 .m-error {
-  font-size: 12px;
-  color: #ef4444;
-  margin-bottom: 8px;
+  font-size: 12px;/* Tamaño del error */
+  color: #ef4444;/* Color rojo */
+  margin-bottom: 8px;/* Espacio inferior */
 }
 
 /* ── BOTÓN PRINCIPAL ─────────────────────────────── */
 .m-btn-primary {
-  width: 100%;
-  background: var(--green);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 13px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 6px;
-  font-family: 'DM Sans', sans-serif;
+  width: 100%;/* Ocupa todo el ancho */
+  background: var(--green);/* Fondo verde */
+  color: #fff;/* Texto blanco */
+  border: none;/* Sin borde */
+  border-radius: 10px;/* Bordes redondeados */
+  padding: 13px;/* Espacio interno */
+  font-size: 15px;/* Tamaño texto */
+  font-weight: 700;/* Negrita */
+  cursor: pointer;/* Cursor de clic */
+  transition: background 0.2s;/* Animación del fondo */
+  margin-top: 6px;/* Espacio superior */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
-.m-btn-primary:hover:not(:disabled) { background: var(--green-dark); }
-.m-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.m-btn-primary:hover:not(:disabled) { background: var(--green-dark); }/* Fondo más oscuro al pasar el mouse */
+.m-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }/* Botón más transparente */
+                                                              /* Cursor de no permitido */
 
 /* ── PIE DEL MODAL ───────────────────────────────── */
 .m-footer-text {
-  text-align: center;
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 1rem;
+  text-align: center;/* Centra texto */
+  font-size: 13px;/* Tamaño texto */
+  color: var(--muted);/* Color suave */
+  margin-top: 1rem;/* Espacio superior */
 }
 .m-link-btn {
-  background: none;
-  border: none;
-  color: var(--green);
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
-  padding: 0;
+  background: none;/* Sin fondo */
+  border: none;/* Sin borde */
+  color: var(--green);/* Texto verde */
+  font-weight: 600;/* Negrita */
+  cursor: pointer;/* Cursor de clic */
+  font-size: 13px;/* Tamaño texto */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  padding: 0;/* Sin espacio interno */
 }
-.m-link-btn:hover { text-decoration: underline; }
+.m-link-btn:hover { text-decoration: underline; }/* Subraya al pasar mouse */
 
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 700px) {
   .modal-box--wide {
-    grid-template-columns: 1fr;
-    max-width: 480px;
+    grid-template-columns: 1fr;/* Cambia a una sola columna */
+    max-width: 480px;/* Reduce ancho máximo */
   }
-  .modal-left { display: none; }
-  .modal-right { max-height: 85vh; }
+  .modal-left { display: none; }/* Oculta panel izquierdo en móvil */
+  .modal-right { max-height: 85vh; }/* Ajusta altura del panel derecho */
 }

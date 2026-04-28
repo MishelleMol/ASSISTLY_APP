@@ -1,197 +1,197 @@
 /* ── BANNER SUPERIOR ─────────────────────────────── */
 .top-banner {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 101;
-  height: 32px;
-  background: var(--green);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 500;
+  position: fixed;/* Fija el banner en la pantalla aunque se haga scroll */
+  top: 0; left: 0; right: 0;/* Lo coloca arriba y ocupa todo el ancho */
+  z-index: 101;/* Lo pone por encima de otros elementos */
+  height: 32px;/* Define la altura del banner */
+  background: var(--green);/* Usa el color verde definido en variables */
+  color: #fff;/* Texto blanco */
+  display: flex;/* Usa flexbox para acomodar contenido */
+  align-items: center;/* Centra verticalmente */
+  justify-content: center;/* Centra horizontalmente */
+  gap: 8px; /* Espacio entre el punto y el texto */
+  font-size: 0.82rem; /* Tamaño del texto */
+  font-weight: 500;/* Grosor medio del texto */
 }
 
 .banner-dot {
-  width: 7px; height: 7px;
-  background: #fff;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
+  width: 7px; height: 7px;/* Tamaño del punto */
+  background: #fff;/* Color blanco */
+  border-radius: 50%;/* Lo convierte en círculo */
+  animation: pulse 2s infinite;/* Aplica animación de parpadeo */
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.8); }
+  0%, 100% { opacity: 1; transform: scale(1); }/* Inicio y final: visible y tamaño normal */
+  50%       { opacity: 0.4; transform: scale(0.8); }/* Mitad: más transparente y pequeño */
 }
 
 /* ── NAVBAR ──────────────────────────────────────── */
 .navbar {
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  position: fixed;
-  top: 32px;
-  left: 0; right: 0;
-  z-index: 100;
-  width: 100%;
+  background: var(--bg);/* Fondo del navbar */
+  border-bottom: 1px solid var(--border);/* Línea inferior */
+  position: fixed;/* Mantiene el navbar fijo */
+  top: 32px;/* Lo coloca debajo del banner */
+  left: 0; right: 0;/* Ocupa todo el ancho */
+  z-index: 100;/* Lo pone debajo del banner, pero encima del contenido */
+  width: 100%;/* Ancho completo */
 }
 
 .navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px;/* Ancho máximo del contenido */
+  margin: 0 auto;/* Centra el contenedor */
   padding: 0.85rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  display: flex;/* Espacio interno */
+  align-items: center;/* Centra elementos verticalmente */
+  gap: 2rem;/* Espacio entre elementos */
 }
 
 /* ── LOGO ────────────────────────────────────────── */
 .brand {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-  text-decoration: none;
-  flex-shrink: 0;
-  font-family: 'DM Sans', sans-serif;
+  font-size: 1.3rem;/* Tamaño del logo */
+  font-weight: 700;/* Negrita */
+  color: var(--text);/* Color principal del texto */
+  text-decoration: none;/* Quita subrayado del link */
+  flex-shrink: 0;/* Evita que el logo se haga pequeño */
+  font-family: 'DM Sans', sans-serif;/* Fuente del logo */
 }
-.brand span { color: var(--green); }
+.brand span { color: var(--green); }/* Colorea una parte del logo en verde */
 
 /* ── LINKS DEL CENTRO ────────────────────────────── */
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex: 1;
+  display: flex;/* Coloca los links en fila */
+  align-items: center;/* Centra verticalmente */
+  gap: 4px;/* Espacio entre links */
+  flex: 1;/* Ocupa el espacio disponible */
 }
 
 .nav-link {
-  padding: 6px 14px;
-  border-radius: 8px;
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: all 0.2s;
-  white-space: nowrap;
+  padding: 6px 14px;/* Espacio interno del link */
+  border-radius: 8px;/* Bordes redondeados */
+  color: var(--muted); /* Color suave */
+  text-decoration: none;/* Quita subrayado */
+  font-size: 0.88rem;/* Tamaño del texto */
+  font-weight: 500;/* Grosor medio */
+  transition: all 0.2s;/* Animación suave */
+  white-space: nowrap;/* Evita que el texto se parta */
 }
 .nav-link:hover, .nav-link.active {
-  color: var(--text);
-  background: var(--surface);
+  color: var(--text); /* Cambia color al pasar mouse o estar activo */
+  background: var(--surface);/* Agrega fondo */
 }
 
 /* ── ACCIONES DE LA DERECHA ──────────────────────── */
 .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
+  display: flex;/* Coloca botones en fila */
+  align-items: center;/* Centra verticalmente */
+  gap: 12px;/* Espacio entre botones */
+  margin-left: auto;/* Empuja los botones hacia la derecha */
 }
 
 /* Iniciar sesión — botón sin estilos por defecto */
 .nav-ghost {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text);
-  white-space: nowrap;
-  transition: color 0.2s;
-  padding: 0;
+  background: none;/* Sin fondo */
+  border: none;/* Sin borde */
+  cursor: pointer;/* Cursor de clic */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  font-size: 0.88rem;/* Tamaño del texto */
+  font-weight: 500;/* Grosor medio */
+  color: var(--text); /* Color del texto */
+  white-space: nowrap;/* Evita salto de línea */
+  transition: color 0.2s;/* Animación del color */
+  padding: 0;/* Sin padding */
 }
-.nav-ghost:hover { color: var(--green); }
+.nav-ghost:hover { color: var(--green); }/* Cambia a verde al pasar el mouse */
 
 /* Ser shopper — botón con borde verde */
 .btn-cta--outline {
-  border: 1.5px solid var(--green);
-  color: var(--green);
-  background: transparent;
-  padding: 7px 18px;
-  border-radius: 8px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  transition: all 0.2s;
-  white-space: nowrap;
+  border: 1.5px solid var(--green);/* Borde verde */
+  color: var(--green);/* Texto verde */
+  background: transparent;/* Fondo transparente */
+  padding: 7px 18px;/* Espacio interno */
+  border-radius: 8px;/* Bordes redondeados */
+  font-size: 0.88rem;/* Tamaño del texto */
+  font-weight: 600;/* Semi negrita */
+  cursor: pointer;/* Cursor de clic */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  transition: all 0.2s;/* Animación suave */
+  white-space: nowrap;/* Evita que el texto se parta */
 }
 .btn-cta--outline:hover {
-  background: var(--green);
-  color: #fff;
+  background: var(--green);/* Fondo verde al pasar mouse */
+  color: #fff;/* Texto blanco */
 }
 
 /* ── SWITCH DE TEMA ──────────────────────────────── */
 .theme-switch {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
+  position: relative;/* Permite posicionar elementos internos */
+  cursor: pointer; /* Cursor de clic */
+  display: inline-block; /* Se comporta como bloque en línea */
 }
 
-.theme-switch input { display: none; }
+.theme-switch input { display: none; } /* Oculta el checkbox real */
 
 .switch-track {
-  display: block;
-  width: 42px; height: 22px;
-  background: var(--green);
-  border-radius: 999px;
-  position: relative;
-  transition: background 0.2s;
+  display: block;/* Muestra el switch como bloque */
+  width: 42px; height: 22px;/* Tamaño del switch */
+  background: var(--green);/* Fondo verde */
+  border-radius: 999px;/* Forma de píldora */
+  position: relative;/* Permite mover el círculo interno */
+  transition: background 0.2s;/* Animación del fondo */
 }
 
 .switch-track::before {
-  content: '';
-  position: absolute;
-  width: 16px; height: 16px;
-  background: #fff;
-  border-radius: 50%;
-  top: 3px; left: 3px;
+  content: '';/* Crea el círculo interno */
+  position: absolute;/* Posiciona el círculo dentro del switch */
+  width: 16px; height: 16px;/* Tamaño del círculo */
+  background: #fff;/* Círculo blanco */
+  border-radius: 50%;/* Forma circular */
+  top: 3px; left: 3px;/* Posición inicial */
   transition: transform 0.2s;
-}
+} /* Animación del movimiento */
 
 .theme-switch input:checked + .switch-track::before {
-  transform: translateX(20px);
+  transform: translateX(20px);/* Mueve el círculo a la derecha cuando está activo */
 }
 
 .theme-switch input:not(:checked) + .switch-track {
-  background: var(--green);
+  background: var(--green);/* Mantiene fondo verde cuando no está activo */
 }
 
 /* ── HAMBURGUESA (móvil) ─────────────────────────── */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
+  display: none;/* Oculta el botón en escritorio */
+  flex-direction: column;  /* Ordena las líneas en columna */
+  gap: 5px;/* Espacio entre líneas */
+  background: none; /* Sin fondo */
+  border: none;/* Sin borde */
+  cursor: pointer;/* Cursor de clic */
+  padding: 4px;/* Espacio interno */
 }
 .hamburger span {
-  display: block;
-  width: 24px; height: 2px;
-  background: var(--text);
-  border-radius: 2px;
+  display: block;/* Cada línea ocupa su propio espacio */
+  width: 24px; height: 2px;/* Tamaño de cada línea */
+  background: var(--text);/* Color de las líneas */
+  border-radius: 2px;/* Bordes redondeados */
 }
 
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 768px) {
-  .hamburger { display: flex; }
+  .hamburger { display: flex; }/* Muestra hamburguesa en pantallas pequeñas */
 
   .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    align-items: flex-start;
-    padding-bottom: 1rem;
+    display: none;/* Oculta links por defecto en móvil */
+    flex-direction: column;/* Ordena links en columna */
+    width: 100%;/* Ocupa todo el ancho */
+    align-items: flex-start;/* Alinea links a la izquierda */
+    padding-bottom: 1rem;/* Espacio inferior */
   }
-  .nav-links.abierto { display: flex; }
+  .nav-links.abierto { display: flex; }/* Muestra links cuando el menú está abierto */
 
   .nav-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 0;
-    width: 100%;
+    flex-direction: column;/* Coloca botones en columna */
+    align-items: flex-start;/* Alinea botones a la izquierda */
+    margin-left: 0;/* Quita empuje hacia la derecha */
+    width: 100%;/* Ocupa todo el ancho */
   }
 }

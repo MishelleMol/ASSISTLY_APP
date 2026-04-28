@@ -1,26 +1,27 @@
-<!-- ══ MODAL INICIAR SESIÓN (simple) ══ -->
-<div class="modal-overlay" *ngIf="abierto && tipo==='login'" (click)="onCerrar()">
-  <div class="modal-box modal-box--simple" (click)="$event.stopPropagation()">
+<!-- MODAL INICIAR SESIÓN SIMPLE -->
+<div class="modal-overlay" *ngIf="abierto && tipo==='login'" (click)="onCerrar()"> <!-- Muestra el modal solo si está abierto y es tipo login; clic fuera lo cierra -->
+  <div class="modal-box modal-box--simple" (click)="$event.stopPropagation()"> <!-- Caja del modal; evita que clic interno cierre el modal -->
 
-    <button class="modal-close" (click)="onCerrar()">✕</button>
+    <button class="modal-close" (click)="onCerrar()">✕</button> <!-- Botón para cerrar el modal -->
 
-    <h2 class="modal-title">Iniciar sesión</h2>
-    <p class="modal-sub">Accede a tu cuenta de Assistly.</p>
+    <h2 class="modal-title">Iniciar sesión</h2> <!-- Título del modal -->
+    <p class="modal-sub">Accede a tu cuenta de Assistly.</p> <!-- Subtítulo -->
 
     <input class="m-input" type="email"
-      placeholder="Correo electrónico" [(ngModel)]="loginEmail" />
+      placeholder="Correo electrónico" [(ngModel)]="loginEmail" /> <!-- Input de correo vinculado a loginEmail -->
+
     <input class="m-input" type="password"
-      placeholder="Contraseña" [(ngModel)]="loginPassword" />
+      placeholder="Contraseña" [(ngModel)]="loginPassword" /> <!-- Input de contraseña vinculado a loginPassword -->
 
-    <p class="m-error" *ngIf="modalError">{{ modalError }}</p>
+    <p class="m-error" *ngIf="modalError">{{ modalError }}</p> <!-- Muestra error si existe -->
 
-    <button class="m-btn-primary" (click)="login()" [disabled]="modalLoading">
-      {{ modalLoading ? 'Ingresando...' : 'Iniciar sesión' }}
+    <button class="m-btn-primary" (click)="login()" [disabled]="modalLoading"> <!-- Botón login, se desactiva mientras carga -->
+      {{ modalLoading ? 'Ingresando...' : 'Iniciar sesión' }} <!-- Cambia texto según estado -->
     </button>
 
-    <p class="m-footer-text">
+    <p class="m-footer-text"> <!-- Texto inferior -->
       ¿No tienes cuenta?
-      <button class="m-link-btn" (click)="onCerrar(); abrirShopper()">
+      <button class="m-link-btn" (click)="onCerrar(); abrirShopper()"> <!-- Cierra este modal y abre el de shopper -->
         Regístrate gratis
       </button>
     </p>
@@ -28,133 +29,135 @@
   </div>
 </div>
 
-<!-- ══ MODAL SER SHOPPER (dos paneles) ══ -->
-<div class="modal-overlay" *ngIf="abierto && tipo==='shopper'" (click)="onCerrar()">
-  <div class="modal-box modal-box--wide" (click)="$event.stopPropagation()">
+<!-- MODAL SER SHOPPER -->
+<div class="modal-overlay" *ngIf="abierto && tipo==='shopper'" (click)="onCerrar()"> <!-- Muestra modal shopper; clic fuera cierra -->
+  <div class="modal-box modal-box--wide" (click)="$event.stopPropagation()"> <!-- Modal ancho; evita cierre por clic interno -->
 
-    <button class="modal-close modal-close--dark" (click)="onCerrar()">✕</button>
+    <button class="modal-close modal-close--dark" (click)="onCerrar()">✕</button> <!-- Botón cerrar oscuro -->
 
-    <!-- Panel izquierdo verde -->
-    <div class="modal-left">
-      <div class="modal-left-top">
-        <p class="modal-quote">"Trabajo cuando quiero y gano lo que merezco."</p>
-        <p class="modal-quote-author">— Ana Martínez, Shopper desde 2023</p>
+    <!-- PANEL IZQUIERDO -->
+    <div class="modal-left"> <!-- Panel visual con info -->
+      <div class="modal-left-top"> <!-- Parte superior -->
+        <p class="modal-quote">"Trabajo cuando quiero y gano lo que merezco."</p> <!-- Frase -->
+        <p class="modal-quote-author">— Ana Martínez, Shopper desde 2023</p> <!-- Autor -->
       </div>
 
-      <div class="modal-calculator">
-        <h4>Calcula tus ganancias</h4>
-        <p>Estima cuánto podrías ganar como shopper.</p>
+      <div class="modal-calculator"> <!-- Calculador -->
+        <h4>Calcula tus ganancias</h4> <!-- Título -->
+        <p>Estima cuánto podrías ganar como shopper.</p> <!-- Descripción -->
 
-        <label class="calc-label">TU ZONA</label>
-        <select class="calc-select" [(ngModel)]="zona" (change)="calcular()">
+        <label class="calc-label">TU ZONA</label> <!-- Label zona -->
+        <select class="calc-select" [(ngModel)]="zona" (change)="calcular()"> <!-- Selector de zona -->
           <option value="gt">Ciudad de Guatemala</option>
           <option value="mix">Mixco</option>
           <option value="villa">Villa Nueva</option>
           <option value="antigua">Antigua Guatemala</option>
         </select>
 
-        <label class="calc-label">CATEGORÍA PRINCIPAL</label>
-        <select class="calc-select" [(ngModel)]="categoriaCalc" (change)="calcular()">
+        <label class="calc-label">CATEGORÍA PRINCIPAL</label> <!-- Label categoría -->
+        <select class="calc-select" [(ngModel)]="categoriaCalc" (change)="calcular()"> <!-- Selector categoría -->
           <option value="moda">Moda &amp; Outfits</option>
           <option value="tech">Tecnología</option>
           <option value="hogar">Hogar &amp; Deco</option>
           <option value="regalos">Regalos</option>
         </select>
 
-        <div class="calc-result">
-          <span class="calc-num">Q{{ tarifaEstimada }}</span>
-          <span class="calc-lbl">por hora estimado</span>
+        <div class="calc-result"> <!-- Resultado del cálculo -->
+          <span class="calc-num">Q{{ tarifaEstimada }}</span> <!-- Muestra tarifa -->
+          <span class="calc-lbl">por hora estimado</span> <!-- Texto -->
         </div>
-        <p class="calc-note">Basado en el promedio de shoppers activos este mes.</p>
+
+        <p class="calc-note">Basado en el promedio de shoppers activos este mes.</p> <!-- Nota -->
       </div>
     </div>
 
-    <!-- Panel derecho -->
-    <div class="modal-right">
+    <!-- PANEL DERECHO -->
+    <div class="modal-right"> <!-- Contenedor de formularios -->
 
-      <!-- Tabs -->
-      <div class="modal-tabs">
+      <!-- TABS -->
+      <div class="modal-tabs"> <!-- Contenedor de pestañas -->
         <button class="modal-tab" [class.active]="tabActivo==='registro'"
-          (click)="tabActivo='registro'; modalError=''">
+          (click)="tabActivo='registro'; modalError=''"> <!-- Activa tab registro -->
           Crear cuenta
         </button>
+
         <button class="modal-tab" [class.active]="tabActivo==='login'"
-          (click)="tabActivo='login'; modalError=''">
+          (click)="tabActivo='login'; modalError=''"> <!-- Activa tab login -->
           Ya tengo cuenta
         </button>
       </div>
 
-      <!-- Tab Registro -->
-      <div *ngIf="tabActivo==='registro'">
-        <h2 class="modal-title">Únete como shopper</h2>
-        <p class="modal-sub">Crea tu cuenta. Te contactaremos para completar tu verificación.</p>
+      <!-- REGISTRO -->
+      <div *ngIf="tabActivo==='registro'"> <!-- Muestra registro -->
+        <h2 class="modal-title">Únete como shopper</h2> <!-- Título -->
+        <p class="modal-sub">Crea tu cuenta...</p> <!-- Descripción -->
 
         <input class="m-input" type="email"
-          placeholder="Correo electrónico" [(ngModel)]="regEmail" />
+          placeholder="Correo electrónico" [(ngModel)]="regEmail" /> <!-- Email -->
 
-        <div class="m-row">
+        <div class="m-row"> <!-- Fila de dos inputs -->
           <input class="m-input" type="text"
-            placeholder="Nombre"   [(ngModel)]="regNombre" />
+            placeholder="Nombre" [(ngModel)]="regNombre" /> <!-- Nombre -->
           <input class="m-input" type="text"
-            placeholder="Apellido" [(ngModel)]="regApellido" />
+            placeholder="Apellido" [(ngModel)]="regApellido" /> <!-- Apellido -->
         </div>
 
-        <div class="m-phone">
-          <span class="m-phone-code">GT +502</span>
+        <div class="m-phone"> <!-- Teléfono -->
+          <span class="m-phone-code">GT +502</span> <!-- Código país -->
           <input class="m-input m-input--phone" type="tel"
-            placeholder="Número de teléfono" [(ngModel)]="regTelefono" />
+            placeholder="Número de teléfono" [(ngModel)]="regTelefono" /> <!-- Número -->
         </div>
 
         <input class="m-input" type="password"
-          placeholder="Crea una contraseña (mín. 6 caracteres)"
-          [(ngModel)]="regPassword" />
+          placeholder="Crea una contraseña"
+          [(ngModel)]="regPassword" /> <!-- Password -->
 
-        <label class="m-check">
+        <label class="m-check"> <!-- Checkbox términos -->
           <input type="checkbox" [(ngModel)]="aceptaTerminos" />
-          <span>Acepto los <a href="#" class="m-link">Términos y Condiciones</a>
-            y la <a href="#" class="m-link">Política de Privacidad</a>.</span>
+          <span>Acepto términos...</span>
         </label>
 
-        <label class="m-check">
+        <label class="m-check"> <!-- Checkbox edad -->
           <input type="checkbox" [(ngModel)]="confirmaEdad" />
-          <span>Confirmo que tengo 18 años o más y puedo trabajar de forma independiente.</span>
+          <span>Confirmo edad</span>
         </label>
 
-        <p class="m-error" *ngIf="modalError">{{ modalError }}</p>
+        <p class="m-error" *ngIf="modalError">{{ modalError }}</p> <!-- Error -->
 
         <button class="m-btn-primary" (click)="registrar()"
-          [disabled]="modalLoading || !aceptaTerminos || !confirmaEdad">
+          [disabled]="modalLoading || !aceptaTerminos || !confirmaEdad"> <!-- Botón registro -->
           {{ modalLoading ? 'Creando cuenta...' : 'Crear cuenta y aplicar' }}
         </button>
 
-        <p class="m-footer-text">
+        <p class="m-footer-text"> <!-- Footer -->
           ¿Ya eres shopper?
           <button class="m-link-btn" (click)="tabActivo='login'">Inicia sesión</button>
         </p>
       </div>
 
-      <!-- Tab Login dentro de Shopper -->
-      <div *ngIf="tabActivo==='login'">
-        <h2 class="modal-title">Bienvenido de vuelta</h2>
-        <p class="modal-sub">Accede a tu panel de shopper.</p>
+      <!-- LOGIN -->
+      <div *ngIf="tabActivo==='login'"> <!-- Muestra login -->
+        <h2 class="modal-title">Bienvenido de vuelta</h2> <!-- Título -->
+        <p class="modal-sub">Accede a tu panel</p> <!-- Subtítulo -->
 
         <input class="m-input" type="email"
-          placeholder="Correo electrónico" [(ngModel)]="loginEmail" />
+          placeholder="Correo electrónico" [(ngModel)]="loginEmail" /> <!-- Email -->
+
         <input class="m-input" type="password"
-          placeholder="Contraseña" [(ngModel)]="loginPassword" />
+          placeholder="Contraseña" [(ngModel)]="loginPassword" /> <!-- Password -->
 
-        <p class="m-error" *ngIf="modalError">{{ modalError }}</p>
+        <p class="m-error" *ngIf="modalError">{{ modalError }}</p> <!-- Error -->
 
-        <button class="m-btn-primary" (click)="login()" [disabled]="modalLoading">
+        <button class="m-btn-primary" (click)="login()" [disabled]="modalLoading"> <!-- Botón login -->
           {{ modalLoading ? 'Ingresando...' : 'Iniciar sesión' }}
         </button>
 
-        <p class="m-footer-text">
+        <p class="m-footer-text"> <!-- Footer -->
           ¿No tienes cuenta?
           <button class="m-link-btn" (click)="tabActivo='registro'">Regístrate aquí</button>
         </p>
       </div>
 
-    </div><!-- /modal-right -->
+    </div> <!-- Fin panel derecho -->
   </div>
 </div>

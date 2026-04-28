@@ -1,189 +1,193 @@
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-.text-center { text-align: center; }
+.text-center { text-align: center; }/* Centra el texto */
 
 /* ── HERO ─────────────────────────────────────────── */
 .hero {
-  padding: 4rem 0 3rem;
-  background: var(--bg);
+  padding: 4rem 0 3rem;/* Espacio interno arriba y abajo */
+  background: var(--bg);/* Fondo de la sección hero */
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+  display: grid;/* Usa diseño de cuadrícula */
+  grid-template-columns: 1fr 1fr;/* Divide en dos columnas iguales */
+  gap: 3rem;/* Espacio entre columnas */
+  align-items: center;/* Centra verticalmente los elementos */
 }
 
 /* Badge de disponibilidad */
 .badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 6px 16px;
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
+  display: inline-flex;/* Coloca contenido en línea usando flex */
+  align-items: center;/* Centra verticalmente el contenido */
+  gap: 8px; /* Espacio entre el punto y el texto */
+  background: var(--surface);/* Fondo del badge */
+  border: 1px solid var(--border);/* Borde del badge */
+  border-radius: 999px;/* Forma de píldora */
+  padding: 6px 16px;/* Espacio interno */
+  font-size: 13px;/* Tamaño del texto */
+  color: var(--muted); /* Color suave */
+  margin-bottom: 1.5rem;/* Espacio debajo */
 }
 
 .badge-dot {
-  width: 8px; height: 8px;
-  background: var(--green);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
+  width: 8px; height: 8px;/* Tamaño del punto */
+  background: var(--green);/* Color verde */
+  border-radius: 50%;/* Lo hace circular */
+  animation: pulse 2s infinite;/* Aplica animación de pulso */
 }
 
 @keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%      { opacity:.4; transform:scale(.8); }
+  0%,100% { opacity:1; transform:scale(1); }/* Inicio y final: visible y tamaño normal */
+  50%      { opacity:.4; transform:scale(.8); }/* Mitad: más transparente y pequeño */
 }
 
 /* Título del hero */
 .hero-title {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 900;
-  line-height: 1.05;
-  color: var(--text);
-  margin-bottom: 1.2rem;
+  font-size: clamp(2.2rem, 5vw, 4rem);/* Tamaño adaptable según pantalla */
+  font-weight: 900; /* Texto muy grueso */
+  line-height: 1.05;/* Altura entre líneas */
+  color: var(--text);/* Color principal del texto */
+  margin-bottom: 1.2rem;/* Espacio inferior */
 }
 .hero-title em {
-  color: var(--green);
-  font-style: italic;
+  color: var(--green);/* Colorea en verde el texto dentro de em */
+  font-style: italic;/* Aplica cursiva */
 }
 
 .hero-desc {
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.7;
-  max-width: 460px;
-  margin-bottom: 2rem;
+  color: var(--muted);/* Color suave */
+  font-size: 1rem;/* Tamaño del texto */
+  line-height: 1.7;/* Espaciado entre líneas */
+  max-width: 460px;/* Ancho máximo del párrafo */
+  margin-bottom: 2rem; /* Espacio debajo */
 }
 
 /* Prueba social */
 .hero-proof {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 1.2rem;
+  display: flex;/* Coloca elementos en fila */
+  align-items: center;/* Centra verticalmente */
+  gap: 10px;/* Espacio entre elementos */
+  margin-top: 1.2rem;/* Espacio superior */
 }
 
 .proof-avatars {
-  display: flex;
+  display: flex;/* Coloca avatares en fila */
 }
 .proof-avatars .av {
-  margin-left: -8px;
-  border: 2px solid var(--bg);
+  margin-left: -8px;/* Superpone un poco los avatares */
+  border: 2px solid var(--bg);/* Borde para separarlos visualmente */
 }
-.proof-avatars .av:first-child { margin-left: 0; }
+.proof-avatars .av:first-child { margin-left: 0; } /* El primer avatar no se superpone */
 
-.proof-stars { color: #f59e0b; font-size: 14px; }
-.proof-text  { font-size: 13px; color: var(--muted); }
+.proof-stars { color: #f59e0b; /* Color amarillo para estrellas */
+  font-size: 14px; }/* Tamaño de estrellas */
+
+.proof-text  { 
+  font-size: 13px; /* Tamaño del texto */
+  color: var(--muted); }/* Color suave */
 
 /* ── AVATARES ─────────────────────────────────────── */
 .av {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 13px;
-  color: #fff;
-  flex-shrink: 0;
+  width: 36px; height: 36px;/* Tamaño del avatar */
+  border-radius: 50%;/* Forma circular */
+  display: inline-flex;/* Usa flex en línea */
+  align-items: center;/* Centra verticalmente */
+  justify-content: center;/* Centra horizontalmente */
+  font-weight: 700;/* Texto en negrita */
+  font-size: 13px;/* Tamaño de iniciales */
+  color: #fff;/* Texto blanco */
+  flex-shrink: 0;/* Evita que el avatar se reduzca */
 }
-.av--sm  { width: 30px; height: 30px; font-size: 11px; }
-.av--lg  { width: 52px; height: 52px; font-size: 16px; }
-.av--green  { background: #3bbc7c; color: #0f172a; }
-.av--orange { background: #f97316; }
-.av--purple { background: #8b5cf6; }
-.av--pink   { background: #ec4899; }
+.av--sm  { width: 30px; height: 30px; font-size: 11px; }/* Avatar pequeño */
+.av--lg  { width: 52px; height: 52px; font-size: 16px; }/* Avatar grande */
+.av--green  { background: #3bbc7c; color: #0f172a; }/* Fondo verde */
+.av--orange { background: #f97316; }/* Fondo naranja */
+.av--purple { background: #8b5cf6; }/* Fondo morado */
+.av--pink   { background: #ec4899; }/* Fondo rosado */
 
 /* ── CHAT WIDGET ──────────────────────────────────── */
 .chat-widget {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,.1);
-  max-width: 380px;
-  margin-left: auto;
+  background: var(--surface);/* Fondo de la tarjeta del chat */
+  border: 1px solid var(--border);/* Borde */
+  border-radius: 20px;/* Bordes redondeados */
+  padding: 1.5rem;/* Espacio interno */
+  box-shadow: 0 20px 60px rgba(0,0,0,.1);/* Sombra */
+  max-width: 380px; /* Ancho máximo */
+  margin-left: auto;/* Lo empuja hacia la derecha */
 }
 
 .cw-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  display: flex;/* Coloca elementos en fila */
+  justify-content: space-between;/* Separa logo y badge */
+  align-items: center;/* Centra verticalmente */
+  margin-bottom: 1rem; /*Espacio inferior */
 }
 
 .cw-logo {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text);
+  font-weight: 700;/* Texto en negrita */
+  font-size: 1.1rem;/* Tamaño del logo */
+  color: var(--text);/* Color principal */
 }
-.cw-logo span { color: var(--green); }
+.cw-logo span { color: var(--green); }/* Parte del logo en verde */
 
 .cw-badge {
-  width: 20px; height: 20px;
-  background: var(--green);
-  color: #fff;
-  border-radius: 50%;
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 20px; height: 20px;/* Tamaño del badge */
+  background: var(--green);/* Fondo verde */
+  color: #fff;/* Texto blanco */
+  border-radius: 50%;/* Forma circular */
+  font-size: 11px;/* Tamaño pequeño */
+  font-weight: 700;/* Negrita */
+  display: flex;/* Usa flexbox */
+  align-items: center;/* Centra verticalmente */
+  justify-content: center;/* Centra horizontalmente */
 }
 
 .cw-search {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bg);
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 1rem;
+  display: flex;/* Coloca los elementos en fila */
+  align-items: center;/* Centra verticalmente */
+  gap: 8px;/* Espacio entre icono e input */
+  background: var(--bg);/* Fondo del buscador */
+  border-radius: 10px;/* Bordes redondeados */
+  padding: 10px 14px;/* Espacio interno */
+  margin-bottom: 1rem;/* Espacio inferior */
 }
 .cw-search input {
-  background: none;
-  border: none;
-  outline: none;
-  color: var(--muted);
-  font-size: 13px;
-  width: 100%;
-  font-family: 'DM Sans', sans-serif;
+  background: none;/* Sin fondo */
+  border: none;/* Sin borde */
+  outline: none;/* Quita borde al seleccionar */
+  color: var(--muted); /* Color del texto */
+  font-size: 13px;/* Tamaño del texto */
+  width: 100%;/* Ocupa todo el ancho */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
 
 .cw-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 10px;
+  font-size: 10px;/* Texto pequeño */
+  font-weight: 700;/* Negrita */
+  letter-spacing: .08em;/* Espacio entre letras */
+  color: var(--muted);/* Color suave */
+  text-transform: uppercase;/* Mayúsculas */
+  margin-bottom: 10px;/* Espacio inferior */
 }
 
 .cw-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 1rem;
+  list-style: none;/* Quita viñetas */
+  display: flex;/* Usa flexbox */
+  flex-direction: column;/* Coloca elementos en columna */
+  gap: 10px;/* Espacio entre elementos */
+  margin-bottom: 1rem;/* Espacio inferior */
 }
 
 .cw-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex;/* Coloca elementos en fila */
+  align-items: center;/* Centra verticalmente */
+  gap: 10px;/* Espacio entre avatar y texto */
 }
 
 .cw-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex: 1;/* Ocupa el espacio disponible */
+  display: flex;/* Usa flexbox */
+  flex-direction: column;/* Ordena en columna */
+  gap: 2px;/* Espacio entre líneas */
 }
 .cw-info strong { font-size: 13px; font-weight: 600; color: var(--text); }
 .cw-info small  { font-size: 11px; color: var(--muted); }
@@ -192,122 +196,124 @@
 .cw-price  { font-size: 13px; font-weight: 700; color: var(--green); }
 
 .cw-online {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--green);
-  font-size: 11px;
+  display: flex;/* Coloca elementos en fila */
+  align-items: center;/* Centra verticalmente */
+  gap: 5px;/* Espacio entre punto y texto */
+  color: var(--green);/* Texto verde */
+  font-size: 11px;/* Tamaño pequeño */
 }
 
 .online-pulse {
-  width: 7px; height: 7px;
-  background: var(--green);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
+  width: 7px; height: 7px;/* Tamaño del punto */
+  background: var(--green);/* Color verde */
+  border-radius: 50%;/* Forma circular */
+  animation: pulse 2s infinite;/* Animación de pulso */
 }
 
 .cw-msg {
-  background: var(--bg);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
+  background: var(--bg);/* Fondo del mensaje */
+  border-radius: 10px;/* Bordes redondeados */
+  padding: 10px 14px;/* Espacio interno */
+  font-size: 13px;/* Tamaño del texto */
+  color: var(--muted); /* Color suave */
+  line-height: 1.5;/* Espaciado entre líneas */
 }
 
 /* ── STATS BAR ────────────────────────────────────── */
 .stats-bar {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 2rem 0;
-  background: var(--bg);
+  border-top: 1px solid var(--border);/* Línea superior */
+  border-bottom: 1px solid var(--border);/* Línea inferior */
+  padding: 2rem 0;/* Espacio arriba y abajo */
+  background: var(--bg); /* Fondo */
 }
 
 .stats-bar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: flex;/* Coloca elementos en fila */
+  align-items: center;/* Centra verticalmente */
+  justify-content: space-between;/* Distribuye elementos */
+  flex-wrap: wrap; /* Permite que bajen de línea */
+  gap: 1rem;/* Espacio entre elementos */
 }
 
 .stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  display: flex;/* Usa flexbox */
+  flex-direction: column;/* Ordena en columna */
+  align-items: center;/* Centra horizontalmente */
+  text-align: center;/* Centra texto */
 }
 .stat-num {
-  font-family: 'Fraunces', serif;
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: var(--green);
-  line-height: 1;
+  font-family: 'Fraunces', serif;/* Fuente decorativa */
+  font-size: 2.2rem;/* Tamaño grande */
+  font-weight: 900;/* Muy grueso */
+  color: var(--green);/* Color verde */
+  line-height: 1;/* Altura de línea */
 }
 .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
 .stat-div {
-  width: 1px;
-  height: 40px;
-  background: var(--border);
-  flex-shrink: 0;
+  width: 1px;/* Línea vertical */
+  height: 40px;/* Altura */
+  background: var(--border);/* Color de la línea */
+  flex-shrink: 0;/* Evita que se reduzca */
 }
 
 /* ── VALIDACIÓN ───────────────────────────────────── */
 .validation-section {
-  padding: 5rem 0;
-  background: var(--bg);
+  padding: 5rem 0; /* Espacio arriba y abajo */
+  background: var(--bg);/* Fondo */
 }
 
 .val-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  display: grid;/* Usa grid */
+  grid-template-columns: repeat(4, 1fr);/* 4 columnas iguales */
+  gap: 1rem;/* Espacio entre tarjetas */
   margin: 2rem 0 4rem;
-}
+}/* Espacio arriba y abajo */
+
 
 .val-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
+  background: var(--surface);/* Fondo */
+  border: 1px solid var(--border);/* Borde */
+  border-radius: 16px;/* Bordes redondeados */
+  padding: 1.5rem;/* Espacio interno */
 }
 
 .val-pct {
-  display: block;
-  font-family: 'Fraunces', serif;
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: 6px;
+  display: block;/* Ocupa toda la línea */
+  font-family: 'Fraunces', serif;/* Fuente */
+  font-size: 2.8rem;/* Tamaño grande */
+  font-weight: 900;/* Muy grueso */
+  color: var(--green); /* Verde */
+  line-height: 1;/* Altura de línea */
+  margin-bottom: 6px;/* Espacio inferior */
 }
 
 .val-card strong {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--green);
-  margin-bottom: 8px;
+  display: block; /* Nueva línea */
+  font-size: 13px; /* Tamaño */
+  font-weight: 700; /* Negrita */
+  color: var(--green); /* Verde */
+  margin-bottom: 8px; /* Espacio inferior */
 }
 
 .val-card p {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.6;
+  font-size: 12px; /* Tamaño pequeño */
+  color: var(--muted); /* Color suave */
+  line-height: 1.6; /* Espaciado */
 }
 
 .prog-bar {
-  height: 4px;
-  background: var(--border);
-  border-radius: 999px;
-  margin-top: 1rem;
-  overflow: hidden;
+  height: 4px; /* Altura de la barra */
+  background: var(--border); /* Fondo gris */
+  border-radius: 999px; /* Forma redondeada */
+  margin-top: 1rem; /* Espacio arriba */
+  overflow: hidden; /* Oculta exceso */
 }
+
 .prog-fill {
-  height: 100%;
-  background: var(--green);
-  border-radius: 999px;
+  height: 100%; /* Ocupa toda la altura */
+  background: var(--green); /* Color verde */
+  border-radius: 999px; /* Bordes redondeados */
 }
 
 /* Ocasiones */

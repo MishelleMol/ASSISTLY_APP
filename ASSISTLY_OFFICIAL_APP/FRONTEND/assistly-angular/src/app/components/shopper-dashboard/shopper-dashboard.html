@@ -1,0 +1,89 @@
+<!-- Contenedor principal del dashboard -->
+<div class="dashboard">
+
+  <!-- ── HEADER ── -->
+  <header class="dash-header">
+    <!-- Título del dashboard -->
+    <h1>👜 Dashboard Shopper</h1>
+
+    <!-- Solo muestra el saludo si ya cargaron los datos del shopper -->
+    <div class="dash-user" *ngIf="shopperInfo">
+      <!-- Muestra el nombre del shopper logueado -->
+      <span>Hola, {{ shopperInfo.nombre }} 👋</span>
+      <!-- Botón para cerrar sesión -->
+      <button (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <!-- ── NAVEGACIÓN DE TABS ── -->
+  <nav class="dash-tabs">
+    <!-- Cada botón activa su tab; [class.activo] agrega la clase CSS "activo" si es el tab actual -->
+    <button [class.activo]="tabActivo === 'solicitudes'" (click)="tabActivo = 'solicitudes'">📋 Solicitudes</button>
+    <button [class.activo]="tabActivo === 'perfil'"      (click)="tabActivo = 'perfil'">👤 Perfil</button>
+    <button [class.activo]="tabActivo === 'historial'"   (click)="tabActivo = 'historial'">📜 Historial</button>
+    <button [class.activo]="tabActivo === 'chat'"        (click)="tabActivo = 'chat'">💬 Chat</button>
+  </nav>
+
+  <!-- ── CONTENIDO PRINCIPAL ── -->
+  <main class="dash-content">
+
+    <!-- ── TAB: SOLICITUDES ── -->
+    <!-- Solo se muestra si el tab activo es 'solicitudes' -->
+    <div *ngIf="tabActivo === 'solicitudes'">
+      <h2>Solicitudes disponibles</h2>
+
+      <!-- Mensaje mientras cargan las solicitudes -->
+      <p *ngIf="cargando">Cargando...</p>
+
+      <!-- Mensaje si no hay solicitudes -->
+      <p *ngIf="!cargando && solicitudes.length === 0">No hay solicitudes disponibles.</p>
+
+      <!-- Recorre la lista de solicitudes y muestra una card por cada una -->
+      <div class="card" *ngFor="let s of solicitudes">
+        <!-- Categoría de la solicitud -->
+        <h3>{{ s.categoria }}</h3>
+        <!-- Descripción de lo que necesita el cliente -->
+        <p>{{ s.descripcion }}</p>
+        <!-- Presupuesto del cliente -->
+        <p><strong>Presupuesto:</strong> Q{{ s.presupuesto }}</p>
+        <!-- Badge que muestra el estado actual (pendiente, en proceso, etc.) -->
+        <span class="badge">{{ s.estado }}</span>
+        <!-- Botón para aceptar, solo visible si la solicitud está pendiente -->
+        <button (click)="aceptarSolicitud(s._id)" *ngIf="s.estado === 'pendiente'">✅ Aceptar</button>
+      </div>
+    </div>
+
+    <!-- ── TAB: PERFIL ── -->
+    <!-- Solo se muestra si el tab activo es 'perfil' -->
+    <div *ngIf="tabActivo === 'perfil'">
+      <h2>Mi Perfil</h2>
+
+      <!-- Solo muestra los datos si ya cargaron -->
+      <div *ngIf="shopperInfo" class="card">
+        <!-- Nombre del shopper -->
+        <p><strong>Nombre:</strong> {{ shopperInfo.nombre }}</p>
+        <!-- Email del shopper -->
+        <p><strong>Email:</strong> {{ shopperInfo.email }}</p>
+        <!-- Rol del shopper (siempre será 'shopper') -->
+        <p><strong>Rol:</strong> {{ shopperInfo.rol }}</p>
+      </div>
+    </div>
+
+    <!-- ── TAB: HISTORIAL ── -->
+    <!-- Solo se muestra si el tab activo es 'historial' -->
+    <div *ngIf="tabActivo === 'historial'">
+      <h2>Mi Historial</h2>
+      <!-- Placeholder hasta implementar el historial -->
+      <p>Próximamente...</p>
+    </div>
+
+    <!-- ── TAB: CHAT ── -->
+    <!-- Solo se muestra si el tab activo es 'chat' -->
+    <div *ngIf="tabActivo === 'chat'">
+      <h2>Chat</h2>
+      <!-- Placeholder hasta implementar el chat -->
+      <p>Próximamente...</p>
+    </div>
+
+  </main>
+</div>

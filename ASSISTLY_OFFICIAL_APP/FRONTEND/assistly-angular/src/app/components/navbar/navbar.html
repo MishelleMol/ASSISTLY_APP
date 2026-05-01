@@ -22,7 +22,7 @@
       <a routerLink="/solicitud" routerLinkActive="active"
         class="nav-link" (click)="menuAbierto=false">Shoppers</a><!-- Link a /solicitud; se marca activo si coincide la ruta -->
       <a routerLink="/admin"     routerLinkActive="active"
-        class="nav-link" (click)="menuAbierto=false">Por qué Assistly</a><!-- Link a /admin; cierra el menú al hacer clic -->
+        class="nav-link" (click)="menuAbierto=false">Panel de administrador</a><!-- Link a /admin; cierra el menú al hacer clic -->
       <a routerLink="/"          routerLinkActive="active"
         class="nav-link" (click)="menuAbierto=false"
         [routerLinkActiveOptions]="{exact:true}">Cómo funciona</a><!-- Link al inicio; exact:true evita que esté activo en todas las rutas -->
@@ -56,5 +56,7 @@
   [abierto]="modalAbierto" 
   [tipo]="tipoModal" 
   (cerrar)="cerrarModal()"
-  (abrirShopperE)="abrirModal('shopper')">
+  (abrirShopperE)="abrirModal('shopper')"
+  (abrirUsuarioE)="abrirModal('usuario')"
+  (abrirLoginE)="abrirModal('login')">
 </app-auth-modal>

@@ -14,13 +14,16 @@ export class AuthModalComponent implements OnChanges { /* Crea la clase del comp
 
   // 'login' = modal simple | 'shopper' = modal dos paneles
   @Input() abierto = false; /* Recibe desde otro componente si el modal está abierto o cerrado */
-  @Input() tipo: 'login' | 'shopper' = 'login';/* Recibe el tipo de modal que se debe mostrar */
+  @Input() tipo: 'login' | 'shopper'| 'usuario' = 'login';/* Recibe el tipo de modal que se debe mostrar */
  //@input sirve para recibir datos desde el componente padre//
 
 
   @Output() cerrar        = new EventEmitter<void>();/* Evento que avisa al componente padre que debe cerrar el modal */
   @Output() abrirShopperE = new EventEmitter<void>();
                                 //EventEmitter: herramienta que usa @output para disparar eventos
+  @Output() abrirUsuarioE = new EventEmitter<void>();
+  @Output() abrirLoginE   = new EventEmitter<void>();
+
   //@Output: Sirve para enviar eventos del componente padre//
 
   tabActivo: 'registro' | 'login' = 'registro'; /* Controla si se muestra la pestaña de registro o login */
@@ -75,6 +78,11 @@ export class AuthModalComponent implements OnChanges { /* Crea la clase del comp
   // Le dice al navbar que abra el modal de shopper
   abrirShopper() { this.abrirShopperE.emit(); }/* Emite el evento para abrir el modal shopper */
 
+  abrirUsuario() { this.abrirUsuarioE.emit(); }
+
+  /* Emite el evento para abrir el modal de login */
+  abrirLogin() { this.abrirLoginE.emit(); }  
+
   registrar() { /* Función para registrar usuario */
     if (!this.regEmail || !this.regPassword || !this.regNombre) {/* Valida que los campos obligatorios estén llenos */
       this.modalError = 'Completa todos los campos requeridos.';/* Muestra mensaje de error */
@@ -85,7 +93,9 @@ export class AuthModalComponent implements OnChanges { /* Crea la clase del comp
 
     const nombre = `${this.regNombre} ${this.regApellido}`.trim();/* Une nombre y apellido en una sola variable */
 
-    this.svc.register(nombre, this.regEmail, this.regPassword, 'shopper').subscribe({ /* Envía los datos de registro al backend */
+    const rol = this.tipo === 'usuario' ? 'user' : 'shopper';
+
+    this.svc.register(nombre, this.regEmail, this.regPassword, rol).subscribe({ /* Envía los datos de registro al backend */
       next: res => {/* Se ejecuta si el backend responde bien */
         this.modalLoading = false;/* Desactiva la carga */
         if (res.ok) { this.onCerrar(); }/* Si el registro fue exitoso, cierra el modal */

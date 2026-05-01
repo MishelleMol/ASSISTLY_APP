@@ -2,6 +2,9 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 import { CommonModule } from '@angular/common';/* Importa funcionalidades comunes como *ngIf y *ngFor */
 import { FormsModule } from '@angular/forms'; /* Permite usar formularios y [(ngModel)] */
 import { AssistlyService } from '../../services/assistly.service'; /* Importa el servicio que conecta con el backend */
+import { Router } from '@angular/router'; /* Permite navegar entre páginas */
+
+
 
 @Component({/* Define la configuración del componente */
   selector: 'app-auth-modal',/* Nombre con el que se usa este componente en HTML */
@@ -56,7 +59,7 @@ export class AuthModalComponent implements OnChanges { /* Crea la clase del comp
     antigua:{ moda: 160, tech: 180, hogar: 140, regalos: 150 },/* Tarifas para Antigua */
   };
 
-  constructor(private svc: AssistlyService) {}/* Inyecta el servicio para usar login y registro */
+  constructor(private svc: AssistlyService, private router: Router) {}/* Inyecta el servicio para usar login y registro */
 
   ngOnChanges() { /* Se ejecuta cuando cambia algún @Input */
     if (this.abierto) {/* Si el modal está abierto */
@@ -108,23 +111,39 @@ export class AuthModalComponent implements OnChanges { /* Crea la clase del comp
     });
   }
 
-  login() {/* Función para iniciar sesión */
-    if (!this.loginEmail || !this.loginPassword) {/* Valida que correo y contraseña estén llenos */
-      this.modalError = 'Ingresa tu correo y contraseña.';/* Muestra mensaje de error */
-      return;/* Detiene la función */
+  login() { /* Función para iniciar sesión */
+    if (!this.loginEmail || !this.loginPassword) { /* Valida que correo y contraseña estén llenos */
+      this.modalError = 'Ingresa tu correo y contraseña.'; /* Muestra mensaje de error */
+      return; /* Detiene la función */
     }
-    this.modalLoading = true;/* Activa estado de carga */
-    this.modalError   = '';/* Limpia errores anteriores */
+    this.modalLoading = true; /* Activa estado de carga */
+    this.modalError   = ''; /* Limpia errores anteriores */
 
-    this.svc.login(this.loginEmail, this.loginPassword).subscribe({  /* Envía correo y contraseña al backend */
-      next: res => {/* Se ejecuta si el backend responde correctamente */
-        this.modalLoading = false;/* Desactiva la carga */
-        if (res.ok) { this.onCerrar(); }/* Si el login fue exitoso, cierra el modal */
-        else { this.modalError = 'Credenciales incorrectas.'; }/* Si falla, muestra error */
+    this.svc.login(this.loginEmail, this.loginPassword).subscribe({ /* Envía correo y contraseña al backend */
+      next: (res: any) => { /* Se ejecuta si el backend responde correctamente */
+        this.modalLoading = false; /* Desactiva la carga */
+        if (res.ok) {
+          this.onCerrar(); /* Cierra el modal */
+          const token = this.svc.getToken(); /* Obtiene el token guardado */
+          if (token) {
+            /* Decodifica el payload del JWT para leer el rol */
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            if (payload.rol === 'shopper') {
+              /* Si es shopper, redirige al dashboard de shopper */
+              this.router.navigate(['/shopper-dashboard']);
+            } else if (payload.rol === 'admin') {
+              /* Si es admin, redirige al panel de administrador */
+              this.router.navigate(['/admin']);
+            }
+            /* Si es user normal, se queda en la página actual */
+          }
+        } else {
+          this.modalError = 'Credenciales incorrectas.'; /* Si falla, muestra error */
+        }
       },
-      error: () => {/* Se ejecuta si ocurre un error */
-        this.modalLoading = false;/* Desactiva la carga */
-        this.modalError = 'Credenciales incorrectas.';/* Muestra mensaje de error */
+      error: () => { /* Se ejecuta si ocurre un error */
+        this.modalLoading = false; /* Desactiva la carga */
+        this.modalError = 'Credenciales incorrectas.'; /* Muestra mensaje de error */
       }
     });
   }

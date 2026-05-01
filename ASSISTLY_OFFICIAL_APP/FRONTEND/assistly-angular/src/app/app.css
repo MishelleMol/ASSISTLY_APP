@@ -1,126 +1,147 @@
 /* Espaciado para el navbar fijo:
    32px del banner + ~64px del navbar */
 main {
-  padding-top: 96px;
+  padding-top: 96px;/* Empuja el contenido hacia abajo */
 }
 
 /* ── FOOTER ─────────────────────────────────────── */
 .footer {
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding-top: 4rem;
-  margin-top: 4rem;
+  background: var(--bg);/* Color de fondo */
+  border-top: 1px solid var(--border);/* Línea superior */
+  padding-top: 4rem;/* Espacio interno arriba */
+  margin-top: 4rem;/* Separación respecto al contenido anterior */
 }
 
+/* Grid interno del footer */
 .footer-inner {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  padding-bottom: 3rem;
+  display: grid;/* Usa CSS Grid */
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;/* Columnas (marca más grande) */
+  gap: 2rem; /* Espacio entre columnas */
+  padding-bottom: 3rem;/* Espacio inferior */
 }
 
+/* Texto del logo/marca */
 .footer-brand .brand-text {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--text);
-  display: block;
-  margin-bottom: 1rem;
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  font-weight: 700;/* Negrita */
+  font-size: 1.2rem;/* Tamaño */
+  color: var(--text);/* Color */
+  display: block;/* Ocupa toda la línea */
+  margin-bottom: 1rem;/* Espacio abajo */
 }
 
+/* Parte del logo con color acento */
 .footer-brand .brand-accent { color: var(--green); }
 
+
+/* Párrafo de descripción del footer */
 .footer-brand p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 220px;
-  margin-bottom: 1.2rem;
+  font-size: 0.85rem;/* Tamaño pequeño */
+  color: var(--muted);/* Color gris */
+  line-height: 1.7;/* Espaciado entre líneas */
+  max-width: 220px;/* Limita el ancho */
+  margin-bottom: 1.2rem;/* Espacio abajo */
 }
 
 .footer-social {
-  display: flex;
-  gap: 0.6rem;
+  display: flex; /* Alinea en fila */
+  gap: 0.6rem;/* Espacio entre íconos */
 }
 
+/* Botón de redes sociales */
 .social-btn {
-  width: 34px;
-  height: 34px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  color: var(--muted);
-  transition: all 0.2s;
-  text-decoration: none;
+  width: 34px;/* Ancho */
+  height: 34px;/* Alto */
+  background: var(--surface);/* Fondo */
+  border: 1px solid var(--border);/* Borde */
+  border-radius: 8px;/* Bordes redondeados */
+  display: flex;/* Centrado */
+  align-items: center; /* Centro vertical */
+  justify-content: center;/* Centro horizontal */
+  font-size: 0.85rem;/* Tamaño ícono */
+  color: var(--muted); /* Color gris */
+  transition: all 0.2s;/* Animación suave */
+  text-decoration: none;/* Quita subrayado */
 }
+
+/* Hover de botón social */
 .social-btn:hover {
-  border-color: var(--green);
-  color: var(--green);
+  border-color: var(--green);/* Borde verde */
+  color: var(--green);/* Ícono verde */
 }
 
+/* Títulos de columnas del footer */
 .footer-col h4 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  font-size: 0.7rem;/* Tamaño pequeño */
+  font-weight: 700;/* Negrita */
+  letter-spacing: 0.1em; /* Espaciado letras */
+  color: var(--muted); /* Gris */
+  text-transform: uppercase;/* Mayúsculas */
+  margin-bottom: 1rem;/* Espacio abajo */
 }
 
+
+/* Lista de links */
 .footer-col ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  list-style: none;/* Quita viñetas */
+  display: flex; /* Flexbox */
+  flex-direction: column;/* En columna */
+  gap: 0.75rem;/* Espacio entre links */
 }
 
+/* Links del footer */
 .footer-col a {
-  font-size: 0.88rem;
-  color: var(--muted);
-  transition: color 0.2s;
+  font-size: 0.88rem;/* Tamaño */
+  color: var(--muted);/* Gris */
+  transition: color 0.2s;/* Animación */
 }
+
+/* Hover de links */
 .footer-col a:hover { color: var(--green); }
 
+
+/* Parte inferior del footer */
 .footer-bottom {
-  border-top: 1px solid var(--border);
-  padding: 1.2rem 0;
+  border-top: 1px solid var(--border);/* Línea separadora */
+  padding: 1.2rem 0;/* Línea separadora */
 }
 
+/* Contenedor interno del footer inferior */
 .footer-bottom-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;/* Flexbox */
+  justify-content: space-between;/* Separa elementos */
+  align-items: center;/* Centra verticalmente */
 }
 
 .footer-bottom span {
-  font-size: 0.82rem;
-  color: var(--muted);
+  font-size: 0.82rem;/* Tamaño pequeño */
+  color: var(--muted);/* Gris */
 }
 
 .footer-bottom-badges {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex;/* En fila */
+  align-items: center;/* Centrado vertical */
+  gap: 1rem;/* Espacio entre elementos */
 }
 
+/* Badge (etiqueta) */
 .footer-badge {
-  background: var(--green);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 999px;
+  background: var(--green);/* Fondo verde */
+  color: #fff; /* Texto blanco */
+  font-size: 0.72rem;/* Tamaño pequeño */
+  font-weight: 700;/* Negrita */
+  padding: 3px 10px;/* Espaciado */
+  border-radius: 999px;/* Forma de pastilla */
 }
 
+/* Links dentro de badges */
 .footer-bottom-badges a {
-  font-size: 0.82rem;
-  color: var(--muted);
+  font-size: 0.82rem;/* Tamaño */
+  color: var(--muted);/* Gris */
 }
+
+/* Hover de links en badges */
 .footer-bottom-badges a:hover { color: var(--green); }
 
 /* Clase container reutilizable */

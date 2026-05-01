@@ -1,42 +1,51 @@
 <!-- ── HERO ─────────────────────────────────────── -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
+<section class="hero"><!-- Sección principal (hero) de la página -->
+  <div class="container"><!-- Contenedor general para centrar contenido -->
+    <div class="hero-grid"><!-- Grid para dividir en columnas -->
 
       <!-- Columna izquierda: texto -->
       <div class="hero-left">
 
         <!-- Badge de disponibilidad -->
         <div class="badge-pill">
-          <span class="badge-dot"></span>
+          <span class="badge-dot"></span><!-- Punto visual decorativo -->
           +500 shoppers verificados activos ahora
         </div>
 
+        <!-- Título principal -->
         <h1 class="hero-title">
-          Compra para tus<br>
+          Compra para tus<br><!-- Salto de línea -->
           momentos más<br>
-          <em>especiales.</em>
+          <em>especiales.</em><!-- Énfasis en cursiva -->
         </h1>
 
+
+        <!-- Descripción del servicio -->
         <p class="hero-desc">
           Conectamos contigo personal shoppers expertos en
           tiempo real. Describe lo que necesitas y recibe
           recomendaciones curadas — sin perder horas buscando.
         </p>
 
+
+        <!-- Botón que navega a /solicitud (Angular Router) -->
         <a routerLink="/solicitud" class="btn-primary">
           Encontrar mi shopper
         </a>
 
         <!-- Avatares + estrellas + reseñas -->
-        <div class="hero-proof">
-          <div class="proof-avatars">
+        <div class="hero-proof"><!-- Prueba social (avatars + rating) -->
+          <div class="proof-avatars"><!-- Avatares simulados -->
             <span class="av av--green">AM</span>
             <span class="av av--orange">KL</span>
             <span class="av av--purple">LR</span>
             <span class="av av--pink">SC</span>
           </div>
+
+          <!-- Estrellas -->
           <span class="proof-stars">★★★★★</span>
+
+          <!-- Texto de rating -->
           <span class="proof-text">4.9 · 2,400+ reseñas</span>
         </div>
 
@@ -44,32 +53,39 @@
 
       <!-- Columna derecha: widget de chat -->
       <div class="hero-right">
-        <div class="chat-widget">
+        <div class="chat-widget"><!-- Widget visual tipo chat -->
 
           <!-- Cabecera del widget -->
           <div class="cw-header">
-            <span class="cw-logo">assist<span>ly</span></span>
-            <span class="cw-badge">3</span>
+            <span class="cw-logo">assist<span>ly</span></span><!-- Logo -->
+            <span class="cw-badge">3</span><!-- Notificaciones -->
           </div>
 
           <!-- Buscador -->
           <div class="cw-search">
             <span>🔍</span>
             <input type="text" placeholder="¿Qué necesitas hoy?" readonly />
-          </div>
+          </div><!-- readonly evita que el usuario escriba -->
 
           <!-- Label -->
           <p class="cw-label">SHOPPERS DISPONIBLES</p>
 
           <!-- Lista de shoppers en el widget -->
           <ul class="cw-list">
+
+            <!-- Item individual -->
             <li class="cw-item">
-              <span class="av av--green av--sm">AM</span>
+              <span class="av av--green av--sm">AM</span><!-- Avatar -->
+
+              <!-- Info del shopper -->
               <div class="cw-info">
                 <strong>Ana Martínez</strong>
                 <span class="cw-rating">★ 4.9</span>
                 <small>Bodas · Outfits · Regalos</small>
               </div>
+
+
+              <!-- Precio -->
               <span class="cw-price">Q96/hr</span>
             </li>
             <li class="cw-item">
@@ -106,12 +122,16 @@
 </section>
 
 <!-- ── STATS BAR ──────────────────────────────────── -->
-<section class="stats-bar">
+<section class="stats-bar"><!-- Barra de estadísticas -->
   <div class="container stats-bar-inner">
+
+    <!-- Item estadístico -->
     <div class="stat-item">
-      <span class="stat-num">2.4K+</span>
-      <span class="stat-lbl">solicitudes completadas</span>
+      <span class="stat-num">2.4K+</span><!-- Número -->
+      <span class="stat-lbl">solicitudes completadas</span><!-- Label -->
     </div>
+
+    <!-- Divisor visual -->
     <div class="stat-div"></div>
     <div class="stat-item">
       <span class="stat-num">500+</span>
@@ -144,13 +164,16 @@
     <p class="section-desc">Antes de lanzar, preguntamos. Esto es lo que encontramos.</p>
 
     <!-- 4 tarjetas de porcentaje -->
-    <div class="val-grid">
+    <div class="val-grid"><!-- Grid de tarjetas -->
 
-      <div class="val-card">
-        <span class="val-pct">79%</span>
-        <strong>ya usaría Assistly</strong>
+      <div class="val-card"><!-- Tarjeta individual -->
+        <span class="val-pct">79%</span><!-- Porcentaje -->
+        <strong>ya usaría Assistly</strong><!-- Título -->
         <p>26 de 33 personas dijeron que sí usarían una app de personal shopping en tiempo real.</p>
-        <div class="prog-bar"><div class="prog-fill" style="width:79%"></div></div>
+
+
+        <div class="prog-bar"><!-- Barra de progreso -->
+          <div class="prog-fill" style="width:79%"></div></div><!-- width dinámico representa el porcentaje -->
       </div>
 
       <div class="val-card">
@@ -225,13 +248,15 @@
 
     <!-- Tabs -->
     <div class="cat-tabs">
+      <!-- Tabs dinámicos -->
       <button
-        *ngFor="let cat of categorias"
+        *ngFor="let cat of categorias"  
         class="cat-tab"
-        [class.active]="catActiva === cat.id"
-        (click)="catActiva = cat.id">
-        <span class="cat-icon">{{ cat.icon }}</span>
-        {{ cat.label }}
+        [class.active]="catActiva === cat.id" 
+        (click)="catActiva = cat.id"><!-- Evento click -->
+
+        <span class="cat-icon">{{ cat.icon }}</span><!-- Icono dinámico -->
+        {{ cat.label }}<!-- Texto -->
       </button>
     </div>
     <div class="tabs-line"></div>
@@ -239,10 +264,10 @@
     <!-- Sub-tags de la categoría activa -->
     <div class="subtags">
       <span
-        *ngFor="let sub of getSubtags()"
+        *ngFor="let sub of getSubtags()" 
         class="subtag"
         [class.active]="subActivo === sub"
-        (click)="subActivo = sub">
+        (click)="subActivo = sub"><!-- Click cambia estado -->
         {{ sub }}
       </span>
     </div>

@@ -26,7 +26,13 @@
       <a routerLink="/"          routerLinkActive="active"
         class="nav-link" (click)="menuAbierto=false"
         [routerLinkActiveOptions]="{exact:true}">Cómo funciona</a><!-- Link al inicio; exact:true evita que esté activo en todas las rutas -->
+
+      <a routerLink="/mis-solicitudes" routerLinkActive="active"
+        class="nav-link mis-solicitudes-link"
+        *ngIf="estaLogueado"
+        (click)="menuAbierto=false">📋 Mis Solicitudes</a>
     </div>
+
 
     <!-- Botones de la derecha -->
     <div class="nav-actions"><!-- Contenedor de botones del lado derecho -->
@@ -38,9 +44,14 @@
       </label>
 
       <!-- Iniciar sesión → abre modal simple -->
-      <button class="nav-ghost" (click)="abrirModal('login')"><!-- Botón que abre el modal de login -->
-        Iniciar sesión<!-- Texto del botón -->
+      <button class="nav-ghost" (click)="abrirModal('login')" *ngIf="!estaLogueado">
+        Iniciar sesión
       </button>
+      <!-- Si está logueado muestra botón de cerrar sesión -->
+      <button class="nav-ghost" (click)="cerrarSesion()" *ngIf="estaLogueado">
+        Cerrar sesión
+      </button>
+
 
       <!-- Ser shopper → abre modal dos paneles -->
       <button class="btn-cta--outline" (click)="abrirModal('shopper')"><!-- Botón que abre el modal de shopper -->

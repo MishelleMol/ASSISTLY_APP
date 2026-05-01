@@ -1,0 +1,266 @@
+/* ── CONTENEDOR PRINCIPAL ── */
+
+/* Ocupa toda la pantalla con fondo gris claro */
+.mis-solicitudes {
+  min-height: 100vh;
+  /* Color de fondo suave */
+  background: #f5f5f5;
+  /* Fuente principal */
+  font-family: 'DM Sans', sans-serif;
+  /* Espacio interno */
+  padding: 2rem;
+}
+
+/* ── HEADER ── */
+
+/* Fila con título y botón de nueva solicitud */
+.page-header {
+  /* Flexbox para poner título y botón en extremos opuestos */
+  display: flex;
+  /* Título a la izquierda, botón a la derecha */
+  justify-content: space-between;
+  /* Centra verticalmente */
+  align-items: center;
+  /* Espacio debajo del header */
+  margin-bottom: 2rem;
+  /* Ancho máximo para no estirar demasiado */
+  max-width: 900px;
+  /* Centra el header horizontalmente */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Título de la página */
+.page-header h1 {
+  /* Sin margen por defecto */
+  margin: 0;
+  /* Color verde de Assistly */
+  color: #1a7a4a;
+  /* Tamaño del título */
+  font-size: 1.8rem;
+}
+
+/* ── BOTÓN NUEVA SOLICITUD ── */
+
+/* Botón verde para crear solicitud */
+.btn-nueva {
+  /* Fondo verde */
+  background: #1a7a4a;
+  /* Texto blanco */
+  color: white;
+  /* Sin borde */
+  border: none;
+  /* Espacio interno */
+  padding: 0.6rem 1.4rem;
+  /* Bordes redondeados tipo píldora */
+  border-radius: 20px;
+  /* Cursor de mano */
+  cursor: pointer;
+  /* Texto en negrita */
+  font-weight: 600;
+  /* Tamaño del texto */
+  font-size: 0.95rem;
+  /* Transición suave al hover */
+  transition: background 0.2s;
+}
+
+/* Hover del botón */
+.btn-nueva:hover {
+  background: #145c38;
+}
+
+/* ── MENSAJES ── */
+
+/* Mensaje cuando no está logueado */
+.no-logueado {
+  /* Centra el texto */
+  text-align: center;
+  /* Espacio arriba */
+  margin-top: 4rem;
+  /* Color gris */
+  color: #666;
+  /* Tamaño del texto */
+  font-size: 1.1rem;
+}
+
+/* Mensaje de cargando */
+.cargando {
+  /* Centra el texto */
+  text-align: center;
+  /* Color gris */
+  color: #666;
+  /* Espacio arriba */
+  margin-top: 2rem;
+}
+
+/* Mensaje de error */
+.error {
+  /* Centra el texto */
+  text-align: center;
+  /* Color rojo */
+  color: #ef4444;
+  /* Espacio arriba */
+  margin-top: 2rem;
+}
+
+/* ── ESTADO VACÍO ── */
+
+/* Contenedor cuando no hay solicitudes */
+.vacio {
+  /* Centra todo */
+  text-align: center;
+  /* Espacio arriba */
+  margin-top: 4rem;
+  /* Color gris */
+  color: #666;
+}
+
+/* Texto del estado vacío */
+.vacio p {
+  /* Tamaño del texto */
+  font-size: 1.1rem;
+  /* Espacio debajo */
+  margin-bottom: 1rem;
+}
+
+/* ── LISTA DE SOLICITUDES ── */
+
+/* Contenedor de todas las cards */
+.lista {
+  /* Ancho máximo */
+  max-width: 900px;
+  /* Centra la lista */
+  margin: 0 auto;
+}
+
+/* ── CARD DE SOLICITUD ── */
+
+/* Card individual de cada solicitud */
+.card {
+  /* Fondo blanco */
+  background: white;
+  /* Bordes redondeados */
+  border-radius: 12px;
+  /* Espacio interno */
+  padding: 1.5rem;
+  /* Espacio entre cards */
+  margin-bottom: 1rem;
+  /* Sombra suave */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  /* Transición suave al hover */
+  transition: box-shadow 0.2s;
+}
+
+/* Sombra más pronunciada al pasar el mouse */
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* ── HEADER DE LA CARD ── */
+
+/* Fila con categoría y badge de estado */
+.card-header {
+  /* Flexbox para poner categoría y badge en extremos */
+  display: flex;
+  /* Categoría a la izquierda, badge a la derecha */
+  justify-content: space-between;
+  /* Centra verticalmente */
+  align-items: center;
+  /* Espacio debajo */
+  margin-bottom: 0.8rem;
+}
+
+/* Título de la categoría */
+.card-header h3 {
+  /* Sin margen */
+  margin: 0;
+  /* Color oscuro */
+  color: #333;
+  /* Tamaño del texto */
+  font-size: 1.1rem;
+}
+
+/* ── BADGE DE ESTADO ── */
+
+/* Etiqueta de estado con color dinámico */
+.badge {
+  /* Espacio interno */
+  padding: 0.25rem 0.8rem;
+  /* Bordes redondeados */
+  border-radius: 20px;
+  /* Texto blanco */
+  color: white;
+  /* Texto pequeño */
+  font-size: 0.8rem;
+  /* Negrita */
+  font-weight: 600;
+  /* Primera letra mayúscula */
+  text-transform: capitalize;
+}
+
+/* ── DESCRIPCIÓN ── */
+
+/* Texto de descripción de la solicitud */
+.descripcion {
+  /* Color gris medio */
+  color: #555;
+  /* Tamaño del texto */
+  font-size: 0.95rem;
+  /* Espacio debajo */
+  margin-bottom: 1rem;
+  /* Limita a 2 líneas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── DETALLES ── */
+
+/* Fila de detalles: presupuesto, shopper, fecha */
+.detalles {
+  /* Flexbox para poner los detalles en fila */
+  display: flex;
+  /* Espacio entre cada detalle */
+  gap: 1rem;
+  /* Color gris */
+  color: #666;
+  /* Texto pequeño */
+  font-size: 0.85rem;
+  /* Permite que se partan en varias líneas en móvil */
+  flex-wrap: wrap;
+}
+
+/* ── RESPONSIVE ── */
+
+/* Tablets y móviles (menos de 768px) */
+@media (max-width: 768px) {
+
+  /* Menos padding en móvil */
+  .mis-solicitudes {
+    padding: 1rem;
+  }
+
+  /* Header en columna en móvil */
+  .page-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  /* Título más pequeño en móvil */
+  .page-header h1 {
+    font-size: 1.4rem;
+  }
+
+  /* Cards con menos padding en móvil */
+  .card {
+    padding: 1rem;
+  }
+
+  /* Detalles en columna en móvil */
+  .detalles {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}

@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 
 // ── Middlewares ──────────────────────────────────────────────
-app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(cors({ origin: ['http://localhost:4200', 'http://localhost:61828'] }));
 app.use(express.json());
 
 // ── Conexión a MongoDB ───────────────────────────────────────

@@ -20,7 +20,7 @@ export class NavbarComponent {/* Crea la clase del componente Navbar */
 
   // modal
   modalAbierto = false;/* Guarda si el modal está abierto o cerrado */
-  tipoModal: 'login' | 'shopper' = 'login';/* Define qué tipo de modal se va a mostrar */
+  tipoModal: 'login' | 'shopper'| 'usuario' = 'login';/* Define qué tipo de modal se va a mostrar */
 
   // cambia entre modo claro y oscuro
   toggleTheme() {/* Función para cambiar entre modo claro y oscuro */
@@ -37,7 +37,7 @@ export class NavbarComponent {/* Crea la clase del componente Navbar */
   }
 
   // abre el modal con el tipo correcto
-  abrirModal(tipo: 'login' | 'shopper') {/* Función que abre el modal según el tipo recibido */
+  abrirModal(tipo: 'login' | 'shopper' | 'usuario') {/* Función que abre el modal según el tipo recibido */
     this.tipoModal    = tipo;/* Guarda si el modal será login o shopper */
     this.modalAbierto = true;/* Activa el modal para mostrarlo */
   }

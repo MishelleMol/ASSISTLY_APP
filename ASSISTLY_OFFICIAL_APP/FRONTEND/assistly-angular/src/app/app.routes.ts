@@ -29,6 +29,11 @@ export const routes: Routes = [
     title: 'Dashboard — Shopper Assistly'
   },
   {
+  path: 'mis-solicitudes',
+  loadComponent: () => import('./components/mis-solicitudes/mis-solicitudes').then(m => m.MisSolicitudes),
+  title: 'Mis Solicitudes — Assistly'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

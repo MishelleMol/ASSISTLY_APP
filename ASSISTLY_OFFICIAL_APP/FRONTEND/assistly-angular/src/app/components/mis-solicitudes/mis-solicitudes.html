@@ -1,1 +1,65 @@
-<p>mis-solicitudes works!</p>
+<!-- Contenedor principal de la página -->
+<div class="mis-solicitudes">
+
+  <!-- Header de la página -->
+  <div class="page-header">
+    <!-- Título principal -->
+    <h1>📋 Mis Solicitudes</h1>
+    <!-- Botón para crear una nueva solicitud -->
+    <button class="btn-nueva" (click)="nuevaSolicitud()">+ Nueva solicitud</button>
+  </div>
+
+  <!-- Si el usuario NO está logueado muestra mensaje -->
+  <div class="no-logueado" *ngIf="!logueado">
+    <p>🔒 Inicia sesión para ver tus solicitudes.</p>
+  </div>
+
+  <!-- Si está logueado muestra el contenido -->
+  <div *ngIf="logueado">
+
+    <!-- Mensaje mientras cargan las solicitudes -->
+    <p class="cargando" *ngIf="cargando">Cargando tus solicitudes...</p>
+
+    <!-- Mensaje de error si algo falla -->
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <!-- Si no hay solicitudes muestra mensaje vacío -->
+    <div class="vacio" *ngIf="!cargando && solicitudes.length === 0">
+      <p>😕 Aún no tienes solicitudes.</p>
+      <!-- Botón para crear la primera solicitud -->
+      <button class="btn-nueva" (click)="nuevaSolicitud()">Crear mi primera solicitud</button>
+    </div>
+
+    <!-- Lista de solicitudes -->
+    <div class="lista" *ngIf="!cargando && solicitudes.length > 0">
+
+      <!-- Card de cada solicitud -->
+      <div class="card" *ngFor="let s of solicitudes">
+
+        <!-- Header de la card con categoría y badge de estado -->
+        <div class="card-header">
+          <!-- Categoría de la solicitud en mayúsculas -->
+          <h3>{{ s.categoria | titlecase }}</h3>
+          <!-- Badge de estado con color dinámico -->
+          <span class="badge" [style.background]="colorEstado(s.estado)">
+            {{ s.estado }}
+          </span>
+        </div>
+
+        <!-- Descripción de la solicitud -->
+        <p class="descripcion">{{ s.descripcion }}</p>
+
+        <!-- Detalles de la solicitud -->
+        <div class="detalles">
+          <!-- Presupuesto -->
+          <span>💰 Q{{ s.presupuesto }}</span>
+          <!-- Shopper asignado si existe -->
+          <span *ngIf="s.shopper">👤 {{ s.shopper }}</span>
+          <!-- Fecha de creación -->
+          <span>📅 {{ s.fecha | date:'dd/MM/yyyy' }}</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

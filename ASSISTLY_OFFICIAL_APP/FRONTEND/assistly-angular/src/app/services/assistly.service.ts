@@ -5,6 +5,8 @@ import { tap } from 'rxjs/operators';                            // para hacer a
 import { environment } from '../../environments/environment';    // URL del backend
 
 // ── INTERFACES: definen cómo lucen los datos ──────────────────
+// AssistlyService se comunica con el backend (base de datos), trae los datos y envía cambios//
+
 
 export interface Shopper {
   _id?:         string;
@@ -29,6 +31,7 @@ export interface Solicitud {
   tamano?:          string;
   estado?:          string;
   clienteEmail?:    string;
+  userId?:          string;  /* ID del usuario logueado — nuevo campo */
   shopperAsignado?: Shopper;
   createdAt?:       string;
 }
@@ -112,6 +115,11 @@ export class AssistlyService {
   // Trae el historial de compras del usuario logueado
   getHistorial(): Observable<any> {
     return this.http.get(`${this.apiUrl}/auth/historial`, { headers: this.getHeaders() });
+  }
+
+    // Trae los datos del usuario logueado
+  getMe(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/auth/me`, { headers: this.getHeaders() });
   }
 
   // ── SHOPPERS ────────────────────────────────────────────────

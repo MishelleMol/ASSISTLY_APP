@@ -1,252 +1,259 @@
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-.page-wrapper { padding: 3rem 0 5rem; }
+.container { max-width: 1200px; /* Define el ancho máximo del contenido */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 0 1.5rem; /* Agrega espacio interno a los lados */
+}
+.page-wrapper { padding: 3rem 0 5rem; /* Agrega espacio arriba y abajo de la página */
+ }
 
-/* ── LOGIN ───────────────────────────────────────── */
+/* ── LOGIN: Sección que contiene estilos del formulario de inicio de sesión (caja principal, títulos, inputs, botón y mensaje de error)────────────── */
 .login-box {
-  max-width: 420px;
-  margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 2.5rem;
+  max-width: 420px; /* Limita el ancho del cuadro de login */
+  margin: 0 auto; /* Centra el cuadro */
+  background: var(--surface); /* Usa el color de fondo definido en la variable */
+  border: 1px solid var(--border); /* Agrega borde */
+  border-radius: 18px; /* Redondea las esquinas */
+  padding: 2.5rem; /* Espacio interno */
 }
 
 .login-title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--text);
-  margin-bottom: 4px;
+  font-size: 1.5rem; /* Tamaño del título */
+  font-weight: 900; /* Hace el texto muy grueso */
+  color: var(--text); /* Color del texto */
+  margin-bottom: 4px; /* Espacio debajo del título */
 }
 .login-sub {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
+  font-size: 13px; /* Tamaño del subtítulo */
+  color: var(--muted); /* Color más suave */
+  margin-bottom: 1.5rem; /* Espacio inferior */
 }
 
 .f-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  display: block;
-  margin-bottom: 6px;
-  margin-top: 1rem;
+  font-size: 13px;/* Tamaño del texto del label */
+  font-weight: 600; /* Grosor medio */
+  color: var(--text); /* Color del texto */
+  display: block; /* Hace que ocupe toda la línea */
+  margin-bottom: 6px; /* Espacio debajo */
+  margin-top: 1rem; /* Espacio arriba */
 }
 .f-input {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 10px 14px;
-  width: 100%;
-  font-size: 14px;
-  outline: none;
-  transition: border 0.2s;
-  box-sizing: border-box;
-  font-family: 'DM Sans', sans-serif;
+  background: var(--bg); /* Fondo del input */
+  border: 1.5px solid var(--border); /* Borde del input */
+  color: var(--text); /* Color del texto escrito */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px 14px; /* Espacio interno */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  font-size: 14px; /* Tamaño del texto */
+  outline: none; /* Quita el borde por defecto al seleccionar */
+  transition: border 0.2s; /* Suaviza el cambio del borde */
+  box-sizing: border-box; /* Incluye padding y borde dentro del ancho */
+  font-family: 'DM Sans', sans-serif;/* Fuente del input */
 }
 .f-input:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(59,188,124,0.1);
+  border-color: var(--green);/* Cambia el borde a verde al seleccionar */
+  box-shadow: 0 0 0 3px rgba(59,188,124,0.1); /* Agrega sombra verde suave */
 }
 
 .btn-submit {
-  width: 100%;
-  background: var(--green);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 1.25rem;
-  font-family: 'DM Sans', sans-serif;
+  width: 100%; /* Botón de ancho completo */
+  background: var(--green); /* Fondo verde */
+  color: #fff; /* Texto blanco */
+  border: none;/* Sin borde */
+  border-radius: 10px;/* Bordes redondeados */
+  padding: 12px; /* Espacio interno */
+  font-size: 15px;/* Tamaño del texto */
+  font-weight: 700;/* Texto en negrita */
+  cursor: pointer;/* Cursor de clic */
+  transition: background 0.2s; /* Transición suave del fondo */
+  margin-top: 1.25rem;/* Espacio arriba */
+  font-family: 'DM Sans', sans-serif; /* Fuente */
 }
-.btn-submit:hover:not(:disabled) { background: var(--green-dark); }
-.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-submit:hover:not(:disabled) { background: var(--green-dark); }/* Oscurece el botón al pasar el mouse si no está deshabilitado */
+.btn-submit:disabled { opacity: 0.6; /* Hace el botón más transparente */
+  cursor: not-allowed; /* Muestra que no se puede hacer clic */}
 
 .campo-error {
-  font-size: 12px;
-  color: #ef4444;
-  margin-top: 6px;
+  font-size: 12px; /* Tamaño del mensaje de error */
+  color: #ef4444; /* Color rojo */
+  margin-top: 6px; /* Espacio superior */
 }
 
-/* ── DASHBOARD ───────────────────────────────────── */
+/* ── DASHBOARD: área principal después de iniciar sesión: (define la estructura superior, títulos y botones para cerrar sesión)───────────────────────────────────── */
 .dash-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: flex; /* Usa flexbox para organizar los elementos */
+  justify-content: space-between; /* Separa elementos a los extremos */
+  align-items: flex-end;/* Alinea los elementos abajo */
+  margin-bottom: 2rem; /* Espacio debajo del header */
+  flex-wrap: wrap;/* Permite que los elementos bajen de línea */
+  gap: 1rem;/* Espacio entre elementos */
 }
 
 .section-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 4px;
-  display: block;
+  font-size: 11px;/* Tamaño pequeño */
+  font-weight: 700;/* Negrita */
+  letter-spacing: 0.1em;/* Espaciado entre letras */
+  text-transform: uppercase;/* Convierte a mayúsculas */
+  color: var(--green);/* Color verde */
+  margin-bottom: 4px;/* Espacio inferior */
+  display: block;/* Ocupa toda la línea */
 }
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 900;
-  color: var(--text);
-  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);/* Tamaño adaptable según pantalla */
+  font-weight: 900;/* Muy grueso */
+  color: var(--text);/* Color del texto */
+  margin: 0;/* Quita márgenes */
+
 }
 
 .btn-logout {
-  background: transparent;
-  border: 1.5px solid var(--border);
-  color: var(--muted);
-  border-radius: 8px;
-  padding: 8px 18px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
+  background: transparent;/* Sin fondo */
+  border: 1.5px solid var(--border);/* Borde */
+  color: var(--muted);/* Color suave */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 8px 18px;/* Espacio interno */
+  font-size: 13px;/* Tamaño del texto */
+  cursor: pointer;/* Cursor de clic */
+  transition: all 0.2s;/* Animación suave */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
 .btn-logout:hover {
-  border-color: #ef4444;
-  color: #ef4444;
+  border-color: #ef4444;/* Cambia borde a rojo */
+  color: #ef4444;/* Cambia texto a rojo */
 }
 
-/* ── MÉTRICAS ────────────────────────────────────── */
+/* ── MÉTRICAS: Sección donde se muestran datos resumidos (estadísticas): tarjetas organizadas en grid para presentar números importantes) ────────────────────────────────────── */
 .metricas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  display: grid; /* Usa grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Columnas adaptables */
+  gap: 1rem; /* Espacio entre tarjetas */
+  margin-bottom: 2rem;/* Espacio debajo */
 }
 
 .metrica-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.25rem;
-  text-align: center;
+  background: var(--surface);/* Fondo */
+  border: 1px solid var(--border);/* Borde */
+  border-radius: 14px;/* Bordes redondeados */
+  padding: 1.25rem;/* Espacio interno */
+  text-align: center;/* Centra contenido */
 }
 .metrica-num {
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--green);
-  line-height: 1;
+  font-size: 2rem;/* Número grande */
+  font-weight: 900;/* Muy grueso */
+  color: var(--green);/* Verde */
+  line-height: 1;/* Ajusta altura de línea */
 }
 .metrica-lbl {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 4px;
+  font-size: 12px; /* Texto pequeño */
+  color: var(--muted); /* Color suave */
+  margin-top: 4px;/* Espacio arriba */
 }
 
-/* ── TABLA ───────────────────────────────────────── */
+/* ── TABLA: Define el diseño de tablas de datos (encabezados, filas, scroll horizontal, botones y estilos) ───────────────────────────────────────── */
 .tabla-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.5rem;
+  background: var(--surface); /* Fondo */
+  border: 1px solid var(--border);/* Borde */
+  border-radius: 18px;/* Bordes redondeados */
+  padding: 1.5rem; /* Espacio interno */
 }
 
 .tabla-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: flex;/* Flexbox */
+  justify-content: space-between;/* Separación */
+  align-items: center;/* Alineación vertical */
+  margin-bottom: 1.25rem;/* Espacio inferior */
+  flex-wrap: wrap;/* Permite salto de línea */
+  gap: 0.75rem;/* Espacio entre elementos */
 }
 .tabla-header h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0;
-  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;/* Tamaño del título */
+  font-weight: 700;/* Negrita */
+  color: var(--text);/* Color */
+  margin: 0;/* Sin margen */
+  font-family: 'DM Sans', sans-serif; /* Fuente */
 }
 
 .btn-refresh {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  border-radius: 8px;
-  padding: 6px 14px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
+  background: transparent; /* Sin fondo */
+  border: 1px solid var(--border);/* Borde */
+  color: var(--muted);/* Color suave */
+  border-radius: 8px;/* Bordes redondeados */
+  padding: 6px 14px;/* Espacio interno */
+  font-size: 13px;/* Tamaño texto */
+  cursor: pointer;/* Cursor */
+  transition: all 0.2s;/* Animación */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
 .btn-refresh:hover {
-  border-color: var(--green);
-  color: var(--green);
+  border-color: var(--green);/* Borde verde */
+  color: var(--green); /* Texto verde */
 }
 
 /* Scroll horizontal en móvil */
-.tabla-scroll { overflow-x: auto; }
+.tabla-scroll { overflow-x: auto; } /* Permite scroll horizontal */
 
 .tabla {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 680px;
-  font-size: 13px;
+  width: 100%;/* Ocupa todo el ancho */
+  border-collapse: collapse;/* Elimina espacios entre bordes */
+  min-width: 680px; /* Ancho mínimo */
+  font-size: 13px;/* Tamaño texto */
 }
 .tabla th {
-  text-align: left;
-  padding: 8px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-  font-family: 'DM Sans', sans-serif;
+  text-align: left;/* Alinea texto a la izquierda */
+  padding: 8px 12px;/* Espacio interno */
+  font-size: 11px;/* Tamaño pequeño */
+  font-weight: 700;/* Negrita */
+  text-transform: uppercase; /* Mayúsculas */
+  letter-spacing: 0.06em;/* Espaciado */
+  color: var(--muted);/* Color suave */
+  border-bottom: 1px solid var(--border);/* Línea inferior */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+
 }
 .tabla td {
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
-  color: var(--text);
-  vertical-align: middle;
+  padding: 10px 12px;/* Espacio interno */
+  border-bottom: 1px solid var(--border);/* Línea inferior */
+  color: var(--text);/* Color texto */
+  vertical-align: middle;/* Centra verticalmente */
 }
-.tabla tr:last-child td { border-bottom: none; }
+.tabla tr:last-child td { border-bottom: none; } /* Quita borde a la última fila */
 
-/* Descripción truncada */
+/* Descripción truncada: regla para limitar texto largo dentro de una celda (evita desbordes y reemplaza con ... el texto largo)*/
 .td-desc {
-  max-width: 220px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 220px;/* Ancho máximo */
+  overflow: hidden;/* Oculta exceso */
+  text-overflow: ellipsis;/* Agrega "..." */
+  white-space: nowrap;/* Evita salto de línea */
 }
 
-/* Tag de categoría */
+/* Tag de categoría: Estilo para etiquetas pequeñas que clasifican información */
 .tag {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 11px;
-  color: var(--muted);
+  background: var(--bg);/* Fondo */
+  border: 1px solid var(--border);/* Borde */
+  border-radius: 999px;/* Forma de píldora */
+  padding: 3px 10px;/* Espacio interno */
+  font-size: 11px;/* Tamaño pequeño */
+  color: var(--muted);/* Color suave */
 }
 
-/* ── BADGES DE ESTADO ────────────────────────────── */
+/* ── BADGES DE ESTADO: Indicadores visuales del estado de algo (pendiente, en proceso, completado) ────────────────────────────── */
 .badge-pending {
-  background: #fef9c3;
-  color: #854d0e;
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 11px;
-  font-weight: 600;
+  background: #fef9c3;/* Amarillo claro */
+  color: #854d0e;/* Texto oscuro */
+  border-radius: 999px;/* Forma redondeada */
+  padding: 3px 10px;/* Espacio */
+  font-size: 11px;/* Tamaño */
+  font-weight: 600;/* Grosor */
 }
 .badge-process {
-  background: #dbeafe;
-  color: #1e40af;
+  background: #dbeafe; /* Azul claro */
+  color: #1e40af;/* Azul oscuro */
   border-radius: 999px;
   padding: 3px 10px;
   font-size: 11px;
   font-weight: 600;
 }
 .badge-done {
-  background: #dcfce7;
-  color: #166534;
+  background: #dcfce7;/* Verde claro */
+  color: #166534;/* Verde oscuro */
   border-radius: 999px;
   padding: 3px 10px;
   font-size: 11px;
@@ -261,62 +268,64 @@
   font-weight: 600;
 }
 
-/* ── ACCIONES ────────────────────────────────────── */
+/* ── ACCIONES: Sección donde están los controles interactivos dentro de la tabla (botones, selectores para editar, cambiar estado o eliminar elementos)────────────────────────────────────── */
 .td-acciones {
-  display: flex;
-  gap: 6px;
-  align-items: center;
+  display: flex; /* Flexbox */
+  gap: 6px;/* Espacio entre botones */
+  align-items: center;/* Centrado vertical */
 }
 
 .sel-estado {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 8px;
-  padding: 5px 8px;
-  font-size: 12px;
-  cursor: pointer;
-  flex: 1;
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
+  background: var(--bg);/* Fondo */
+  border: 1px solid var(--border);/* Borde */
+  color: var(--text);/* Texto */
+  border-radius: 8px;/* Bordes */
+  padding: 5px 8px;/* Espacio */
+  font-size: 12px;/* Tamaño */
+  cursor: pointer;/* Cursor */
+  flex: 1;/* Ocupa espacio disponible */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  outline: none;/* Quita borde por defecto */
 }
-.sel-estado:focus { border-color: var(--green); }
+.sel-estado:focus { border-color: var(--green); }/* Borde verde al seleccionar */
 
 .btn-eliminar {
-  background: transparent;
-  border: 1px solid #fca5a5;
-  color: #ef4444;
-  border-radius: 8px;
-  padding: 5px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-  font-family: 'DM Sans', sans-serif;
+  background: transparent; /* Sin fondo */
+  border: 1px solid #fca5a5;/* Borde rojo claro */
+  color: #ef4444;/* Texto rojo */
+  border-radius: 8px;/* Bordes */
+  padding: 5px 10px;/* Espacio */
+  font-size: 12px;/* Tamaño */
+  cursor: pointer;/* Cursor */
+  transition: all 0.2s;/* Animación */
+  white-space: nowrap;/* Evita salto de línea */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
-.btn-eliminar:hover { background: #fee2e2; }
+.btn-eliminar:hover { background: #fee2e2; }/* Fondo rojo claro al pasar mouse */
 
-/* Mensaje vacío */
+/* Mensaje vacío: estilo para mostrar un mensaje cuando no hay datos disponibles*/
 .vacio-msg {
-  text-align: center;
-  padding: 2rem;
-  color: var(--muted);
-  font-size: 14px;
+  text-align: center;/* Centra texto */
+  padding: 2rem;/* Espacio */
+  color: var(--muted);/* Color suave */
+  font-size: 14px;/* Tamaño */
 }
 
-/* ── SPINNER ─────────────────────────────────────── */
+/* ── SPINNER: indicador de carga animado, ─────────────────────────────────────── */
 .spinner {
-  width: 32px; height: 32px;
-  border: 3px solid var(--border);
-  border-top-color: var(--green);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin: 2rem auto;
+  width: 32px; height: 32px;/* Tamaño */
+  border: 3px solid var(--border);/* Borde gris */
+  border-top-color: var(--green);/* Parte superior verde */
+  border-radius: 50%;/* Forma circular */
+  animation: spin 0.8s linear infinite;/* Animación de giro */
+  margin: 2rem auto;/* Centrado */
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin { to { transform: rotate(360deg); } }/* Hace girar el spinner *
 
-/* ── RESPONSIVE ──────────────────────────────────── */
+/* ── RESPONSIVE: Reglas que adaptan el diseño a pantallas pequeñas ──────────────────────────────────── */
 @media (max-width: 768px) {
-  .dash-header { flex-direction: column; align-items: flex-start; }
-  .metricas-grid { grid-template-columns: repeat(2, 1fr); }
+  .dash-header { flex-direction: column; /* Cambia a vertical */
+    align-items: flex-start;/* Alinea a la izquierda */
+   }
+  .metricas-grid { grid-template-columns: repeat(2, 1fr); }/* 2 columnas en móvil */
 }

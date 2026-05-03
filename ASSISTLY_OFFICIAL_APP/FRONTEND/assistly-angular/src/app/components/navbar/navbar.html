@@ -1,49 +1,49 @@
 <!-- Banner verde superior con punto parpadeante -->
-<div class="top-banner">
-  <span class="banner-dot"></span>
-  Buenas tardes. Shoppers verificados disponibles ahora mismo
+<div class="top-banner"><!-- Contenedor del banner superior -->
+  <span class="banner-dot"></span><!-- Punto decorativo/parpadeante del banner -->
+  Buenas tardes. Shoppers verificados disponibles ahora mismo<!-- Texto que aparece en el banner -->
 </div>
 
-<nav class="navbar">
-  <div class="navbar-container">
+<nav class="navbar"><!-- Barra de navegación principal -->
+  <div class="navbar-container"><!-- Contenedor interno del navbar -->
 
     <!-- Logo -->
-    <a routerLink="/" class="brand">assist<span>ly</span></a>
+    <a routerLink="/" class="brand">assist<span>ly</span></a><!-- Logo que lleva a la página principal -->
 
     <!-- Botón hamburguesa para móvil -->
-    <button class="hamburger" (click)="toggleMenu()">
-      <span></span><span></span><span></span>
+    <button class="hamburger" (click)="toggleMenu()"><!-- Botón que abre o cierra el menú en móvil -->
+      <span></span><span></span><span></span><!-- Líneas del ícono hamburguesa -->
     </button>
 
     <!-- Links de navegación -->
-    <div class="nav-links" [class.abierto]="menuAbierto">
+    <div class="nav-links" [class.abierto]="menuAbierto"><!-- Contenedor de links; agrega clase abierto si el menú móvil está abierto -->
       <a routerLink="/shoppers"  routerLinkActive="active"
-        class="nav-link" (click)="menuAbierto=false">Solicitudes</a>
+        class="nav-link" (click)="menuAbierto=false">Solicitudes</a><!-- Link a /shoppers; cierra el menú al hacer clic -->
       <a routerLink="/solicitud" routerLinkActive="active"
-        class="nav-link" (click)="menuAbierto=false">Shoppers</a>
+        class="nav-link" (click)="menuAbierto=false">Shoppers</a><!-- Link a /solicitud; se marca activo si coincide la ruta -->
       <a routerLink="/admin"     routerLinkActive="active"
-        class="nav-link" (click)="menuAbierto=false">Por qué Assistly</a>
+        class="nav-link" (click)="menuAbierto=false">Por qué Assistly</a><!-- Link a /admin; cierra el menú al hacer clic -->
       <a routerLink="/"          routerLinkActive="active"
         class="nav-link" (click)="menuAbierto=false"
-        [routerLinkActiveOptions]="{exact:true}">Cómo funciona</a>
+        [routerLinkActiveOptions]="{exact:true}">Cómo funciona</a><!-- Link al inicio; exact:true evita que esté activo en todas las rutas -->
     </div>
 
     <!-- Botones de la derecha -->
-    <div class="nav-actions">
+    <div class="nav-actions"><!-- Contenedor de botones del lado derecho -->
 
       <!-- Switch de tema -->
-      <label class="theme-switch" title="Cambiar tema">
-        <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" />
-        <span class="switch-track"></span>
+      <label class="theme-switch" title="Cambiar tema"><!-- Contenedor del switch para cambiar tema -->
+        <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" /><!-- Checkbox conectado al modo oscuro -->
+        <span class="switch-track"></span><!-- Parte visual del switch -->
       </label>
 
       <!-- Iniciar sesión → abre modal simple -->
-      <button class="nav-ghost" (click)="abrirModal('login')">
-        Iniciar sesión
+      <button class="nav-ghost" (click)="abrirModal('login')"><!-- Botón que abre el modal de login -->
+        Iniciar sesión<!-- Texto del botón -->
       </button>
 
       <!-- Ser shopper → abre modal dos paneles -->
-      <button class="btn-cta--outline" (click)="abrirModal('shopper')">
+      <button class="btn-cta--outline" (click)="abrirModal('shopper')"><!-- Botón que abre el modal de shopper -->
         Ser shopper
       </button>
 
@@ -53,8 +53,8 @@
 
 <!-- Modal de autenticación -->
 <app-auth-modal
-  [abierto]="modalAbierto"
-  [tipo]="tipoModal"
+  [abierto]="modalAbierto" 
+  [tipo]="tipoModal" 
   (cerrar)="cerrarModal()"
   (abrirShopperE)="abrirModal('shopper')">
 </app-auth-modal>

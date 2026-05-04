@@ -1,331 +1,385 @@
-.page-wrapper { padding: 3rem 0 5rem; }
-.flow-container { max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }
+.page-wrapper { padding: 3rem 0 5rem; }/* Da espacio arriba y abajo a toda la página */
+.flow-container { max-width: 600px; margin: 0 auto; padding: 0 1.5rem; }/* Centra el contenido y limita el ancho máximo */
 
 /* ── BARRA DE PROGRESO ───────────────────────────── */
 .progress-bar {
-  height: 4px;
-  background: var(--border);
-  border-radius: 999px;
-  margin-bottom: 2.5rem;
-  overflow: hidden;
+  height: 4px;  /* Altura de la barra */
+  background: var(--border);/* Color de fondo */
+  border-radius: 999px;/* Bordes redondeados */
+  margin-bottom: 2.5rem;/* Espacio inferior */
+  overflow: hidden;/* Oculta lo que se salga */
 }
+
+/* Parte verde que avanza dentro de la barra */
 .progress-fill {
-  height: 4px;
-  background: var(--green);
-  border-radius: 999px;
-  transition: width 0.4s ease;
+  height: 4px; /* Misma altura que la barra */
+  background: var(--green);/* Color verde */
+  border-radius: 999px;/* Bordes redondeados */
+  transition: width 0.4s ease;/* Animación al cambiar ancho */
 }
 
 /* ── ANIMACIÓN DE ENTRADA ────────────────────────── */
 .flow-step {
-  animation: aparecer 0.25s ease;
+  animation: aparecer 0.25s ease;/* Aplica animación de entrada */
 }
+
+/* Define la animación aparecer */
 @keyframes aparecer {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: none; }
+  from { opacity: 0; transform: translateY(8px); }/* Inicia invisible y abajo */
+  to   { opacity: 1; transform: none; }/* Termina visible en su lugar */
 }
 
 /* ── TEXTOS DEL PASO ─────────────────────────────── */
 .step-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 4px;
+  font-size: 11px;/* Tamaño pequeño */
+  font-weight: 700;/* Negrita */
+  letter-spacing: 0.08em;/* Espaciado entre letras */
+  text-transform: uppercase;/* Mayúsculas */
+  color: var(--green);/* Color verde */
+  margin-bottom: 4px;/* Espacio inferior */
 }
+/* Título del paso */
 .step-title {
-  font-size: clamp(1.4rem, 4vw, 1.9rem);
-  font-weight: 900;
-  color: var(--text);
-  margin-bottom: 4px;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);/* Tamaño adaptable */
+  font-weight: 900;/* Muy negrita */
+  color: var(--text);/* Color principal */
+  margin-bottom: 4px;/* Espacio inferior */
 }
+
+/* Descripción del paso */
 .step-desc {
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.55;
+  font-size: 14px;/* Tamaño del texto */
+  color: var(--muted);/* Color gris */
+  margin-bottom: 1.5rem; /* Espacio inferior */
+  line-height: 1.55;/* Altura entre líneas */
 }
 
 /* ── GRID DE CATEGORÍAS ──────────────────────────── */
 .cat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 8px;
-  margin-bottom: 1.25rem;
+  display: grid;/* Usa grid */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));/* Columnas adaptables */
+  gap: 8px;/* Espacio entre botones */
+  margin-bottom: 1.25rem;/* Espacio inferior */
 }
+
+/* Botón de categoría */
 .cat-btn {
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 8px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
+  background: var(--surface);/* Fondo */
+  border: 1.5px solid var(--border); /* Borde */
+  border-radius: 10px;/* Esquinas redondeadas */
+  padding: 14px 8px;/* Espacio interno */
+  text-align: center;/* Centra texto */
+  cursor: pointer;/* Cursor de mano */
+  font-size: 13px;/* Tamaño del texto */
+  font-weight: 600;/* Semi negrita */
+  color: var(--text); /* Color texto */
+  transition: all 0.2s;/* Transición suave */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
+
+/* Efecto al pasar el mouse */
 .cat-btn:hover { border-color: var(--green); }
+
+/* Botón de categoría activo */
 .cat-btn.activo {
-  border-color: var(--green);
-  background: var(--green-light);
-  color: var(--green);
+  border-color: var(--green);/* Borde verde */
+  background: var(--green-light);/* Fondo verde claro */
+  color: var(--green);/* Texto verde */
 }
 
 /* ── SUBCATEGORÍAS ───────────────────────────────── */
 .sub-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 8px;
+  font-size: 13px;/* Tamaño */
+  font-weight: 600;/* Semi negrita */
+  color: var(--text);/* Color */
+  margin-bottom: 8px;/* Espacio inferior */
 }
+
+/* Fila de subcategorías */
 .subcats-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 1.25rem;
+  display: flex;/* Usa flexbox */
+  flex-wrap: wrap;/* Permite varias líneas */
+  gap: 8px;/* Espacio entre botones */
+  margin-bottom: 1.25rem;/* Espacio inferior */
 }
 .sub-btn {
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 7px 16px;
-  font-size: 13px;
-  cursor: pointer;
-  color: var(--text);
-  transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
+  background: var(--surface);/* Fondo */
+  border: 1.5px solid var(--border);/* Borde */
+  border-radius: 999px;/* Forma de pastilla */
+  padding: 7px 16px;/* Espaciado interno */
+  font-size: 13px;/* Tamaño */
+  cursor: pointer;/* Cursor mano */
+  color: var(--text);/* Color texto */
+  transition: all 0.2s;/* Animación suave */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
+
+/* Hover del botón */
 .sub-btn:hover { border-color: var(--green); color: var(--green); }
+
+/* Subcategoría seleccionada */
 .sub-btn.activo {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: #fff;
+  background: var(--navy);/* Fondo azul oscuro */
+  border-color: var(--navy);/* Borde azul oscuro */
+  color: #fff;/* Texto blanco */
 }
 
 /* ── CAMPOS DE FORMULARIO ────────────────────────── */
 .f-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  display: block;
-  margin-bottom: 6px;
-  margin-top: 1rem;
+  font-size: 13px;/* Tamaño */
+  font-weight: 600;/* Semi negrita */
+  color: var(--text);/* Color */
+  display: block; /* Ocupa línea completa */
+  margin-bottom: 6px;/* Espacio abajo */
+  margin-top: 1rem;/* Espacio arriba */
 }
+
+/* Inputs y textareas */
 .f-input {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 10px 14px;
-  width: 100%;
-  font-size: 14px;
-  outline: none;
-  transition: border 0.2s;
-  resize: none;
-  margin-bottom: 4px;
-  box-sizing: border-box;
-  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);/* Fondo */
+  border: 1.5px solid var(--border);/* Borde */
+  color: var(--text);/* Texto */
+  border-radius: 10px;/* Bordes */
+  padding: 10px 14px;/* Espacio interno */
+  width: 100%;/* Ancho completo */
+  font-size: 14px;/* Tamaño */
+  outline: none;/* Quita borde azul default */
+  transition: border 0.2s;/* Transición del borde */
+  resize: none;/* No permite redimensionar textarea */
+  margin-bottom: 4px;/* Espacio abajo */
+  box-sizing: border-box;/* Incluye padding en el ancho */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
+
+/* Input seleccionado */
 .f-input:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(59,188,124,0.1);
+  border-color: var(--green);/* Borde verde */
+  box-shadow: 0 0 0 3px rgba(59,188,124,0.1);/* Sombra verde suave */
 }
 
 /* ── PASTILLITAS DE PRESUPUESTO ──────────────────── */
-.presupuesto-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 8px;
+.presupuesto-pills {/* Contenedor de botones de presupuesto */
+  display: flex;/* Flexbox */
+  flex-wrap: wrap;/* Varias líneas */
+  gap: 8px; /* Espacio entre botones */
+  margin-bottom: 8px;/* Espacio inferior */
 }
+
+/* Botón tipo pastilla */
 .pill-btn {
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  background: var(--surface);/* Fondo */
+  border: 1.5px solid var(--border);/* Borde */
+  border-radius: 999px;/* Pastilla */
+  padding: 6px 14px;/* Espacio interno */
+  font-size: 13px;/* Tamaño */
+  cursor: pointer; /* Mano */
+  transition: all 0.2s;/* Animación */
+  color: var(--text);/* Texto */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
-.pill-btn.activo {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
+.pill-btn.activo {/* Pastilla seleccionada */
+  background: var(--green);/* Fondo verde */
+  border-color: var(--green);/* Borde verde */
+  color: #fff;/* Texto blanco */
 }
 
 /* ── TAMAÑOS ─────────────────────────────────────── */
 .tamanos {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 1.25rem;
+  display: flex;/* Flexbox */
+  flex-direction: column;/* Elementos verticales */
+  gap: 10px;/* Espacio entre opciones */
+  margin-bottom: 1.25rem;/* Espacio inferior */
 }
+
+/* Opción de tamaño */
 .tamano-opt {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: var(--surface);
+  display: flex;/* Alinea radio y texto */
+  align-items: center;/* Centra verticalmente */
+  gap: 14px;/* Espacio interno */
+  padding: 14px 16px;/* Relleno */
+  border: 1.5px solid var(--border);/* Borde */
+  border-radius: 12px;/* Bordes */
+  cursor: pointer;/* Mano */
+  transition: all 0.2s;/* Animación */
+  background: var(--surface);/* Fondo */
 }
+
+/* Hover de opción */
 .tamano-opt:hover { border-color: var(--green); }
+
+/* Opción seleccionada */
 .tamano-opt.activo {
-  border-color: var(--green);
-  background: var(--green-light);
+  border-color: var(--green);/* Borde verde */
+  background: var(--green-light);/* Fondo verde claro */
 }
 
+/* Círculo tipo radio */
 .radio-circle {
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
-.radio-circle.sel {
-  border-color: var(--green);
-  background: var(--green);
+  width: 18px; height: 18px;/* Tamaño */
+  border-radius: 50%;/* Círculo */
+  border: 2px solid var(--border);/* Borde */
+  flex-shrink: 0;/* No se encoge */
+  transition: all 0.2s;/* Animación */
 }
 
-.tamano-lbl  { font-weight: 600; font-size: 14px; color: var(--text); margin: 0; }
-.tamano-desc { font-size: 12px; color: var(--muted); margin: 2px 0 0; }
+/* Radio seleccionado */
+.radio-circle.sel {
+  border-color: var(--green);/* Borde verde */
+  background: var(--green);/* Fondo verde */
+}
+
+.tamano-lbl  { font-weight: 600; font-size: 14px; color: var(--text); margin: 0; }/* Texto principal del tamaño */
+.tamano-desc { font-size: 12px; color: var(--muted); margin: 2px 0 0; }/* Descripción del tamaño */
 
 /* ── LISTA DE SHOPPERS ───────────────────────────── */
 .shoppers-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 1.25rem;
+  display: flex;/* Flexbox */
+  flex-direction: column;/* En columna */
+  gap: 10px;/* Espacio entre filas */
+  margin-bottom: 1.25rem;/* Espacio abajo */
 }
 .shopper-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: var(--surface);
+  display: flex;/* Alinea avatar, info y precio */
+  align-items: center;/* Centra verticalmente */
+  gap: 12px;/* Espacio entre elementos */
+  padding: 12px 16px;/* Espaciado */
+  border: 1.5px solid var(--border);/* Borde */
+  border-radius: 12px;/* Bordes */
+  cursor: pointer;/* Mano */
+  transition: all 0.2s; /* Animación */
+  background: var(--surface);/* Fondo */
 }
+
+/* Hover de shopper */
 .shopper-row:hover {
-  border-color: var(--green);
-  transform: translateX(3px);
+  border-color: var(--green);/* Borde verde */
+  transform: translateX(3px);/* Se mueve un poco a la derecha */
 }
 .shopper-row.elegido {
-  border-color: var(--green);
-  background: var(--green-light);
+  border-color: var(--green);/* Borde verde */
+  background: var(--green-light);/* Fondo verde claro */
 }
 
+/* Avatar pequeño */
 .avatar-sm {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: #fff;
-  font-size: 14px;
-  flex-shrink: 0;
+  width: 44px; height: 44px;/* Tamaño */
+  border-radius: 50%;/* Círculo */
+  display: flex;/* Centra contenido */
+  align-items: center;/* Centro vertical */
+  justify-content: center;/* Centro horizontal */
+  font-weight: 700;/* Negrita */
+  color: #fff;/* Texto blanco */
+  font-size: 14px;/* Tamaño */
+  flex-shrink: 0;/* No se deforma */
 }
 
+/* Info del shopper */
 .shopper-info { flex: 1; }
-.s-name   { font-weight: 700; font-size: 14px; color: var(--text); margin: 0; }
-.s-esp    { font-size: 12px; color: var(--muted); margin: 0; }
-.s-rating { font-size: 12px; color: var(--muted); margin: 0; }
+.s-name   { font-weight: 700; font-size: 14px; color: var(--text); margin: 0; }/* Nombre */
+.s-esp    { font-size: 12px; color: var(--muted); margin: 0; }/* Especialidad */
+.s-rating { font-size: 12px; color: var(--muted); margin: 0; }/* Rating */
 
-.s-precio { text-align: right; }
+.s-precio { text-align: right; }/* Precio alineado a la derecha */
+
+/* Precio fuerte */
 .s-precio strong {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 900;
-  color: var(--text);
+  display: block;/* Ocupa su propia línea */
+  font-size: 1.2rem;/* Tamaño grande */
+  font-weight: 900;/* Muy negrita */
+  color: var(--text);/* Color */
 }
+
+/* Texto pequeño del precio */
 .s-precio span { font-size: 11px; color: var(--muted); }
 
 /* ── BOTONES DE NAVEGACIÓN ───────────────────────── */
 .step-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.5rem;
+  display: flex;/* Flexbox */
+  justify-content: space-between;/* Separa botones */
+  align-items: center;/* Centra verticalmente */
+  margin-top: 1.5rem;/* Espacio arriba */
 }
+
+/* Botón atrás */
 .btn-back {
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 14px;
-  cursor: pointer;
-  padding: 8px;
-  font-family: 'DM Sans', sans-serif;
-  transition: color 0.2s;
+  background: none;/* Sin fondo */
+  border: none;/* Sin borde */
+  color: var(--muted);/* Texto gris */
+  font-size: 14px;/* Tamaño */
+  cursor: pointer;/* Mano */
+  padding: 8px;/* Espacio interno */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
+  transition: color 0.2s; /* Transición color */
 }
+/* Hover botón atrás */
 .btn-back:hover { color: var(--text); }
 
 .btn-next {
-  background: var(--green);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 28px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-family: 'DM Sans', sans-serif;
+  background: var(--green);/* Fondo verde */
+  color: #fff;/* Texto blanco */
+  border: none;/* Sin borde */
+  border-radius: 8px;/* Bordes */
+  padding: 12px 28px;/* Espacio interno */
+  font-size: 14px;/* Tamaño */
+  font-weight: 700;/* Negrita */
+  cursor: pointer;/* Mano */
+  transition: background 0.2s;/* Cambio suave de fondo */
+  font-family: 'DM Sans', sans-serif;/* Fuente */
 }
+
+/* Hover solo si no está deshabilitado */
 .btn-next:hover:not(:disabled) { background: var(--green-dark); }
-.btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
-.w100 { width: 100%; }
+
+/* Botón deshabilitado */
+.btn-next:disabled { opacity: 0.5; /* Se mira apagado */
+  cursor: not-allowed;/* Cursor de no permitido */
+ }
+.w100 { width: 100%; }/* Clase para ancho completo */
 
 /* ── ERRORES ─────────────────────────────────────── */
 .campo-error {
-  font-size: 12px;
-  color: #ef4444;
-  margin-top: 4px;
+  font-size: 12px;/* Tamaño pequeño */
+  color: #ef4444;/* Rojo */
+  margin-top: 4px;/* Espacio arriba */
 }
 
 /* ── PANTALLA DE ÉXITO ───────────────────────────── */
 .success-step {
-  text-align: center;
-  padding: 2rem 0;
-  animation: aparecer 0.3s ease;
+  text-align: center;/* Centra texto */
+  padding: 2rem 0; /* Espacio arriba y abajo */
+  animation: aparecer 0.3s ease;/* Animación */
 }
 .check-icon {
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  background: var(--green-light);
-  color: var(--green);
-  font-size: 1.8rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.25rem;
+  width: 60px; height: 60px;/* Tamaño */
+  border-radius: 50%;/* Círculo */
+  background: var(--green-light);/* Fondo verde claro */
+  color: var(--green);/* Check verde */
+  font-size: 1.8rem;/* Tamaño del check */
+  font-weight: 700; /* Negrita */
+  display: flex;/* Centra */
+  align-items: center;/* Centro vertical */
+  justify-content: center;/* Centro horizontal */
+  margin: 0 auto 1.25rem;/* Centrado con espacio abajo */
 }
 
+/* Caja del resumen */
 .resumen {
-  background: var(--green-light);
-  border: 1px solid rgba(59,188,124,0.25);
-  border-radius: 12px;
-  padding: 1.1rem;
-  margin: 1.25rem 0;
-  text-align: left;
+  background: var(--green-light);/* Fondo verde claro */
+  border: 1px solid rgba(59,188,124,0.25);/* Borde verde suave */
+  border-radius: 12px;/* Bordes */
+  padding: 1.1rem;/* Espacio interno */
+  margin: 1.25rem 0;/* Espacio arriba y abajo */
+  text-align: left;/* Texto alineado izquierda */
 }
+
+/* Fila del resumen */
 .res-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(59,188,124,0.12);
-  font-size: 13px;
+  display: flex;/* Pone los textos en fila */
+  justify-content: space-between;/* Uno a la izquierda y otro derecha */
+  padding: 6px 0;/* Espacio vertical */
+  border-bottom: 1px solid rgba(59,188,124,0.12);/* Línea divisoria */
+  font-size: 13px;/* Tamaño */
 }
-.res-row:last-child { border-bottom: none; }
-.res-row span:first-child { color: var(--muted); }
-.res-row span:last-child  { font-weight: 600; color: var(--text); }
+.res-row:last-child { border-bottom: none; }/* Quita borde de la última fila */
+.res-row span:first-child { color: var(--muted); }/* Primer texto de la fila */
+.res-row span:last-child  { font-weight: 600; color: var(--text); }/* Segundo texto de la fila */

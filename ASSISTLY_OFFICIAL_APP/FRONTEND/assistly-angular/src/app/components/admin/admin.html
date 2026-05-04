@@ -1,98 +1,122 @@
-<div class="page-wrapper">
-  <div class="container">
+<div class="page-wrapper"> <!-- Contenedor general de toda la página -->
+  <div class="container"> <!-- Contenedor interno que centra y limita el ancho -->
 
     <!-- ══ LOGIN ══ -->
-    <div class="login-box" *ngIf="!loggedIn">
-      <h2 class="login-title">Panel de administración</h2>
-      <p class="login-sub">Acceso restringido a administradores.</p>
+    <div class="login-box" *ngIf="!loggedIn"> <!-- Muestra el login solo si NO ha iniciado sesión -->
+      <h2 class="login-title">Panel de administración</h2> <!-- Título principal -->
+      <p class="login-sub">Acceso restringido a administradores.</p> <!-- Subtítulo descriptivo -->
 
       <!-- campo de email -->
-      <label class="f-label">Correo electrónico</label>
-      <input class="f-input" type="email" placeholder="admin@assistly.com" [(ngModel)]="loginEmail"/>
+      <label class="f-label">Correo electrónico</label> <!-- Etiqueta del input -->
+      <input class="f-input" type="email" placeholder="admin@assistly.com" [(ngModel)]="loginEmail"/> <!-- Input de email vinculado a la variable loginEmail -->
 
       <!-- campo de contraseña -->
-      <label class="f-label">Contraseña</label>
-      <input class="f-input" type="password" placeholder="••••••••" [(ngModel)]="loginPassword"/>
+      <label class="f-label">Contraseña</label> <!-- Etiqueta del input -->
+      <input class="f-input" type="password" placeholder="••••••••" [(ngModel)]="loginPassword"/> <!-- Input de contraseña vinculado a loginPassword -->
 
       <!-- mensaje de error -->
-      <p class="campo-error" *ngIf="loginError">{{ loginError }}</p>
+      <p class="campo-error" *ngIf="loginError">{{ loginError }}</p> <!-- Muestra error solo si existe loginError -->
+      <!-- ngIf sirve para mostrar u ocultar elementos en HTML dependiendo si es True o False -->
 
       <!-- botón de login -->
-      <button class="btn-submit" (click)="doLogin()" [disabled]="loginLoading">
-        {{ loginLoading ? 'Verificando...' : 'Ingresar al panel' }}
+      <button class="btn-submit" (click)="doLogin()" [disabled]="loginLoading"> <!-- Botón que ejecuta doLogin y se desactiva mientras carga -->
+        {{ loginLoading ? 'Verificando...' : 'Ingresar al panel' }} <!-- Cambia el texto dependiendo si está cargando -->
       </button>
     </div>
 
     <!-- ══ DASHBOARD ══ -->
-    <div *ngIf="loggedIn">
+    <div *ngIf="loggedIn"> <!-- Muestra dashboard solo si ya inició sesión -->
 
       <!-- título y botón cerrar sesión -->
-      <div class="dash-header">
-        <div>
-          <p class="section-label">Panel Admin</p>
-          <h1 class="section-title">Gestión de solicitudes</h1>
+      <div class="dash-header"> <!-- Encabezado del dashboard -->
+        <div> <!-- Contenedor de textos -->
+          <p class="section-label">Panel Admin</p> <!-- Etiqueta pequeña -->
+          <h1 class="section-title">Gestión de solicitudes</h1> <!-- Título principal -->
         </div>
-        <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+        <button class="btn-logout" (click)="logout()">Cerrar sesión</button> <!-- Botón para cerrar sesión -->
       </div>
 
       <!-- métricas -->
-      <div class="metricas-grid">
-        <div class="metrica-card" *ngFor="let m of metricas">
-          <div class="metrica-num">{{ m.valor }}</div>
-          <div class="metrica-lbl">{{ m.label }}</div>
+      <div class="metricas-grid"> <!-- Contenedor de métricas en grid -->
+        <div class="metrica-card" *ngFor="let m of metricas"> <!-- Repite una tarjeta por cada métrica -->
+          <div class="metrica-num">{{ m.valor }}</div> <!-- Muestra el valor numérico -->
+          <div class="metrica-lbl">{{ m.label }}</div> <!-- Muestra el nombre de la métrica -->
         </div>
       </div>
 
       <!-- tabla de solicitudes -->
-      <div class="tabla-card">
-        <div class="tabla-header">
-          <h3>Solicitudes recientes</h3>
-          <button class="btn-refresh" (click)="cargarSolicitudes()">Actualizar</button>
+      <div class="tabla-card"> <!-- Contenedor de la tabla -->
+        <div class="tabla-header"> <!-- Encabezado de la tabla -->
+          <h3>Solicitudes recientes</h3> <!-- Título -->
+          <button class="btn-refresh" (click)="cargarSolicitudes()">Actualizar</button> <!-- Botón para recargar datos -->
         </div>
 
         <!-- spinner -->
-        <div *ngIf="loadingData" class="spinner"></div>
+        <div *ngIf="loadingData" class="spinner"></div> <!-- Muestra animación de carga -->
 
         <!-- tabla -->
-        <div class="tabla-scroll" *ngIf="!loadingData">
-          <table class="tabla">
-            <thead>
-              <tr>
-                <th>Descripción</th>
-                <th>Categoría</th>
-                <th>Presupuesto</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+        <div class="tabla-scroll" *ngIf="!loadingData"> <!-- Contenedor con scroll horizontal cuando ya cargó -->
+          <table class="tabla"> <!-- Tabla principal -->
+            <thead> <!-- Encabezado -->
+              <tr> <!-- Fila -->
+                <th>Descripción</th> <!-- Columna descripción -->
+                <th>Categoría</th> <!-- Columna categoría -->
+                <th>Presupuesto</th> <!-- Columna presupuesto -->
+                <th>Fecha</th> <!-- Columna fecha -->
+                <th>Estado</th> <!-- Columna estado -->
+                <th>Acciones</th> <!-- Columna acciones -->
               </tr>
             </thead>
-            <tbody>
-              <tr *ngFor="let sol of solicitudes">
+            <tbody> <!-- Cuerpo -->
+              <tr *ngFor="let sol of solicitudes"> <!-- Repite una fila por cada solicitud -->
+                <!-- ngFor: Sirve para repetir un elemento varias veces recorriendo una lista -->
+
                 <!-- descripción cortada -->
-                <td class="td-desc">{{ sol.descripcion | slice:0:50 }}{{ sol.descripcion.length > 50 ? '...' : '' }}</td>
+                <td class="td-desc">
+                  {{ sol.descripcion | slice:0:50 }}{{ sol.descripcion.length > 50 ? '...' : '' }}
+                </td> <!-- Muestra descripción recortada a 50 caracteres -->
+
                 <!-- categoría con pipe -->
-                <td><span class="tag">{{ sol.categoria | categoriaLabel }}</span></td>
+                <td>
+                  <span class="tag">{{ sol.categoria | categoriaLabel }}</span>
+                </td> <!-- Muestra categoría con formato usando pipe -->
+
                 <!-- presupuesto con pipe number -->
-                <td>Q{{ sol.presupuesto | number }}</td>
+                <td>Q{{ sol.presupuesto | number }}</td> <!-- Muestra presupuesto con formato numérico -->
+
                 <!-- fecha con pipe date -->
-                <td>{{ sol.createdAt | date:'dd/MM/yy' }}</td>
+                <td>{{ sol.createdAt | date:'dd/MM/yy' }}</td> <!-- Muestra fecha formateada -->
+
                 <!-- badge de estado con pipe estadoClass -->
-                <td><span [class]="(sol.estado || 'pendiente') | estadoClass">{{ sol.estado }}</span></td>
+                <td>
+                  <span [class]="(sol.estado || 'pendiente') | estadoClass">
+                    {{ sol.estado }}
+                  </span>
+                </td> <!-- Aplica estilo según estado -->
+
                 <!-- acciones -->
-                <td class="td-acciones">
+                <td class="td-acciones"> <!-- Contenedor de acciones -->
                   <select class="sel-estado" [value]="sol.estado"
                     (change)="cambiarEstado(sol._id!, $any($event.target).value)">
+                    <!-- Selector para cambiar estado -->
+
                     <option value="pendiente">Pendiente</option>
                     <option value="en-proceso">En proceso</option>
                     <option value="completada">Completada</option>
                     <option value="cancelada">Cancelada</option>
                   </select>
-                  <button class="btn-eliminar" (click)="eliminar(sol._id!)">Eliminar</button>
+
+                  <button class="btn-eliminar" (click)="eliminar(sol._id!)">
+                    Eliminar
+                  </button> <!-- Botón para eliminar la solicitud -->
                 </td>
               </tr>
             </tbody>
           </table>
-          <p class="vacio-msg" *ngIf="solicitudes.length === 0">No hay solicitudes aún.</p>
+
+          <p class="vacio-msg" *ngIf="solicitudes.length === 0">
+            No hay solicitudes aún.
+          </p>
         </div>
       </div>
 

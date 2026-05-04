@@ -1,18 +1,18 @@
 <div class="page-wrapper">
   <div class="flow-container">
 
-    <!-- barra de progreso -->
-    <div class="progress-bar" *ngIf="paso < 5">
+    <!-- Barra de progreso — solo visible en los pasos 1 al 3 -->
+    <div class="progress-bar" *ngIf="paso < 4">
       <div class="progress-fill" [style.width.%]="progreso"></div>
     </div>
 
     <!-- ══ PASO 1: CATEGORÍA ══ -->
     <div class="flow-step" *ngIf="paso === 1">
-      <p class="step-label">Paso 1 de 4</p>
+      <p class="step-label">Paso 1 de 3</p>
       <h2 class="step-title">¿Para qué ocasión?</h2>
       <p class="step-desc">Elige la categoría y el tipo de servicio.</p>
 
-      <!-- grid de categorías -->
+      <!-- Grid de categorías -->
       <div class="cat-grid">
         <button *ngFor="let c of categorias"
           class="cat-btn"
@@ -22,7 +22,7 @@
         </button>
       </div>
 
-      <!-- subcategorías -->
+      <!-- Subcategorías de la categoría elegida -->
       <div *ngIf="subcats.length > 0">
         <p class="sub-label">Especifica el tipo:</p>
         <div class="subcats-row">
@@ -35,11 +35,13 @@
         </div>
       </div>
 
+      <!-- Mensajes de error si falta seleccionar -->
       <p class="campo-error" *ngIf="!categoria">Selecciona una categoría.</p>
       <p class="campo-error" *ngIf="categoria && !subcategoria">Selecciona una opción específica.</p>
 
       <div class="step-actions">
         <span></span>
+        <!-- Botón deshabilitado si no hay categoría y subcategoría -->
         <button class="btn-next" (click)="siguiente()" [disabled]="!categoria || !subcategoria">
           Continuar
         </button>
@@ -48,10 +50,11 @@
 
     <!-- ══ PASO 2: DESCRIPCIÓN ══ -->
     <div class="flow-step" *ngIf="paso === 2">
-      <p class="step-label">Paso 2 de 4</p>
+      <p class="step-label">Paso 2 de 3</p>
       <h2 class="step-title">Describe tu necesidad</h2>
       <p class="step-desc">Entre más detalles, mejor resultado.</p>
 
+      <!-- Descripción de la solicitud -->
       <label class="f-label">¿Qué necesitas exactamente? *</label>
       <textarea class="f-input" rows="4"
         placeholder="Ej: Busco un vestido para boda de noche, talla M..."
@@ -59,8 +62,8 @@
       </textarea>
       <p class="campo-error" *ngIf="descripcion.length > 0 && descripcion.length < 15">Mínimo 15 caracteres.</p>
 
+      <!-- Presupuesto con pastillitas de montos rápidos -->
       <label class="f-label">Presupuesto máximo (Q) *</label>
-      <!-- pastillitas de montos rápidos -->
       <div class="presupuesto-pills">
         <button *ngFor="let p of presupuestos"
           class="pill-btn"
@@ -71,6 +74,7 @@
       </div>
       <input class="f-input" type="number" placeholder="O escribe tu presupuesto..." [(ngModel)]="presupuesto"/>
 
+      <!-- Correo opcional para notificaciones -->
       <label class="f-label">Tu correo (opcional)</label>
       <input class="f-input" type="email" placeholder="para notificarte del avance" [(ngModel)]="correo"/>
 
@@ -82,10 +86,11 @@
 
     <!-- ══ PASO 3: TAMAÑO ══ -->
     <div class="flow-step" *ngIf="paso === 3">
-      <p class="step-label">Paso 3 de 4</p>
+      <p class="step-label">Paso 3 de 3</p>
       <h2 class="step-title">¿Qué tan grande es tu solicitud?</h2>
       <p class="step-desc">Esto nos ayuda a asignar el shopper correcto.</p>
 
+      <!-- Opciones de tamaño -->
       <div class="tamanos">
         <div *ngFor="let t of tamanos"
           class="tamano-opt"
@@ -100,62 +105,38 @@
       </div>
 
       <p class="campo-error" *ngIf="!tamano">Selecciona el tamaño.</p>
-
-      <div class="step-actions">
-        <button class="btn-back" (click)="anterior()">← Atrás</button>
-        <button class="btn-next" (click)="siguiente()" [disabled]="!tamano">Ver shoppers</button>
-      </div>
-    </div>
-
-    <!-- ══ PASO 4: SHOPPERS ══ -->
-    <div class="flow-step" *ngIf="paso === 4">
-      <p class="step-label">Paso 4 de 4</p>
-      <h2 class="step-title">Shoppers disponibles</h2>
-      <p class="step-desc">Elige al experto para tu solicitud.</p>
-
-      <div class="shoppers-list">
-        <div *ngFor="let s of shoppers"
-          class="shopper-row"
-          [class.elegido]="shopperElegido === s.nombre"
-          (click)="elegirShopper(s.nombre)">
-          <div class="avatar-sm" [style.background]="s.color">{{ s.iniciales }}</div>
-          <div class="shopper-info">
-            <p class="s-name">{{ s.nombre }}</p>
-            <p class="s-esp">{{ s.especialidad }}</p>
-            <p class="s-rating">★ {{ s.calificacion }}</p>
-          </div>
-          <div class="s-precio">
-            <strong>Q{{ s.tarifa }}</strong>
-            <span>/hora</span>
-          </div>
-        </div>
-      </div>
-
-      <p class="campo-error" *ngIf="!shopperElegido">Selecciona un shopper.</p>
+      <!-- Mensaje de error si falla el envío -->
       <p class="campo-error" *ngIf="error">{{ error }}</p>
 
       <div class="step-actions">
         <button class="btn-back" (click)="anterior()">← Atrás</button>
-        <button class="btn-next" (click)="confirmar()" [disabled]="!shopperElegido || loading">
+        <!-- Botón que envía la solicitud al backend -->
+        <button class="btn-next" (click)="confirmar()" [disabled]="!tamano || loading">
           {{ loading ? 'Enviando...' : 'Confirmar y enviar' }}
         </button>
       </div>
     </div>
 
-    <!-- ══ ÉXITO ══ -->
-    <div class="success-step" *ngIf="paso === 5">
+    <!-- ══ PASO 4: ÉXITO ══ -->
+    <div class="success-step" *ngIf="paso === 4">
+      <!-- Ícono de check verde -->
       <div class="check-icon">✓</div>
       <h2 class="step-title">¡Solicitud enviada!</h2>
       <p class="step-desc">
-        Tu shopper <strong>{{ shopperElegido }}</strong> te contactará en menos de 5 minutos.
+        Los shoppers disponibles verán tu solicitud y uno la aceptará en breve.
       </p>
+
+      <!-- Resumen de la solicitud enviada -->
       <div class="resumen">
         <div class="res-row"><span>Categoría</span><span>{{ subcategoria }}</span></div>
         <div class="res-row"><span>Presupuesto</span><span>Q{{ presupuesto }}</span></div>
         <div class="res-row"><span>Tamaño</span><span>{{ tamano }}</span></div>
-        <div class="res-row"><span>Shopper</span><span>{{ shopperElegido }}</span></div>
       </div>
-      <button class="btn-next w100" (click)="resetear()">Crear otra solicitud</button>
+
+      <!-- Botón para ver mis solicitudes -->
+      <button class="btn-next w100" (click)="verMisSolicitudes()">📋 Ver mis solicitudes</button>
+      <!-- Botón para crear otra solicitud -->
+      <button class="btn-back w100" (click)="resetear()" style="margin-top: 0.5rem;">Crear otra solicitud</button>
     </div>
 
   </div>

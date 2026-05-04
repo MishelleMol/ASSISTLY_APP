@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ShopperGuard } from './guards/shopper-guard';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,17 @@ export const routes: Routes = [
     path: 'admin',
     loadComponent: () => import('./components/admin/admin').then(m => m.AdminComponent),
     title: 'Panel Admin — Assistly'
+  },
+  {
+    path: 'shopper-dashboard',
+    loadComponent: () => import('./components/shopper-dashboard/shopper-dashboard').then(m => m.ShopperDashboardComponent),
+    canActivate: [ShopperGuard],
+    title: 'Dashboard — Shopper Assistly'
+  },
+  {
+  path: 'mis-solicitudes',
+  loadComponent: () => import('./components/mis-solicitudes/mis-solicitudes').then(m => m.MisSolicitudes),
+  title: 'Mis Solicitudes — Assistly'
   },
   {
     path: '**',

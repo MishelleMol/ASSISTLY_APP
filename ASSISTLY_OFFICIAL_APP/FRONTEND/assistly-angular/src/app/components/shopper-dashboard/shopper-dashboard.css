@@ -1,0 +1,274 @@
+/* ── CONTENEDOR PRINCIPAL ── */
+
+/* Ocupa toda la altura de la pantalla */
+.dashboard {
+  min-height: 100vh;
+  /* Color de fondo gris claro para el dashboard */
+  background: #f5f5f5;
+  /* Fuente principal de la app */
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── HEADER ── */
+
+/* Barra superior del dashboard */
+.dash-header {
+  /* Color de fondo verde oscuro de Assistly */
+  background: #1a7a4a;
+  /* Texto blanco para contrastar con el fondo verde */
+  color: white;
+  /* Espacio interno: arriba/abajo 1rem, izquierda/derecha 2rem */
+  padding: 1rem 2rem;
+  /* Flexbox para poner título y usuario en extremos opuestos */
+  display: flex;
+  /* Empuja el título a la izquierda y el usuario a la derecha */
+  justify-content: space-between;
+  /* Centra verticalmente los elementos */
+  align-items: center;
+}
+
+/* Título principal del header */
+.dash-header h1 {
+  /* Elimina el margen por defecto del h1 */
+  margin: 0;
+  /* Tamaño del título */
+  font-size: 1.4rem;
+}
+
+/* Contenedor del nombre del shopper y botón de cerrar sesión */
+.dash-user {
+  /* Flexbox para poner nombre y botón en fila */
+  display: flex;
+  /* Centra verticalmente nombre y botón */
+  align-items: center;
+  /* Espacio entre el nombre y el botón */
+  gap: 1rem;
+}
+
+/* Botón de cerrar sesión */
+.dash-user button {
+  /* Fondo blanco para contrastar con el header verde */
+  background: white;
+  /* Texto verde para mantener la identidad de la app */
+  color: #1a7a4a;
+  /* Sin borde */
+  border: none;
+  /* Espacio interno del botón */
+  padding: 0.4rem 1rem;
+  /* Bordes redondeados tipo píldora */
+  border-radius: 20px;
+  /* Cursor de mano al pasar sobre el botón */
+  cursor: pointer;
+  /* Texto en negrita */
+  font-weight: 600;
+}
+
+/* ── TABS DE NAVEGACIÓN ── */
+
+/* Barra de navegación con los 4 tabs */
+.dash-tabs {
+  /* Flexbox para poner los tabs en fila */
+  display: flex;
+  /* Espacio entre cada tab */
+  gap: 0.5rem;
+  /* Espacio interno de la barra */
+  padding: 1rem 2rem;
+  /* Fondo blanco */
+  background: white;
+  /* Línea separadora debajo de los tabs */
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* Cada botón de tab */
+.dash-tabs button {
+  /* Espacio interno de cada tab */
+  padding: 0.5rem 1.2rem;
+  /* Sin borde */
+  border: none;
+  /* Fondo transparente por defecto */
+  background: transparent;
+  /* Cursor de mano */
+  cursor: pointer;
+  /* Bordes redondeados tipo píldora */
+  border-radius: 20px;
+  /* Tamaño del texto */
+  font-size: 0.95rem;
+  /* Color gris para tabs inactivos */
+  color: #666;
+  /* Transición suave al cambiar de tab */
+  transition: all 0.2s;
+}
+
+/* Tab activo — el que está seleccionado */
+.dash-tabs button.activo {
+  /* Fondo verde cuando está activo */
+  background: #1a7a4a;
+  /* Texto blanco cuando está activo */
+  color: white;
+  /* Negrita cuando está activo */
+  font-weight: 600;
+}
+
+/* ── CONTENIDO PRINCIPAL ── */
+
+/* Área donde se muestra el contenido de cada tab */
+.dash-content {
+  /* Espacio interno del contenido */
+  padding: 2rem;
+  /* Ancho máximo para no estirar demasiado en pantallas grandes */
+  max-width: 900px;
+  /* Centra el contenido horizontalmente */
+  margin: 0 auto;
+}
+
+/* Título de cada sección (Solicitudes, Perfil, etc.) */
+.dash-content h2 {
+  /* Color verde para los títulos */
+  color: #1a7a4a;
+  /* Espacio debajo del título */
+  margin-bottom: 1.5rem;
+}
+
+/* ── CARDS ── */
+
+/* Card que envuelve cada solicitud o dato de perfil */
+.card {
+  /* Fondo blanco */
+  background: white;
+  /* Bordes redondeados */
+  border-radius: 12px;
+  /* Espacio interno */
+  padding: 1.5rem;
+  /* Espacio entre cards */
+  margin-bottom: 1rem;
+  /* Sombra suave para dar profundidad */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Título dentro de la card (categoría de la solicitud) */
+.card h3 {
+  /* Sin margen arriba, pequeño margen abajo */
+  margin: 0 0 0.5rem;
+  /* Color oscuro para el título */
+  color: #333;
+  /* Primera letra en mayúscula */
+  text-transform: capitalize;
+}
+
+/* Párrafos dentro de la card */
+.card p {
+  /* Pequeño margen arriba y abajo */
+  margin: 0.3rem 0;
+  /* Color gris medio para el texto */
+  color: #555;
+}
+
+/* ── BADGE DE ESTADO ── */
+
+/* Etiqueta que muestra el estado de la solicitud */
+.badge {
+  /* Se muestra en línea pero con espacio interno */
+  display: inline-block;
+  /* Espacio interno de la etiqueta */
+  padding: 0.2rem 0.8rem;
+  /* Bordes redondeados tipo píldora */
+  border-radius: 20px;
+  /* Fondo verde muy claro */
+  background: #e8f5e9;
+  /* Texto verde oscuro */
+  color: #1a7a4a;
+  /* Texto pequeño */
+  font-size: 0.85rem;
+  /* Negrita */
+  font-weight: 600;
+  /* Espacio arriba y abajo */
+  margin: 0.5rem 0;
+  /* Primera letra en mayúscula */
+  text-transform: capitalize;
+}
+
+/* ── BOTÓN ACEPTAR ── */
+
+/* Botón para aceptar una solicitud */
+.card button {
+  /* Espacio arriba del botón */
+  margin-top: 0.8rem;
+  /* Espacio interno */
+  padding: 0.5rem 1.2rem;
+  /* Fondo verde */
+  background: #1a7a4a;
+  /* Texto blanco */
+  color: white;
+  /* Sin borde */
+  border: none;
+  /* Bordes redondeados tipo píldora */
+  border-radius: 20px;
+  /* Cursor de mano */
+  cursor: pointer;
+  /* Negrita */
+  font-weight: 600;
+  /* Transición suave al hacer hover */
+  transition: background 0.2s;
+}
+
+/* Hover del botón — oscurece el verde al pasar el mouse */
+.card button:hover {
+  background: #145c38;
+}
+
+/* ── RESPONSIVE ── */
+
+/* Tablets y pantallas medianas (menos de 768px) */
+@media (max-width: 768px) {
+
+  /* Header en columna en móvil */
+  .dash-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+
+  /* Tabs con scroll horizontal en móvil */
+  .dash-tabs {
+    overflow-x: auto;
+    padding: 0.8rem 1rem;
+    /* Oculta la barra de scroll */
+    scrollbar-width: none;
+  }
+
+  /* Oculta barra de scroll en Chrome */
+  .dash-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Tabs no se encogen */
+  .dash-tabs button {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Menos padding en el contenido */
+  .dash-content {
+    padding: 1rem;
+  }
+}
+
+/* Móviles pequeños (menos de 480px) */
+@media (max-width: 480px) {
+
+  /* Título más pequeño */
+  .dash-header h1 {
+    font-size: 1.1rem;
+  }
+
+  /* Cards con menos padding */
+  .card {
+    padding: 1rem;
+  }
+
+  /* Botón ocupa todo el ancho en móvil */
+  .card button {
+    width: 100%;
+    text-align: center;
+  }
+}

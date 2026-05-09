@@ -6,7 +6,21 @@ require('dotenv').config();// Carga variables de entorno desde un archivo .env
 const app = express();// Crea la aplicación de Express
 
 // ── Middlewares ──────────────────────────────────────────────
-app.use(cors({ origin: ['http://localhost:4200', 'http://localhost:61828', 'https://assistly-app-self.vercel.app'] }));// Permite peticiones desde esos orígenes (frontend Angular en local)
+//app.use(cors({ origin: ['http://localhost:4200', 'http://localhost:61828', 'https://assistly-app-self.vercel.app', 'https://assistly-app-zhqf-26qzpggob-mishellemolinaarana-1461s-projects.vercel.app/'] }));// Permite peticiones desde esos orígenes (frontend Angular en local)
+app.use(cors({
+  origin: function (origin, callback) {
+    if (
+      !origin ||
+      origin.includes('localhost') ||
+      origin.endsWith('.vercel.app')
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());// Permite recibir datos en formato JSON en las peticiones
 
 // ── Conexión a MongoDB ───────────────────────────────────────

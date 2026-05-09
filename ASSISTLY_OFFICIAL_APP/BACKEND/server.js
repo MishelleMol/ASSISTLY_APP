@@ -6,7 +6,7 @@ require('dotenv').config();// Carga variables de entorno desde un archivo .env
 const app = express();// Crea la aplicación de Express
 
 // ── Middlewares ──────────────────────────────────────────────
-app.use(cors({ origin: ['http://localhost:4200', 'http://localhost:61828'] }));// Permite peticiones desde esos orígenes (frontend Angular en local)
+app.use(cors({ origin: ['http://localhost:4200', 'http://localhost:61828', 'https://assistly-app-self.vercel.app'] }));// Permite peticiones desde esos orígenes (frontend Angular en local)
 app.use(express.json());// Permite recibir datos en formato JSON en las peticiones
 
 // ── Conexión a MongoDB ───────────────────────────────────────
